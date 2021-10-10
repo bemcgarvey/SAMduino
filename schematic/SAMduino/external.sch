@@ -1,0 +1,429 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr USLetter 11000 8500
+encoding utf-8
+Sheet 3 4
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L SamacSys_Parts:MCP2542FD-E_SN IC6
+U 1 1 6161F9D5
+P 7550 2150
+F 0 "IC6" H 8100 2415 50  0000 C CNN
+F 1 "MCP2542FD-E_SN" H 8100 2324 50  0000 C CNN
+F 2 "SOIC127P600X175-8N" H 8500 2250 50  0001 L CNN
+F 3 "" H 8500 2150 50  0001 L CNN
+F 4 "Microchip MCP2542FD-E/SN, CAN Transceiver 8Mbit/s 1-Channel CAN, ISO 11898-2, ISO 11898-5, ISO/DIS11898-2, 8-Pin SOIC" H 8500 2050 50  0001 L CNN "Description"
+F 5 "1.75" H 8500 1950 50  0001 L CNN "Height"
+F 6 "579-MCP2542FD-E/SN" H 8500 1850 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/Microchip-Technology/MCP2542FD-E-SN?qs=qdgZG5p0FZ5pNizBl1u80Q%3D%3D" H 8500 1750 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Microchip" H 8500 1650 50  0001 L CNN "Manufacturer_Name"
+F 9 "MCP2542FD-E/SN" H 8500 1550 50  0001 L CNN "Manufacturer_Part_Number"
+	1    7550 2150
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:MCP2221-I_SL IC5
+U 1 1 616206CE
+P 2950 4300
+F 0 "IC5" H 3500 4565 50  0000 C CNN
+F 1 "MCP2221-I_SL" H 3500 4474 50  0000 C CNN
+F 2 "SOIC127P600X175-14N" H 3900 4400 50  0001 L CNN
+F 3 "" H 3900 4300 50  0001 L CNN
+F 4 "USB 2.0 to I2C/UART Converter GPIO SO14 Microchip MCP2221-I/SL, USB Converter, USB 2.0 at 12Mbit/s, 3  5.5 V, 14-Pin SOIC" H 3900 4200 50  0001 L CNN "Description"
+F 5 "1.75" H 3900 4100 50  0001 L CNN "Height"
+F 6 "579-MCP2221-I/SL" H 3900 4000 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/Microchip-Technology/MCP2221-I-SL?qs=wzzOUr4NhYrXnl%252BgbTV6ag%3D%3D" H 3900 3900 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Microchip" H 3900 3800 50  0001 L CNN "Manufacturer_Name"
+F 9 "MCP2221-I/SL" H 3900 3700 50  0001 L CNN "Manufacturer_Part_Number"
+	1    2950 4300
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:SST26VF064B-104V_SM IC4
+U 1 1 61621BA1
+P 1300 1600
+F 0 "IC4" H 2100 1865 50  0000 C CNN
+F 1 "SST26VF064B-104V_SM" H 2100 1774 50  0000 C CNN
+F 2 "SOIC127P794X203-8N" H 2750 1700 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/2/SST26VF064B-104V_SM.pdf" H 2750 1600 50  0001 L CNN
+F 4 "NOR Flash 64Mbit SPI/SQI Flash 2.3V-3.6V, 105C" H 2750 1500 50  0001 L CNN "Description"
+F 5 "2.03" H 2750 1400 50  0001 L CNN "Height"
+F 6 "579-26VF064B-104V/SM" H 2750 1300 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/Microchip-Technology/SST26VF064B-104V-SM/?qs=BA62vJVifGrueLaL24%2Fs8g%3D%3D" H 2750 1200 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Microchip" H 2750 1100 50  0001 L CNN "Manufacturer_Name"
+F 9 "SST26VF064B-104V/SM" H 2750 1000 50  0001 L CNN "Manufacturer_Part_Number"
+	1    1300 1600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C27
+U 1 1 616A1FE7
+P 8850 2650
+F 0 "C27" H 8965 2696 50  0000 L CNN
+F 1 "100n" H 8965 2605 50  0000 L CNN
+F 2 "" H 8888 2500 50  0001 C CNN
+F 3 "~" H 8850 2650 50  0001 C CNN
+	1    8850 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C26
+U 1 1 616A27A3
+P 7000 2350
+F 0 "C26" V 7252 2350 50  0000 C CNN
+F 1 "100n" V 7161 2350 50  0000 C CNN
+F 2 "" H 7038 2200 50  0001 C CNN
+F 3 "~" H 7000 2350 50  0001 C CNN
+	1    7000 2350
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Connector_Generic:Conn_01x02 J6
+U 1 1 616A3773
+P 9850 2250
+F 0 "J6" H 9800 2400 50  0000 L CNN
+F 1 "Conn_01x02" H 9930 2151 50  0001 L CNN
+F 2 "" H 9850 2250 50  0001 C CNN
+F 3 "~" H 9850 2250 50  0001 C CNN
+	1    9850 2250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector_Generic:Conn_01x02 J5
+U 1 1 616A40DF
+P 9450 1650
+F 0 "J5" V 9414 1462 50  0000 R CNN
+F 1 "Conn_01x02" V 9323 1462 50  0000 R CNN
+F 2 "" H 9450 1650 50  0001 C CNN
+F 3 "~" H 9450 1650 50  0001 C CNN
+	1    9450 1650
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R R6
+U 1 1 616A4823
+P 9150 1850
+F 0 "R6" V 8943 1850 50  0000 C CNN
+F 1 "120R" V 9034 1850 50  0000 C CNN
+F 2 "" V 9080 1850 50  0001 C CNN
+F 3 "~" H 9150 1850 50  0001 C CNN
+	1    9150 1850
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR031
+U 1 1 616A4FF9
+P 6700 2450
+F 0 "#PWR031" H 6700 2200 50  0001 C CNN
+F 1 "GND" H 6705 2277 50  0000 C CNN
+F 2 "" H 6700 2450 50  0001 C CNN
+F 3 "" H 6700 2450 50  0001 C CNN
+	1    6700 2450
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR032
+U 1 1 616A5660
+P 8850 2800
+F 0 "#PWR032" H 8850 2550 50  0001 C CNN
+F 1 "GND" H 8855 2627 50  0000 C CNN
+F 2 "" H 8850 2800 50  0001 C CNN
+F 3 "" H 8850 2800 50  0001 C CNN
+	1    8850 2800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8650 2250 9550 2250
+Wire Wire Line
+	8650 2350 9000 2350
+Wire Wire Line
+	9000 1850 9000 2350
+Connection ~ 9000 2350
+Wire Wire Line
+	9000 2350 9650 2350
+Wire Wire Line
+	9300 1850 9450 1850
+Wire Wire Line
+	9550 1850 9550 2250
+Connection ~ 9550 2250
+Wire Wire Line
+	9550 2250 9650 2250
+Wire Wire Line
+	8650 2450 8850 2450
+Wire Wire Line
+	8850 2450 8850 2500
+Text GLabel 9050 2450 2    50   Input ~ 0
+VCC3V3
+Wire Wire Line
+	9050 2450 8850 2450
+Connection ~ 8850 2450
+Wire Wire Line
+	7550 2250 6700 2250
+Wire Wire Line
+	6700 2250 6700 2350
+Wire Wire Line
+	6850 2350 6700 2350
+Connection ~ 6700 2350
+Wire Wire Line
+	6700 2350 6700 2450
+Wire Wire Line
+	7150 2350 7200 2350
+Text GLabel 7200 2550 3    50   Input ~ 0
+VDD5V
+Wire Wire Line
+	7200 2550 7200 2350
+Connection ~ 7200 2350
+Wire Wire Line
+	7200 2350 7550 2350
+Text GLabel 7450 2150 0    50   Input ~ 0
+CANTX
+Text GLabel 7450 2550 3    50   Input ~ 0
+CANRX
+Text GLabel 8700 2000 1    50   Input ~ 0
+CAN_STBY
+Wire Wire Line
+	7550 2150 7450 2150
+Wire Wire Line
+	7550 2450 7450 2450
+Wire Wire Line
+	7450 2450 7450 2550
+Wire Wire Line
+	8650 2150 8700 2150
+Wire Wire Line
+	8700 2150 8700 2000
+Text Notes 9200 1500 0    50   ~ 0
+CAN Terminator Enable
+$Comp
+L Device:C C25
+U 1 1 616AABD0
+P 4600 4750
+F 0 "C25" H 4715 4796 50  0000 L CNN
+F 1 "220n" H 4715 4705 50  0000 L CNN
+F 2 "" H 4638 4600 50  0001 C CNN
+F 3 "~" H 4600 4750 50  0001 C CNN
+	1    4600 4750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C23
+U 1 1 616ABA21
+P 2400 4300
+F 0 "C23" V 2148 4300 50  0000 C CNN
+F 1 "100n" V 2239 4300 50  0000 C CNN
+F 2 "" H 2438 4150 50  0001 C CNN
+F 3 "~" H 2400 4300 50  0001 C CNN
+	1    2400 4300
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R4
+U 1 1 616AC1B1
+P 2250 5400
+F 0 "R4" H 2320 5446 50  0000 L CNN
+F 1 "220R" H 2320 5355 50  0000 L CNN
+F 2 "" V 2180 5400 50  0001 C CNN
+F 3 "~" H 2250 5400 50  0001 C CNN
+	1    2250 5400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R5
+U 1 1 616AC7F4
+P 2650 5400
+F 0 "R5" H 2720 5446 50  0000 L CNN
+F 1 "220R" H 2720 5355 50  0000 L CNN
+F 2 "" V 2580 5400 50  0001 C CNN
+F 3 "~" H 2650 5400 50  0001 C CNN
+	1    2650 5400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED D3
+U 1 1 616AD36C
+P 2250 5900
+F 0 "D3" V 2197 5980 50  0000 L CNN
+F 1 "LED" V 2288 5980 50  0000 L CNN
+F 2 "" H 2250 5900 50  0001 C CNN
+F 3 "~" H 2250 5900 50  0001 C CNN
+	1    2250 5900
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:LED D4
+U 1 1 616ADE58
+P 2650 5900
+F 0 "D4" V 2597 5980 50  0000 L CNN
+F 1 "LED" V 2688 5980 50  0000 L CNN
+F 2 "" H 2650 5900 50  0001 C CNN
+F 3 "~" H 2650 5900 50  0001 C CNN
+	1    2650 5900
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4050 4600 4600 4600
+$Comp
+L power:GND #PWR030
+U 1 1 616B00B3
+P 4600 4900
+F 0 "#PWR030" H 4600 4650 50  0001 C CNN
+F 1 "GND" H 4605 4727 50  0000 C CNN
+F 2 "" H 4600 4900 50  0001 C CNN
+F 3 "" H 4600 4900 50  0001 C CNN
+	1    4600 4900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR027
+U 1 1 616B0724
+P 2250 4300
+F 0 "#PWR027" H 2250 4050 50  0001 C CNN
+F 1 "GND" H 2255 4127 50  0000 C CNN
+F 2 "" H 2250 4300 50  0001 C CNN
+F 3 "" H 2250 4300 50  0001 C CNN
+	1    2250 4300
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR029
+U 1 1 616B0DF5
+P 4150 4300
+F 0 "#PWR029" H 4150 4050 50  0001 C CNN
+F 1 "GND" V 4155 4172 50  0000 R CNN
+F 2 "" H 4150 4300 50  0001 C CNN
+F 3 "" H 4150 4300 50  0001 C CNN
+	1    4150 4300
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2550 4300 2700 4300
+Wire Wire Line
+	2950 4400 2550 4400
+Wire Wire Line
+	2550 4400 2550 4950
+Wire Wire Line
+	2550 4950 2250 4950
+Wire Wire Line
+	2250 4950 2250 5250
+Wire Wire Line
+	2950 4500 2650 4500
+Wire Wire Line
+	2650 4500 2650 5250
+Wire Wire Line
+	2650 5550 2650 5750
+Wire Wire Line
+	2250 5550 2250 5750
+Text GLabel 3050 6150 2    50   Input ~ 0
+VCC3V3
+Wire Wire Line
+	2250 6050 2250 6150
+Wire Wire Line
+	2250 6150 2650 6150
+Wire Wire Line
+	2650 6050 2650 6150
+Connection ~ 2650 6150
+Wire Wire Line
+	2650 6150 3050 6150
+Wire Wire Line
+	4150 4300 4050 4300
+Text GLabel 2700 4150 1    50   Input ~ 0
+VCC3V3
+Wire Wire Line
+	2700 4150 2700 4300
+Connection ~ 2700 4300
+Wire Wire Line
+	2700 4300 2950 4300
+Text GLabel 4800 4400 2    50   Input ~ 0
+Serial_D+
+Text GLabel 4800 4500 2    50   Input ~ 0
+Serial_D-
+Wire Wire Line
+	4050 4400 4800 4400
+Wire Wire Line
+	4800 4500 4050 4500
+Text GLabel 1800 4600 0    50   Input ~ 0
+MCLR
+Text GLabel 1800 4700 0    50   Input ~ 0
+U2RX
+Text GLabel 1800 4800 0    50   Input ~ 0
+U2TX
+Wire Wire Line
+	1800 4700 2950 4700
+Wire Wire Line
+	1800 4800 2950 4800
+$Comp
+L power:GND #PWR026
+U 1 1 616BD507
+P 1300 2100
+F 0 "#PWR026" H 1300 1850 50  0001 C CNN
+F 1 "GND" H 1305 1927 50  0000 C CNN
+F 2 "" H 1300 2100 50  0001 C CNN
+F 3 "" H 1300 2100 50  0001 C CNN
+	1    1300 2100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR028
+U 1 1 616BDAE8
+P 3600 1600
+F 0 "#PWR028" H 3600 1350 50  0001 C CNN
+F 1 "GND" H 3605 1427 50  0000 C CNN
+F 2 "" H 3600 1600 50  0001 C CNN
+F 3 "" H 3600 1600 50  0001 C CNN
+	1    3600 1600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C24
+U 1 1 616BE1BB
+P 3300 1600
+F 0 "C24" H 3415 1646 50  0000 L CNN
+F 1 "100n" H 3415 1555 50  0000 L CNN
+F 2 "" H 3338 1450 50  0001 C CNN
+F 3 "~" H 3300 1600 50  0001 C CNN
+	1    3300 1600
+	0    1    1    0   
+$EndComp
+Text GLabel 3000 1300 1    50   Input ~ 0
+VCC3V3
+$Comp
+L Jumper:SolderJumper_2_Bridged JP1
+U 1 1 616C3578
+P 2000 4600
+F 0 "JP1" H 2000 4713 50  0000 C CNN
+F 1 "SolderJumper_2_Bridged" H 2000 4714 50  0001 C CNN
+F 2 "" H 2000 4600 50  0001 C CNN
+F 3 "~" H 2000 4600 50  0001 C CNN
+	1    2000 4600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2150 4600 2950 4600
+Wire Wire Line
+	1850 4600 1800 4600
+Text Notes 7900 3000 0    50   ~ 0
+CAN Transceiver
+Text Notes 3200 5500 0    50   ~ 0
+USB to Serial Bridge
+Text Notes 1650 2250 0    50   ~ 0
+External QuadIO Flash Memory\n8 MByte
+Wire Wire Line
+	1300 2100 1300 1900
+Wire Wire Line
+	2900 1600 3000 1600
+Wire Wire Line
+	3450 1600 3600 1600
+Wire Wire Line
+	3000 1300 3000 1600
+Connection ~ 3000 1600
+Wire Wire Line
+	3000 1600 3150 1600
+$EndSCHEMATC

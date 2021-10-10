@@ -1,0 +1,35 @@
+
+100 pin ATSAMV71N21
+	12 or 16 MHz oscillator (not xtal?)
+	32.768 kHz secondary oscillator
+
+Power
+	9V jack
+	USB (either connector)
+	3V3 header
+
+Reset
+	button for MCLR
+	button or jumper for ERASE
+	
+User
+	2 buttons - on ext interrupts
+	2-4 leds - jumper to enable???
+	
+USB
+	native
+	Serial bridge - MCP2221
+	
+SQI flash
+	SST26VF064B(A?)
+
+Programming port
+
+Headers
+	SPI
+	I2C - pullups with jumper to enable
+	CAN-FD - add transceiver and 120R resistor (jumper to enable)
+	USART and UART
+	PWM
+	Many GPIO
+	Analog - ADC and DAC and comparator?
