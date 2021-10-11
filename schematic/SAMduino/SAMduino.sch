@@ -54,10 +54,8 @@ F1 "leds.sch" 50
 $EndSheet
 Text Notes 600  2800 0    50   ~ 10
 LEDs, Buttons\nand Headers
-Text GLabel 7200 4150 2    50   Input ~ 0
-MCLR
-Wire Wire Line
-	7000 4150 7200 4150
+Text GLabel 7350 4150 2    50   Input ~ 0
+NRST
 $Comp
 L power:GND #PWR08
 U 1 1 6164797C
@@ -117,7 +115,7 @@ Text GLabel 5000 1300 1    50   Input ~ 0
 VCC3V3
 Text GLabel 6200 1300 1    50   Input ~ 0
 VCC3V3
-Text GLabel 7300 3150 2    50   Input ~ 0
+Text GLabel 7350 3150 2    50   Input ~ 0
 VCC3V3
 Text GLabel 4500 6000 3    50   Input ~ 0
 VCC3V3
@@ -131,8 +129,6 @@ Wire Wire Line
 	3700 4250 4000 4250
 Wire Wire Line
 	4500 5750 4500 6000
-Wire Wire Line
-	7000 3150 7300 3150
 Wire Wire Line
 	5000 1550 5000 1300
 Wire Wire Line
@@ -178,7 +174,7 @@ L Device:R R1
 U 1 1 61658515
 P 3700 750
 F 0 "R1" V 3493 750 50  0000 C CNN
-F 1 "5k62 +- 1%" V 3584 750 50  0000 C CNN
+F 1 "5k62 ± 1%" V 3584 750 50  0000 C CNN
 F 2 "" V 3630 750 50  0001 C CNN
 F 3 "~" H 3700 750 50  0001 C CNN
 	1    3700 750 
@@ -230,26 +226,20 @@ Wire Wire Line
 	3550 750  3450 750 
 Wire Wire Line
 	3450 750  3450 800 
-Text GLabel 7200 3850 2    50   Input ~ 0
+Text GLabel 7350 3850 2    50   Input ~ 0
 ERASE
-Wire Wire Line
-	7000 3850 7200 3850
 Text GLabel 4800 1300 1    50   Input ~ 0
-Native_D+
+HSDP
 Text GLabel 4900 1300 1    50   Input ~ 0
-Native_D-
+HSDM
 Wire Wire Line
 	4800 1550 4800 1300
 Wire Wire Line
 	4900 1300 4900 1550
-Text GLabel 3700 4050 0    50   Input ~ 0
+Text GLabel 7350 3450 2    50   Input ~ 0
 CANTX
-Text GLabel 3700 4350 0    50   Input ~ 0
+Text GLabel 7350 4850 2    50   Input ~ 0
 CANRX
-Wire Wire Line
-	4000 4350 3700 4350
-Wire Wire Line
-	4000 4050 3700 4050
 Wire Wire Line
 	4000 2950 3900 2950
 Wire Wire Line
@@ -264,37 +254,272 @@ Wire Wire Line
 Wire Wire Line
 	3900 3050 3750 3050
 $Comp
-L SamacSys_Parts:CM9V-T1A-32.768kHz-12.5pF-20PPM-TA-QC Y?
-U 1 1 6163BE49
-P 8550 2350
-F 0 "Y?" H 9178 2346 50  0000 L CNN
-F 1 "CM9V-T1A-32.768kHz-12.5pF-20PPM-TA-QC" H 9178 2255 50  0000 L CNN
-F 2 "CM9VT1A" H 9200 2450 50  0001 L CNN
-F 3 "https://www.mouser.de/datasheet/2/530/CM9V_T1A-2326756.pdf" H 9200 2350 50  0001 L CNN
-F 4 "CM9V-T1A Tuning Fork Crystal 32.768kHz in 1.0x 1.6mm package" H 9200 2250 50  0001 L CNN "Description"
-F 5 "0.5" H 9200 2150 50  0001 L CNN "Height"
-F 6 "428-202257-MC01" H 9200 2050 50  0001 L CNN "Mouser Part Number"
-F 7 "https://www.mouser.co.uk/ProductDetail/Micro-Crystal/CM9V-T1A-32768kHz-125pF-20PPM-TA-QC?qs=7bTaA%2FLYtSaZfaN72uDr4g%3D%3D" H 9200 1950 50  0001 L CNN "Mouser Price/Stock"
-F 8 "Micro Crystal AG" H 9200 1850 50  0001 L CNN "Manufacturer_Name"
-F 9 "CM9V-T1A-32.768kHz-12.5pF-20PPM-TA-QC" H 9200 1750 50  0001 L CNN "Manufacturer_Part_Number"
-	1    8550 2350
+L SamacSys_Parts:ASTMUPCE-33-12.000MHZ-LJ-E-T X?
+U 1 1 6163D1D7
+P 1350 6500
+F 0 "X?" H 1850 6765 50  0000 C CNN
+F 1 "12 MHz" H 1850 6674 50  0000 C CNN
+F 2 "ASTMUPCE3312000MHZLJET" H 2200 6600 50  0001 L CNN
+F 3 "https://abracon.com/Oscillators/ASTMUPC.pdf" H 2200 6500 50  0001 L CNN
+F 4 "Standard Clock Oscillators MEMS OSC XO 12.0000MHZ LVCMOS" H 2200 6400 50  0001 L CNN "Description"
+F 5 "0.8" H 2200 6300 50  0001 L CNN "Height"
+F 6 "815-UPCE3312LJET" H 2200 6200 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/ABRACON/ASTMUPCE-33-12000MHZ-LJ-E-T?qs=%2FPOkb%252BiDxRX9piuXNFIeDg%3D%3D" H 2200 6100 50  0001 L CNN "Mouser Price/Stock"
+F 8 "ABRACON" H 2200 6000 50  0001 L CNN "Manufacturer_Name"
+F 9 "ASTMUPCE-33-12.000MHZ-LJ-E-T" H 2200 5900 50  0001 L CNN "Manufacturer_Part_Number"
+	1    1350 6500
 	1    0    0    -1  
 $EndComp
 $Comp
-L SamacSys_Parts:ASTMUPCE-33-12.000MHZ-LJ-E-T Y?
-U 1 1 6163D1D7
-P 8750 3900
-F 0 "Y?" H 9250 4165 50  0000 C CNN
-F 1 "ASTMUPCE-33-12.000MHZ-LJ-E-T" H 9250 4074 50  0000 C CNN
-F 2 "ASTMUPCE3312000MHZLJET" H 9600 4000 50  0001 L CNN
-F 3 "https://abracon.com/Oscillators/ASTMUPC.pdf" H 9600 3900 50  0001 L CNN
-F 4 "Standard Clock Oscillators MEMS OSC XO 12.0000MHZ LVCMOS" H 9600 3800 50  0001 L CNN "Description"
-F 5 "0.8" H 9600 3700 50  0001 L CNN "Height"
-F 6 "815-UPCE3312LJET" H 9600 3600 50  0001 L CNN "Mouser Part Number"
-F 7 "https://www.mouser.co.uk/ProductDetail/ABRACON/ASTMUPCE-33-12000MHZ-LJ-E-T?qs=%2FPOkb%252BiDxRX9piuXNFIeDg%3D%3D" H 9600 3500 50  0001 L CNN "Mouser Price/Stock"
-F 8 "ABRACON" H 9600 3400 50  0001 L CNN "Manufacturer_Name"
-F 9 "ASTMUPCE-33-12.000MHZ-LJ-E-T" H 9600 3300 50  0001 L CNN "Manufacturer_Part_Number"
-	1    8750 3900
+L Device:C C?
+U 1 1 61634D1C
+P 1900 5650
+F 0 "C?" H 2015 5696 50  0000 L CNN
+F 1 "22p" H 2015 5605 50  0000 L CNN
+F 2 "" H 1938 5500 50  0001 C CNN
+F 3 "~" H 1900 5650 50  0001 C CNN
+	1    1900 5650
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 61635437
+P 1300 5650
+F 0 "C?" H 1415 5696 50  0000 L CNN
+F 1 "22p" H 1415 5605 50  0000 L CNN
+F 2 "" H 1338 5500 50  0001 C CNN
+F 3 "~" H 1300 5650 50  0001 C CNN
+	1    1300 5650
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 61635AF8
+P 1200 6950
+F 0 "C?" H 1315 6996 50  0000 L CNN
+F 1 "100n" H 1315 6905 50  0000 L CNN
+F 2 "" H 1238 6800 50  0001 C CNN
+F 3 "~" H 1200 6950 50  0001 C CNN
+	1    1200 6950
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	1350 6500 1200 6500
+Wire Wire Line
+	1200 6500 1200 6600
+Wire Wire Line
+	1350 6600 1200 6600
+Connection ~ 1200 6600
+Wire Wire Line
+	1200 6600 1200 6800
+$Comp
+L power:GND #PWR?
+U 1 1 61636FE9
+P 2350 6750
+F 0 "#PWR?" H 2350 6500 50  0001 C CNN
+F 1 "GND" H 2355 6577 50  0000 C CNN
+F 2 "" H 2350 6750 50  0001 C CNN
+F 3 "" H 2350 6750 50  0001 C CNN
+	1    2350 6750
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 6163756A
+P 1200 7100
+F 0 "#PWR?" H 1200 6850 50  0001 C CNN
+F 1 "GND" H 1205 6927 50  0000 C CNN
+F 2 "" H 1200 7100 50  0001 C CNN
+F 3 "" H 1200 7100 50  0001 C CNN
+	1    1200 7100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2350 6600 2350 6750
+Text GLabel 1050 6500 0    50   Input ~ 0
+VCC3V3
+Wire Wire Line
+	1050 6500 1200 6500
+Connection ~ 1200 6500
+$Comp
+L power:GND #PWR?
+U 1 1 61641D03
+P 1300 5800
+F 0 "#PWR?" H 1300 5550 50  0001 C CNN
+F 1 "GND" H 1305 5627 50  0000 C CNN
+F 2 "" H 1300 5800 50  0001 C CNN
+F 3 "" H 1300 5800 50  0001 C CNN
+	1    1300 5800
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 61642552
+P 1900 5800
+F 0 "#PWR?" H 1900 5550 50  0001 C CNN
+F 1 "GND" H 1905 5627 50  0000 C CNN
+F 2 "" H 1900 5800 50  0001 C CNN
+F 3 "" H 1900 5800 50  0001 C CNN
+	1    1900 5800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Crystal Y?
+U 1 1 6164E680
+P 1600 5350
+F 0 "Y?" H 1600 5618 50  0000 C CNN
+F 1 "32.768 kHz" H 1600 5527 50  0000 C CNN
+F 2 "SamacSys_Parts:CM9VT1A" H 1600 5350 50  0001 C CNN
+F 3 "~" H 1600 5350 50  0001 C CNN
+F 4 "CM9V-T1A-32.768kHz-12.5pF-20PPM-TA-QC" H 1600 5350 50  0001 C CNN "Part Number"
+F 5 "428-202257-MC01" H 1600 5350 50  0001 C CNN "Mouser Part Number"
+	1    1600 5350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1450 5350 1300 5350
+Wire Wire Line
+	1300 5350 1300 5500
+Wire Wire Line
+	1750 5350 1900 5350
+Wire Wire Line
+	1900 5350 1900 5500
+Text GLabel 2500 6500 2    50   Input ~ 0
+XIN
+Text GLabel 1050 5350 0    50   Input ~ 0
+XIN32
+Text GLabel 2150 5350 2    50   Input ~ 0
+XOUT32
+Wire Wire Line
+	2350 6500 2500 6500
+Wire Wire Line
+	1900 5350 2150 5350
+Connection ~ 1900 5350
+Wire Wire Line
+	1300 5350 1050 5350
+Connection ~ 1300 5350
+Text GLabel 4400 1300 1    50   Input ~ 0
+XIN
+Wire Wire Line
+	4400 1550 4400 1300
+Text GLabel 3700 4750 0    50   Input ~ 0
+XIN32
+Text GLabel 3700 4850 0    50   Input ~ 0
+XOUT32
+Wire Wire Line
+	3700 4750 4000 4750
+Wire Wire Line
+	4000 4850 3700 4850
+Wire Wire Line
+	6600 1550 6600 1300
+Text GLabel 7350 4250 2    50   Input ~ 0
+SWDIO
+Text GLabel 7350 3650 2    50   Input ~ 0
+SWCLK
+Text GLabel 6100 6000 3    50   Input ~ 0
+QCS
+Text GLabel 6500 6000 3    50   Input ~ 0
+QIO1
+Text GLabel 4400 6000 3    50   Input ~ 0
+QIO0
+Text GLabel 5100 6000 3    50   Input ~ 0
+QSCK
+Wire Wire Line
+	6500 6000 6500 5750
+Wire Wire Line
+	6100 6000 6100 5750
+Wire Wire Line
+	5100 6000 5100 5750
+Wire Wire Line
+	4400 6000 4400 5750
+Text GLabel 3700 3950 0    50   Input ~ 0
+QIO2
+Wire Wire Line
+	3700 3950 4000 3950
+Text GLabel 3700 2550 0    50   Input ~ 0
+QIO3
+Wire Wire Line
+	4000 2550 3700 2550
+$Comp
+L power:GND #PWR?
+U 1 1 6163AE82
+P 7000 2650
+F 0 "#PWR?" H 7000 2400 50  0001 C CNN
+F 1 "GND" V 7005 2522 50  0000 R CNN
+F 2 "" H 7000 2650 50  0001 C CNN
+F 3 "" H 7000 2650 50  0001 C CNN
+	1    7000 2650
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 616434F9
+P 7000 3950
+F 0 "#PWR?" H 7000 3700 50  0001 C CNN
+F 1 "GND" V 7005 3822 50  0000 R CNN
+F 2 "" H 7000 3950 50  0001 C CNN
+F 3 "" H 7000 3950 50  0001 C CNN
+	1    7000 3950
+	0    -1   -1   0   
+$EndComp
+Text GLabel 7350 3550 2    50   Input ~ 0
+TWD0
+Text GLabel 7350 4450 2    50   Input ~ 0
+TWCK0
+Text GLabel 3700 3550 0    50   Input ~ 0
+RXD0
+Text GLabel 3700 3450 0    50   Input ~ 0
+TXD0
+Wire Wire Line
+	4000 3450 3700 3450
+Wire Wire Line
+	4000 3550 3700 3550
+Text GLabel 3700 4050 0    50   Input ~ 0
+SPI0_NPCS0
+Text GLabel 6200 6000 3    50   Input ~ 0
+SPI0_MISO
+Text GLabel 6000 6000 3    50   Input ~ 0
+SPI0_MOSI
+Text GLabel 5800 6000 3    50   Input ~ 0
+SPI0_SPCK
+Wire Wire Line
+	5800 6000 5800 5750
+Wire Wire Line
+	6200 6000 6200 5750
+Wire Wire Line
+	6000 6000 6000 5750
+Wire Wire Line
+	7000 2550 7350 2550
+Wire Wire Line
+	7000 3150 7350 3150
+Wire Wire Line
+	7000 3450 7350 3450
+Wire Wire Line
+	7000 3550 7350 3550
+Wire Wire Line
+	7000 3650 7350 3650
+Wire Wire Line
+	7000 3850 7350 3850
+Wire Wire Line
+	7000 4150 7350 4150
+Wire Wire Line
+	7000 4250 7350 4250
+Wire Wire Line
+	7000 4450 7350 4450
+Wire Wire Line
+	7000 4850 7350 4850
+Text GLabel 7350 4550 2    50   Input ~ 0
+URXD0
+Text GLabel 6300 6000 3    50   Input ~ 0
+UTXD0
+Wire Wire Line
+	6300 6000 6300 5750
+Wire Wire Line
+	7000 4550 7350 4550
+Wire Wire Line
+	5300 6000 5300 5750
+Wire Wire Line
+	5200 5750 5200 6000
+Text GLabel 6600 1300 1    50   Input ~ 0
+PB5
 $EndSCHEMATC

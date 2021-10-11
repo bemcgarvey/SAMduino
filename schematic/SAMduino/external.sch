@@ -350,11 +350,11 @@ Wire Wire Line
 Wire Wire Line
 	4800 4500 4050 4500
 Text GLabel 1800 4600 0    50   Input ~ 0
-MCLR
+NRST
 Text GLabel 1800 4700 0    50   Input ~ 0
-U2RX
+URXD0
 Text GLabel 1800 4800 0    50   Input ~ 0
-U2TX
+UTXD0
 Wire Wire Line
 	1800 4700 2950 4700
 Wire Wire Line
@@ -373,42 +373,27 @@ $EndComp
 $Comp
 L power:GND #PWR028
 U 1 1 616BDAE8
-P 3600 1600
-F 0 "#PWR028" H 3600 1350 50  0001 C CNN
-F 1 "GND" H 3605 1427 50  0000 C CNN
-F 2 "" H 3600 1600 50  0001 C CNN
-F 3 "" H 3600 1600 50  0001 C CNN
-	1    3600 1600
+P 3800 1600
+F 0 "#PWR028" H 3800 1350 50  0001 C CNN
+F 1 "GND" H 3805 1427 50  0000 C CNN
+F 2 "" H 3800 1600 50  0001 C CNN
+F 3 "" H 3800 1600 50  0001 C CNN
+	1    3800 1600
 	1    0    0    -1  
 $EndComp
 $Comp
 L Device:C C24
 U 1 1 616BE1BB
-P 3300 1600
-F 0 "C24" H 3415 1646 50  0000 L CNN
-F 1 "100n" H 3415 1555 50  0000 L CNN
-F 2 "" H 3338 1450 50  0001 C CNN
-F 3 "~" H 3300 1600 50  0001 C CNN
-	1    3300 1600
+P 3500 1600
+F 0 "C24" V 3250 1500 50  0000 L CNN
+F 1 "100n" V 3350 1500 50  0000 L CNN
+F 2 "" H 3538 1450 50  0001 C CNN
+F 3 "~" H 3500 1600 50  0001 C CNN
+	1    3500 1600
 	0    1    1    0   
 $EndComp
 Text GLabel 3000 1300 1    50   Input ~ 0
 VCC3V3
-$Comp
-L Jumper:SolderJumper_2_Bridged JP1
-U 1 1 616C3578
-P 2000 4600
-F 0 "JP1" H 2000 4713 50  0000 C CNN
-F 1 "SolderJumper_2_Bridged" H 2000 4714 50  0001 C CNN
-F 2 "" H 2000 4600 50  0001 C CNN
-F 3 "~" H 2000 4600 50  0001 C CNN
-	1    2000 4600
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2150 4600 2950 4600
-Wire Wire Line
-	1850 4600 1800 4600
 Text Notes 7900 3000 0    50   ~ 0
 CAN Transceiver
 Text Notes 3200 5500 0    50   ~ 0
@@ -420,10 +405,54 @@ Wire Wire Line
 Wire Wire Line
 	2900 1600 3000 1600
 Wire Wire Line
-	3450 1600 3600 1600
+	3650 1600 3800 1600
 Wire Wire Line
 	3000 1300 3000 1600
+Text GLabel 3050 1800 2    50   Input ~ 0
+QSCK
+Text GLabel 3050 1900 2    50   Input ~ 0
+QIO0
+Text GLabel 1150 1700 0    50   Input ~ 0
+QIO1
+Text GLabel 1150 1800 0    50   Input ~ 0
+QIO2
+Text GLabel 3050 1700 2    50   Input ~ 0
+QIO3
+Text GLabel 1150 1600 0    50   Input ~ 0
+QCS
+Wire Wire Line
+	3000 1600 3350 1600
 Connection ~ 3000 1600
 Wire Wire Line
-	3000 1600 3150 1600
+	3050 1700 2900 1700
+Wire Wire Line
+	3050 1800 2900 1800
+Wire Wire Line
+	3050 1900 2900 1900
+Wire Wire Line
+	1150 1800 1300 1800
+Wire Wire Line
+	1150 1700 1300 1700
+Wire Wire Line
+	1150 1600 1300 1600
+$Comp
+L Device:R R?
+U 1 1 6163C603
+P 1300 1250
+F 0 "R?" H 1370 1296 50  0000 L CNN
+F 1 "100k" H 1370 1205 50  0000 L CNN
+F 2 "" V 1230 1250 50  0001 C CNN
+F 3 "~" H 1300 1250 50  0001 C CNN
+	1    1300 1250
+	1    0    0    -1  
+$EndComp
+Text GLabel 1300 1000 1    50   Input ~ 0
+VCC3V3
+Wire Wire Line
+	1300 1400 1300 1600
+Connection ~ 1300 1600
+Wire Wire Line
+	1300 1100 1300 1000
+Wire Wire Line
+	1800 4600 2950 4600
 $EndSCHEMATC

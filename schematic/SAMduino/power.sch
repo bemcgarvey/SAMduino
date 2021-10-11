@@ -280,9 +280,9 @@ Serial_D+
 Text GLabel 7050 3950 0    50   Input ~ 0
 Serial_D-
 Text GLabel 7500 2250 0    50   Input ~ 0
-Native_D+
+HSDP
 Text GLabel 7500 2450 0    50   Input ~ 0
-Native_D-
+HSDM
 Wire Wire Line
 	7050 3750 7250 3750
 Wire Wire Line
