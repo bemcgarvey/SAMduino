@@ -440,13 +440,13 @@ NoConn ~ 3850 5800
 $Comp
 L Connector:Screw_Terminal_01x02 J6
 U 1 1 616DF8B0
-P 9450 1950
-F 0 "J6" H 9530 1896 50  0000 L CNN
-F 1 "Screw_Terminal_01x02" H 9530 1851 50  0001 L CNN
-F 2 "SamacSys_Parts:1725656" H 9450 1950 50  0001 C CNN
-F 3 "~" H 9450 1950 50  0001 C CNN
-	1    9450 1950
-	1    0    0    -1  
+P 9450 2050
+F 0 "J6" H 9530 1996 50  0000 L CNN
+F 1 "Screw_Terminal_01x02" H 9530 1951 50  0001 L CNN
+F 2 "SamacSys_Parts:1725656" H 9450 2050 50  0001 C CNN
+F 3 "~" H 9450 2050 50  0001 C CNN
+	1    9450 2050
+	1    0    0    1   
 $EndComp
 Text GLabel 4500 5650 2    50   Input ~ 0
 VCC3V3
