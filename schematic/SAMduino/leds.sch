@@ -1140,6 +1140,4 @@ NoConn ~ 2650 3950
 Connection ~ 1450 6050
 Wire Wire Line
 	1450 6050 1700 6050
-Text Notes 950  4800 0    50   ~ 0
-Do the buttons need a series current limiting resistor
 $EndSCHEMATC
