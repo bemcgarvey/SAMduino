@@ -104,12 +104,12 @@ $EndComp
 $Comp
 L Device:R R8
 U 1 1 61656110
-P 1450 5600
-F 0 "R8" H 1520 5646 50  0000 L CNN
-F 1 "10k" H 1520 5555 50  0000 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 1380 5600 50  0001 C CNN
-F 3 "~" H 1450 5600 50  0001 C CNN
-	1    1450 5600
+P 1450 5800
+F 0 "R8" H 1520 5846 50  0000 L CNN
+F 1 "100k" H 1520 5755 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 1380 5800 50  0001 C CNN
+F 3 "~" H 1450 5800 50  0001 C CNN
+	1    1450 5800
 	-1   0    0    1   
 $EndComp
 $Comp
@@ -121,17 +121,6 @@ F 1 "10k" H 3020 6105 50  0000 L CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 2880 6150 50  0001 C CNN
 F 3 "~" H 2950 6150 50  0001 C CNN
 	1    2950 6150
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C C31
-U 1 1 61610082
-P 1450 6050
-F 0 "C31" H 1565 6096 50  0000 L CNN
-F 1 "100n" H 1565 6005 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 1488 5900 50  0001 C CNN
-F 3 "~" H 1450 6050 50  0001 C CNN
-	1    1450 6050
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -203,46 +192,30 @@ Button2
 $Comp
 L power:GND #PWR040
 U 1 1 6163E102
-P 2150 5950
-F 0 "#PWR040" H 2150 5700 50  0001 C CNN
-F 1 "GND" H 2155 5777 50  0000 C CNN
-F 2 "" H 2150 5950 50  0001 C CNN
-F 3 "" H 2150 5950 50  0001 C CNN
-	1    2150 5950
+P 2150 6150
+F 0 "#PWR040" H 2150 5900 50  0001 C CNN
+F 1 "GND" H 2155 5977 50  0000 C CNN
+F 2 "" H 2150 6150 50  0001 C CNN
+F 3 "" H 2150 6150 50  0001 C CNN
+	1    2150 6150
 	1    0    0    -1  
 $EndComp
-$Comp
-L power:GND #PWR038
-U 1 1 6163E713
-P 1450 6200
-F 0 "#PWR038" H 1450 5950 50  0001 C CNN
-F 1 "GND" H 1455 6027 50  0000 C CNN
-F 2 "" H 1450 6200 50  0001 C CNN
-F 3 "" H 1450 6200 50  0001 C CNN
-	1    1450 6200
-	1    0    0    -1  
-$EndComp
-Text GLabel 1250 5400 0    50   Input ~ 0
+Text GLabel 1250 5600 0    50   Input ~ 0
 VCC3V3
-Text GLabel 1150 5850 0    50   Input ~ 0
+Text GLabel 1150 6050 0    50   Input ~ 0
 NRST
 Wire Wire Line
-	2100 5850 2150 5850
+	2100 6050 2150 6050
 Wire Wire Line
-	2150 5850 2150 5950
+	2150 6050 2150 6150
 Wire Wire Line
-	1150 5850 1450 5850
+	1150 6050 1450 6050
 Wire Wire Line
-	1450 5900 1450 5850
-Connection ~ 1450 5850
+	1450 5950 1450 6050
 Wire Wire Line
-	1450 5850 1700 5850
+	1250 5600 1450 5600
 Wire Wire Line
-	1450 5750 1450 5850
-Wire Wire Line
-	1250 5400 1450 5400
-Wire Wire Line
-	1450 5400 1450 5450
+	1450 5600 1450 5650
 Text GLabel 3650 5850 2    50   Input ~ 0
 VCC3V3
 Text GLabel 2850 5850 0    50   Input ~ 0
@@ -1118,12 +1091,12 @@ $EndComp
 $Comp
 L Switch:SW_MEC_5E SW3
 U 1 1 616B6278
-P 1900 5850
-F 0 "SW3" H 1900 6235 50  0000 C CNN
-F 1 "MCLR" H 1900 6150 50  0000 C CNN
-F 2 "SamacSys_Parts:PTS647SK38SMTR2LFS" H 1900 6150 50  0001 C CNN
-F 3 "http://www.apem.com/int/index.php?controller=attachment&id_attachment=1371" H 1900 6150 50  0001 C CNN
-	1    1900 5850
+P 1900 6050
+F 0 "SW3" H 1900 6435 50  0000 C CNN
+F 1 "MCLR" H 1900 6350 50  0000 C CNN
+F 2 "SamacSys_Parts:PTS647SK38SMTR2LFS" H 1900 6350 50  0001 C CNN
+F 3 "http://www.apem.com/int/index.php?controller=attachment&id_attachment=1371" H 1900 6350 50  0001 C CNN
+	1    1900 6050
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -1156,12 +1129,17 @@ Wire Wire Line
 	2250 4050 2100 4050
 Wire Wire Line
 	2100 4050 2100 3950
-NoConn ~ 1700 5750
-NoConn ~ 2100 5750
+NoConn ~ 1700 5950
+NoConn ~ 2100 5950
 NoConn ~ 3050 5750
 NoConn ~ 3450 5750
 NoConn ~ 1700 3950
 NoConn ~ 1300 3950
 NoConn ~ 2250 3950
 NoConn ~ 2650 3950
+Connection ~ 1450 6050
+Wire Wire Line
+	1450 6050 1700 6050
+Text Notes 950  4800 0    50   ~ 0
+Do the buttons need a series current limiting resistor
 $EndSCHEMATC
