@@ -104,23 +104,23 @@ $EndComp
 $Comp
 L Device:R R8
 U 1 1 61656110
-P 1450 5800
-F 0 "R8" H 1520 5846 50  0000 L CNN
-F 1 "100k" H 1520 5755 50  0000 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 1380 5800 50  0001 C CNN
-F 3 "~" H 1450 5800 50  0001 C CNN
-	1    1450 5800
+P 1250 5800
+F 0 "R8" H 1320 5846 50  0000 L CNN
+F 1 "100k" H 1320 5755 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 1180 5800 50  0001 C CNN
+F 3 "~" H 1250 5800 50  0001 C CNN
+	1    1250 5800
 	-1   0    0    1   
 $EndComp
 $Comp
 L Device:R R13
 U 1 1 616567F6
-P 2950 6150
-F 0 "R13" H 3020 6196 50  0000 L CNN
-F 1 "10k" H 3020 6105 50  0000 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 2880 6150 50  0001 C CNN
-F 3 "~" H 2950 6150 50  0001 C CNN
-	1    2950 6150
+P 2750 6150
+F 0 "R13" H 2820 6196 50  0000 L CNN
+F 1 "10k" H 2820 6105 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 2680 6150 50  0001 C CNN
+F 3 "~" H 2750 6150 50  0001 C CNN
+	1    2750 6150
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -160,75 +160,58 @@ Wire Wire Line
 Wire Wire Line
 	2650 1250 2650 1050
 $Comp
-L power:GND #PWR041
-U 1 1 61639104
-P 2650 4200
-F 0 "#PWR041" H 2650 3950 50  0001 C CNN
-F 1 "GND" H 2655 4027 50  0000 C CNN
-F 2 "" H 2650 4200 50  0001 C CNN
-F 3 "" H 2650 4200 50  0001 C CNN
-	1    2650 4200
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2650 4050 2650 4200
-$Comp
 L power:GND #PWR039
 U 1 1 61639BC6
-P 1700 4200
-F 0 "#PWR039" H 1700 3950 50  0001 C CNN
-F 1 "GND" H 1705 4027 50  0000 C CNN
-F 2 "" H 1700 4200 50  0001 C CNN
-F 3 "" H 1700 4200 50  0001 C CNN
-	1    1700 4200
+P 1850 4200
+F 0 "#PWR039" H 1850 3950 50  0001 C CNN
+F 1 "GND" H 1855 4027 50  0000 C CNN
+F 2 "" H 1850 4200 50  0001 C CNN
+F 3 "" H 1850 4200 50  0001 C CNN
+	1    1850 4200
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1700 4050 1700 4200
-Text GLabel 1150 3950 1    50   Input ~ 0
+	1850 4050 1850 4200
+Text GLabel 900  3950 1    50   Input ~ 0
 Button1
-Text GLabel 2100 3950 1    50   Input ~ 0
+Text GLabel 2250 3950 1    50   Input ~ 0
 Button2
 $Comp
 L power:GND #PWR040
 U 1 1 6163E102
-P 2150 6150
-F 0 "#PWR040" H 2150 5900 50  0001 C CNN
-F 1 "GND" H 2155 5977 50  0000 C CNN
-F 2 "" H 2150 6150 50  0001 C CNN
-F 3 "" H 2150 6150 50  0001 C CNN
-	1    2150 6150
+P 2050 6150
+F 0 "#PWR040" H 2050 5900 50  0001 C CNN
+F 1 "GND" H 2055 5977 50  0000 C CNN
+F 2 "" H 2050 6150 50  0001 C CNN
+F 3 "" H 2050 6150 50  0001 C CNN
+	1    2050 6150
 	1    0    0    -1  
 $EndComp
-Text GLabel 1250 5600 0    50   Input ~ 0
+Text GLabel 1050 5600 0    50   Input ~ 0
 VCC3V3
-Text GLabel 1150 6050 0    50   Input ~ 0
+Text GLabel 950  6050 0    50   Input ~ 0
 NRST
 Wire Wire Line
-	2100 6050 2150 6050
+	950  6050 1250 6050
 Wire Wire Line
-	2150 6050 2150 6150
+	1250 5950 1250 6050
 Wire Wire Line
-	1150 6050 1450 6050
+	1050 5600 1250 5600
 Wire Wire Line
-	1450 5950 1450 6050
-Wire Wire Line
-	1250 5600 1450 5600
-Wire Wire Line
-	1450 5600 1450 5650
-Text GLabel 3650 5850 2    50   Input ~ 0
+	1250 5600 1250 5650
+Text GLabel 3450 5850 2    50   Input ~ 0
 VCC3V3
-Text GLabel 2850 5850 0    50   Input ~ 0
+Text GLabel 2650 5850 0    50   Input ~ 0
 ERASE
 $Comp
 L power:GND #PWR042
 U 1 1 6164499E
-P 2950 6300
-F 0 "#PWR042" H 2950 6050 50  0001 C CNN
-F 1 "GND" H 2955 6127 50  0000 C CNN
-F 2 "" H 2950 6300 50  0001 C CNN
-F 3 "" H 2950 6300 50  0001 C CNN
-	1    2950 6300
+P 2750 6300
+F 0 "#PWR042" H 2750 6050 50  0001 C CNN
+F 1 "GND" H 2755 6127 50  0000 C CNN
+F 2 "" H 2750 6300 50  0001 C CNN
+F 3 "" H 2750 6300 50  0001 C CNN
+	1    2750 6300
 	1    0    0    -1  
 $EndComp
 Text Notes 9100 5000 0    50   ~ 0
@@ -446,14 +429,14 @@ Wire Wire Line
 	8650 3000 8550 3000
 Connection ~ 8550 3000
 Wire Wire Line
-	3450 5850 3650 5850
+	3250 5850 3350 5850
 Wire Wire Line
-	2850 5850 2950 5850
+	2650 5850 2750 5850
 Wire Wire Line
-	2950 6000 2950 5850
-Connection ~ 2950 5850
+	2750 6000 2750 5850
+Connection ~ 2750 5850
 Wire Wire Line
-	2950 5850 3050 5850
+	2750 5850 2850 5850
 Text GLabel 6600 1750 0    50   Input ~ 0
 TWD0
 Text GLabel 7600 1750 2    50   Input ~ 0
@@ -1080,23 +1063,12 @@ Wire Wire Line
 $Comp
 L Switch:SW_MEC_5E SW4
 U 1 1 616A2681
-P 3250 5850
-F 0 "SW4" H 3250 6235 50  0000 C CNN
-F 1 "ERASE" H 3250 6144 50  0000 C CNN
-F 2 "SamacSys_Parts:PTS647SK38SMTR2LFS" H 3250 6150 50  0001 C CNN
-F 3 "http://www.apem.com/int/index.php?controller=attachment&id_attachment=1371" H 3250 6150 50  0001 C CNN
-	1    3250 5850
-	1    0    0    -1  
-$EndComp
-$Comp
-L Switch:SW_MEC_5E SW3
-U 1 1 616B6278
-P 1900 6050
-F 0 "SW3" H 1900 6435 50  0000 C CNN
-F 1 "MCLR" H 1900 6350 50  0000 C CNN
-F 2 "SamacSys_Parts:PTS647SK38SMTR2LFS" H 1900 6350 50  0001 C CNN
-F 3 "http://www.apem.com/int/index.php?controller=attachment&id_attachment=1371" H 1900 6350 50  0001 C CNN
-	1    1900 6050
+P 3050 5850
+F 0 "SW4" H 3050 6235 50  0000 C CNN
+F 1 "ERASE" H 3050 6144 50  0000 C CNN
+F 2 "SamacSys_Parts:PTS647SK38SMTR2LFS" H 3050 6150 50  0001 C CNN
+F 3 "http://www.apem.com/int/index.php?controller=attachment&id_attachment=1371" H 3050 6150 50  0001 C CNN
+	1    3050 5850
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -1113,31 +1085,102 @@ $EndComp
 $Comp
 L Switch:SW_MEC_5E SW2
 U 1 1 616C4A6F
-P 2450 4050
-F 0 "SW2" H 2450 4343 50  0000 C CNN
-F 1 "SW_MEC_5E" H 2450 4344 50  0001 C CNN
-F 2 "SamacSys_Parts:FSM16JH" H 2450 4350 50  0001 C CNN
-F 3 "http://www.apem.com/int/index.php?controller=attachment&id_attachment=1371" H 2450 4350 50  0001 C CNN
-	1    2450 4050
+P 2850 4050
+F 0 "SW2" H 2850 4343 50  0000 C CNN
+F 1 "SW_MEC_5E" H 2850 4344 50  0001 C CNN
+F 2 "SamacSys_Parts:FSM16JH" H 2850 4350 50  0001 C CNN
+F 3 "http://www.apem.com/int/index.php?controller=attachment&id_attachment=1371" H 2850 4350 50  0001 C CNN
+	1    2850 4050
+	1    0    0    -1  
+$EndComp
+Connection ~ 1250 6050
+Wire Wire Line
+	1250 6050 1350 6050
+$Comp
+L Switch:SW_MEC_5E SW3
+U 1 1 616B6278
+P 1700 6050
+F 0 "SW3" H 1700 6435 50  0000 C CNN
+F 1 "MCLR" H 1700 6350 50  0000 C CNN
+F 2 "SamacSys_Parts:PTS647SK38SMTR2LFS" H 1700 6350 50  0001 C CNN
+F 3 "http://www.apem.com/int/index.php?controller=attachment&id_attachment=1371" H 1700 6350 50  0001 C CNN
+	1    1700 6050
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1300 4050 1150 4050
+	2050 6050 2050 6150
 Wire Wire Line
-	1150 4050 1150 3950
+	1900 6050 2050 6050
 Wire Wire Line
-	2250 4050 2100 4050
+	1900 5950 2050 5950
 Wire Wire Line
-	2100 4050 2100 3950
-NoConn ~ 1700 5950
-NoConn ~ 2100 5950
-NoConn ~ 3050 5750
-NoConn ~ 3450 5750
-NoConn ~ 1700 3950
-NoConn ~ 1300 3950
-NoConn ~ 2250 3950
-NoConn ~ 2650 3950
-Connection ~ 1450 6050
+	2050 5950 2050 6050
+Connection ~ 2050 6050
 Wire Wire Line
-	1450 6050 1700 6050
+	1500 5950 1350 5950
+Wire Wire Line
+	1350 5950 1350 6050
+Connection ~ 1350 6050
+Wire Wire Line
+	1350 6050 1500 6050
+Wire Wire Line
+	2850 5750 2750 5750
+Wire Wire Line
+	2750 5750 2750 5850
+Wire Wire Line
+	3250 5750 3350 5750
+Wire Wire Line
+	3350 5750 3350 5850
+Connection ~ 3350 5850
+Wire Wire Line
+	3350 5850 3450 5850
+Wire Wire Line
+	900  4050 900  3950
+Wire Wire Line
+	900  4050 1150 4050
+Wire Wire Line
+	1300 3950 1150 3950
+Wire Wire Line
+	1150 3950 1150 4050
+Connection ~ 1150 4050
+Wire Wire Line
+	1150 4050 1300 4050
+Wire Wire Line
+	1700 4050 1850 4050
+Wire Wire Line
+	1700 3950 1850 3950
+Wire Wire Line
+	1850 3950 1850 4050
+Connection ~ 1850 4050
+Wire Wire Line
+	2650 4050 2500 4050
+Wire Wire Line
+	2250 4050 2250 3950
+Wire Wire Line
+	2650 3950 2500 3950
+Wire Wire Line
+	2500 3950 2500 4050
+Connection ~ 2500 4050
+Wire Wire Line
+	2500 4050 2250 4050
+$Comp
+L power:GND #PWR041
+U 1 1 61639104
+P 3200 4200
+F 0 "#PWR041" H 3200 3950 50  0001 C CNN
+F 1 "GND" H 3205 4027 50  0000 C CNN
+F 2 "" H 3200 4200 50  0001 C CNN
+F 3 "" H 3200 4200 50  0001 C CNN
+	1    3200 4200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3050 4050 3200 4050
+Wire Wire Line
+	3200 4050 3200 4200
+Wire Wire Line
+	3050 3950 3200 3950
+Wire Wire Line
+	3200 3950 3200 4050
+Connection ~ 3200 4050
 $EndSCHEMATC
