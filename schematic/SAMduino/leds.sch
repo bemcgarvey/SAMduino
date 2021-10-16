@@ -242,13 +242,13 @@ ADC and DAC
 $Comp
 L Connector_Generic:Conn_01x08 J20
 U 1 1 6166979A
-P 9350 3750
-F 0 "J20" V 9350 4150 50  0000 L CNN
-F 1 "Conn_01x08" H 9430 3651 50  0001 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Horizontal" H 9350 3750 50  0001 C CNN
-F 3 "~" H 9350 3750 50  0001 C CNN
-	1    9350 3750
-	0    1    1    0   
+P 9250 3750
+F 0 "J20" V 9250 4150 50  0000 L CNN
+F 1 "Conn_01x08" H 9330 3651 50  0001 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Horizontal" H 9250 3750 50  0001 C CNN
+F 3 "~" H 9250 3750 50  0001 C CNN
+	1    9250 3750
+	0    -1   1    0   
 $EndComp
 Text Notes 9000 3950 0    50   ~ 0
 Program/Debug
