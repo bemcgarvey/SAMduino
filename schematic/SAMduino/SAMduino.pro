@@ -1,4 +1,4 @@
-update=10/14/2021 11:31:18 PM
+update=10/15/2021 8:43:41 PM
 version=1
 last_client=kicad
 [general]
@@ -232,7 +232,7 @@ Enabled=1
 [pcbnew/Layer.B.Fab]
 Enabled=0
 [pcbnew/Layer.F.Fab]
-Enabled=0
+Enabled=1
 [pcbnew/Layer.Rescue]
 Enabled=0
 [pcbnew/Netclasses]
