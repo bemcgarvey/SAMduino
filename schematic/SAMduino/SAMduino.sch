@@ -680,7 +680,7 @@ Wire Wire Line
 	4700 6000 4700 5750
 Wire Wire Line
 	4300 6000 4300 5750
-Text Notes 1400 7050 0    50   ~ 0
+Text Notes 1350 7000 0    50   ~ 0
 Main Oscillator
 Text Notes 1300 5850 0    50   ~ 0
 Slow Clock Oscillator
@@ -689,15 +689,15 @@ L SamacSys_Parts:AMPMAFB-12.0000T X1
 U 1 1 6171D4C5
 P 1050 6600
 F 0 "X1" H 1650 6865 50  0000 C CNN
-F 1 "AMPMAFB-12.0000T" H 1650 6774 50  0000 C CNN
-F 2 "SamacSys_Parts:AMPMAFB120000T" H 2100 6700 50  0001 L CNN
-F 3 "https://datasheet.datasheetarchive.com/originals/dk/DKDS41/DSANUWW0031017.pdf" H 2100 6600 50  0001 L CNN
-F 4 "Standard Clock Oscillators MEMS OSC XO 12.0000MHZ SMD" H 2100 6500 50  0001 L CNN "Description"
+F 1 "12 MHz" H 1650 6774 50  0000 C CNN
+F 2 "SamacSys_Parts:ASTMUPCE3312000MHZLJET" H 2100 6700 50  0001 L CNN
+F 3 "" H 2100 6600 50  0001 L CNN
+F 4 "12 MHz Crystal or MEMS oscillator" H 2100 6500 50  0001 L CNN "Description"
 F 5 "0.89" H 2100 6400 50  0001 L CNN "Height"
-F 6 "815-AMPMAFB-12.0000T" H 2100 6300 50  0001 L CNN "Mouser Part Number"
-F 7 "https://www.mouser.co.uk/ProductDetail/ABRACON/AMPMAFB-120000T?qs=%252BEew9%252B0nqrB9Y5kN3McktA%3D%3D" H 2100 6200 50  0001 L CNN "Mouser Price/Stock"
-F 8 "ABRACON" H 2100 6100 50  0001 L CNN "Manufacturer_Name"
-F 9 "AMPMAFB-12.0000T" H 2100 6000 50  0001 L CNN "Manufacturer_Part_Number"
+F 6 "" H 2100 6300 50  0001 L CNN "Mouser Part Number"
+F 7 "" H 2100 6200 50  0001 L CNN "Mouser Price/Stock"
+F 8 "" H 2100 6100 50  0001 L CNN "Manufacturer_Name"
+F 9 "" H 2100 6000 50  0001 L CNN "Manufacturer_Part_Number"
 	1    1050 6600
 	1    0    0    -1  
 $EndComp
