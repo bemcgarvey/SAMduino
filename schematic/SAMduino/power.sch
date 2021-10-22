@@ -18,7 +18,7 @@ L Device:C C10
 U 1 1 6160B74B
 P 2200 1900
 F 0 "C10" H 2315 1946 50  0000 L CNN
-F 1 "22uF" H 2315 1855 50  0000 L CNN
+F 1 "10uF" H 2315 1855 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 2238 1750 50  0001 C CNN
 F 3 "~" H 2200 1900 50  0001 C CNN
 	1    2200 1900
@@ -611,8 +611,8 @@ $Comp
 L Device:C C7
 U 1 1 6163BBE4
 P 1600 4350
-F 0 "C7" H 1715 4396 50  0000 L CNN
-F 1 "22uF" H 1715 4305 50  0000 L CNN
+F 0 "C7" H 1350 4350 50  0000 L CNN
+F 1 "10uF" H 1300 4250 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 1638 4200 50  0001 C CNN
 F 3 "~" H 1600 4350 50  0001 C CNN
 	1    1600 4350
@@ -621,12 +621,12 @@ $EndComp
 $Comp
 L Device:C C13
 U 1 1 6163CB48
-P 3600 4350
-F 0 "C13" H 3715 4396 50  0000 L CNN
-F 1 "22uF" H 3715 4305 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 3638 4200 50  0001 C CNN
-F 3 "~" H 3600 4350 50  0001 C CNN
-	1    3600 4350
+P 3550 4350
+F 0 "C13" H 3650 4350 50  0000 L CNN
+F 1 "22uF" H 3650 4250 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 3588 4200 50  0001 C CNN
+F 3 "~" H 3550 4350 50  0001 C CNN
+	1    3550 4350
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -643,12 +643,12 @@ $EndComp
 $Comp
 L power:GND #PWR020
 U 1 1 6163D851
-P 3600 4500
-F 0 "#PWR020" H 3600 4250 50  0001 C CNN
-F 1 "GND" H 3605 4327 50  0000 C CNN
-F 2 "" H 3600 4500 50  0001 C CNN
-F 3 "" H 3600 4500 50  0001 C CNN
-	1    3600 4500
+P 3550 4500
+F 0 "#PWR020" H 3550 4250 50  0001 C CNN
+F 1 "GND" H 3555 4327 50  0000 C CNN
+F 2 "" H 3550 4500 50  0001 C CNN
+F 3 "" H 3550 4500 50  0001 C CNN
+	1    3550 4500
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -691,14 +691,12 @@ NoConn ~ 8300 1600
 NoConn ~ 8300 3050
 Wire Wire Line
 	7700 4600 7500 4600
-Wire Wire Line
-	2400 1150 3150 1150
-Text GLabel 2400 1000 1    50   Input ~ 0
+Text GLabel 1600 1000 1    50   Input ~ 0
 VIN
 Connection ~ 3600 6400
 Connection ~ 4600 6400
 Text Notes 1850 4950 0    50   ~ 0
-5 Volt supply  for CAN Transceiver\n1.0 A
+5 Volt supply  for CAN Transceiver\n1 A
 Wire Wire Line
 	6300 1650 6150 1650
 Connection ~ 6300 1650
@@ -799,7 +797,7 @@ Wire Wire Line
 Connection ~ 7150 5100
 Connection ~ 7650 5100
 Text Notes 4000 2100 0    50   ~ 0
-3.3V Power\n1.0 A
+3.3V Power\n1 A
 Text GLabel 1900 3350 0    50   Input ~ 0
 VUSB5V
 Wire Wire Line
@@ -905,17 +903,6 @@ Connection ~ 1500 1550
 Wire Wire Line
 	1500 1550 1500 1350
 $Comp
-L Diode:MBR0520LT D10
-U 1 1 6167E605
-P 1900 1150
-F 0 "D10" H 1900 933 50  0000 C CNN
-F 1 "MBR0520LT" H 1900 1024 50  0000 C CNN
-F 2 "Diode_SMD:D_SOD-123" H 1900 975 50  0001 C CNN
-F 3 "http://www.onsemi.com/pub_link/Collateral/MBR0520LT1-D.PDF" H 1900 1150 50  0001 C CNN
-	1    1900 1150
-	-1   0    0    1   
-$EndComp
-$Comp
 L Diode:MBR0520LT D1
 U 1 1 6167EC31
 P 7500 1200
@@ -937,13 +924,6 @@ F 3 "http://www.onsemi.com/pub_link/Collateral/MBR0520LT1-D.PDF" H 7700 2650 50 
 	1    7700 2650
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	1450 1150 1750 1150
-Wire Wire Line
-	2050 1150 2200 1150
-Connection ~ 2400 1150
-Wire Wire Line
-	2400 1150 2400 1000
 Wire Wire Line
 	7200 750  7200 1200
 Wire Wire Line
@@ -1015,8 +995,6 @@ F 9 "AZ1117CH-5.0TRG1" H 3200 3600 50  0001 L CNN "Manufacturer_Part_Number"
 	1    0    0    1   
 $EndComp
 Wire Wire Line
-	3600 4200 3950 4200
-Wire Wire Line
 	1450 4000 1600 4000
 Wire Wire Line
 	1600 4200 1600 4000
@@ -1025,7 +1003,6 @@ Wire Wire Line
 	1600 4000 2050 4000
 Wire Wire Line
 	3350 4200 3400 4200
-Connection ~ 3600 4200
 Wire Wire Line
 	2050 4100 1900 4100
 Wire Wire Line
@@ -1036,7 +1013,7 @@ Wire Wire Line
 	3400 4550 3400 4200
 Connection ~ 3400 4200
 Wire Wire Line
-	3400 4200 3600 4200
+	3400 4200 3550 4200
 $Comp
 L SamacSys_Parts:AZ1117IH-3.3TRG1 IC3
 U 1 1 61788364
@@ -1061,8 +1038,18 @@ Wire Wire Line
 Wire Wire Line
 	3450 1550 3450 1650
 Connection ~ 2200 1150
+Text Notes 650  1650 0    50   ~ 0
+DC IN 15V Max\nCenter Pin Positive!
+Connection ~ 3550 4200
 Wire Wire Line
-	2200 1150 2400 1150
-Text Notes 800  1700 0    50   ~ 0
-DC IN 15V Max
+	3550 4200 3950 4200
+Wire Wire Line
+	1450 1150 1600 1150
+Wire Wire Line
+	2200 1150 3150 1150
+Wire Wire Line
+	1600 1000 1600 1150
+Connection ~ 1600 1150
+Wire Wire Line
+	1600 1150 2200 1150
 $EndSCHEMATC
