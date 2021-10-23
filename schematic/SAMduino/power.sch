@@ -5,7 +5,7 @@ $Descr USLetter 11000 8500
 encoding utf-8
 Sheet 2 4
 Title "SAMduino"
-Date "2021-10-07"
+Date "2021-10-22"
 Rev "1.0"
 Comp "Quantum Embedded Systems"
 Comment1 ""
