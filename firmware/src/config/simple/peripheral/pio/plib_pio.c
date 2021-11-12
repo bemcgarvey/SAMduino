@@ -59,6 +59,8 @@
 void PIO_Initialize ( void )
 {
     MATRIX_REGS->CCFG_SYSIO = 0x0;
+    /* Selected System IO pins are configured as GPIO */
+    MATRIX_REGS->CCFG_SYSIO |= 0x1000;
 
     /************************ PIO A Initialization ************************/
     ((pio_registers_t*)PIO_PORT_A)->PIO_PER = 0xFFFFFFFF;
@@ -95,6 +97,9 @@ void PIO_Initialize ( void )
     ((pio_registers_t*)PIO_PORT_B)->PIO_ODR = ~0x0;
     /* PORTB Initial state High */
     ((pio_registers_t*)PIO_PORT_B)->PIO_ODSR = 0x0;
+    /* PORTB Glitch/Debounce Filter Enable */
+    ((pio_registers_t*)PIO_PORT_B)->PIO_IFER = 0x1000;
+    ((pio_registers_t*)PIO_PORT_B)->PIO_IFSCER = 0x1000;
     /* PORTB drive control */
     ((pio_registers_t*)PIO_PORT_B)->PIO_DRIVER = 0x0;
 
@@ -112,7 +117,7 @@ void PIO_Initialize ( void )
     ((pio_registers_t*)PIO_PORT_D)->PIO_OER = 0xf0;
     ((pio_registers_t*)PIO_PORT_D)->PIO_ODR = ~0xf0;
     /* PORTD Initial state High */
-    ((pio_registers_t*)PIO_PORT_D)->PIO_ODSR = 0xd0;
+    ((pio_registers_t*)PIO_PORT_D)->PIO_ODSR = 0xf0;
     /* PORTD Glitch/Debounce Filter Enable */
     ((pio_registers_t*)PIO_PORT_D)->PIO_IFER = 0x100;
     ((pio_registers_t*)PIO_PORT_D)->PIO_IFSCER = 0x100;

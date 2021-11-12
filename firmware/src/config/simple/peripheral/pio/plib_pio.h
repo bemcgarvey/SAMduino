@@ -62,23 +62,32 @@
 // *****************************************************************************
 
 
-/*** Macros for BUTTON1 pin ***/
-#define BUTTON1_Set()               (PIOA_REGS->PIO_SODR = (1<<20))
-#define BUTTON1_Clear()             (PIOA_REGS->PIO_CODR = (1<<20))
-#define BUTTON1_Toggle()            (PIOA_REGS->PIO_ODSR ^= (1<<20))
-#define BUTTON1_OutputEnable()      (PIOA_REGS->PIO_OER = (1<<20))
-#define BUTTON1_InputEnable()       (PIOA_REGS->PIO_ODR = (1<<20))
-#define BUTTON1_Get()               ((PIOA_REGS->PIO_PDSR >> 20) & 0x1)
-#define BUTTON1_PIN                  PIO_PIN_PA20
-
 /*** Macros for BUTTON2 pin ***/
-#define BUTTON2_Set()               (PIOD_REGS->PIO_SODR = (1<<8))
-#define BUTTON2_Clear()             (PIOD_REGS->PIO_CODR = (1<<8))
-#define BUTTON2_Toggle()            (PIOD_REGS->PIO_ODSR ^= (1<<8))
-#define BUTTON2_OutputEnable()      (PIOD_REGS->PIO_OER = (1<<8))
-#define BUTTON2_InputEnable()       (PIOD_REGS->PIO_ODR = (1<<8))
-#define BUTTON2_Get()               ((PIOD_REGS->PIO_PDSR >> 8) & 0x1)
-#define BUTTON2_PIN                  PIO_PIN_PD8
+#define BUTTON2_Set()               (PIOA_REGS->PIO_SODR = (1<<20))
+#define BUTTON2_Clear()             (PIOA_REGS->PIO_CODR = (1<<20))
+#define BUTTON2_Toggle()            (PIOA_REGS->PIO_ODSR ^= (1<<20))
+#define BUTTON2_OutputEnable()      (PIOA_REGS->PIO_OER = (1<<20))
+#define BUTTON2_InputEnable()       (PIOA_REGS->PIO_ODR = (1<<20))
+#define BUTTON2_Get()               ((PIOA_REGS->PIO_PDSR >> 20) & 0x1)
+#define BUTTON2_PIN                  PIO_PIN_PA20
+
+/*** Macros for BUTTON3 pin ***/
+#define BUTTON3_Set()               (PIOB_REGS->PIO_SODR = (1<<12))
+#define BUTTON3_Clear()             (PIOB_REGS->PIO_CODR = (1<<12))
+#define BUTTON3_Toggle()            (PIOB_REGS->PIO_ODSR ^= (1<<12))
+#define BUTTON3_OutputEnable()      (PIOB_REGS->PIO_OER = (1<<12))
+#define BUTTON3_InputEnable()       (PIOB_REGS->PIO_ODR = (1<<12))
+#define BUTTON3_Get()               ((PIOB_REGS->PIO_PDSR >> 12) & 0x1)
+#define BUTTON3_PIN                  PIO_PIN_PB12
+
+/*** Macros for BUTTON1 pin ***/
+#define BUTTON1_Set()               (PIOD_REGS->PIO_SODR = (1<<8))
+#define BUTTON1_Clear()             (PIOD_REGS->PIO_CODR = (1<<8))
+#define BUTTON1_Toggle()            (PIOD_REGS->PIO_ODSR ^= (1<<8))
+#define BUTTON1_OutputEnable()      (PIOD_REGS->PIO_OER = (1<<8))
+#define BUTTON1_InputEnable()       (PIOD_REGS->PIO_ODR = (1<<8))
+#define BUTTON1_Get()               ((PIOD_REGS->PIO_PDSR >> 8) & 0x1)
+#define BUTTON1_PIN                  PIO_PIN_PD8
 
 /*** Macros for LED_YELLOW pin ***/
 #define LED_YELLOW_Set()               (PIOD_REGS->PIO_SODR = (1<<7))

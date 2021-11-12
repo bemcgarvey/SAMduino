@@ -34,24 +34,47 @@
 // *****************************************************************************
 // *****************************************************************************
 
-int main ( void )
-{
+int main(void) {
     /* Initialize all modules */
-    SYS_Initialize ( NULL );
+    SYS_Initialize(NULL);
 
-    while ( true )
-    {
+    while (true) {
         /* Maintain state machines of all polled MPLAB Harmony modules. */
-        SYS_Tasks ( );
+        SYS_Tasks();
+        if (BUTTON1_Get()) {
+            LED_YELLOW_Set();
+            LED_GREEN_Set();
+        } else {
+            LED_YELLOW_Clear();
+            LED_GREEN_Clear();
+        }
+        if (BUTTON2_Get()) {
+            LED_BLUE_Set();
+            LED_RED_Set();
+        } else {
+            LED_BLUE_Clear();
+            LED_RED_Clear();
+        }
+        if (!BUTTON3_Get()) {
+            LED_YELLOW_Set();
+            LED_GREEN_Set();\
+            LED_BLUE_Set();
+            LED_RED_Set();
+        } else {
+            LED_YELLOW_Clear();
+            LED_GREEN_Clear();
+            LED_BLUE_Clear();
+            LED_RED_Clear();
+        }
     }
 
     /* Execution should not come here during normal operation */
 
-    return ( EXIT_FAILURE );
+    return ( EXIT_FAILURE);
 }
 
 
 /*******************************************************************************
  End of File
-*/
+ */
 
