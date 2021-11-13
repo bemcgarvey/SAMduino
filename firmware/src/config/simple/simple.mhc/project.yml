@@ -34,13 +34,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: null
-- generatedChecksum: 1768D5746DEA11C3B19BFC1A37228028
+- generatedChecksum: 0CEA6E15EB6B4CA988F71FBCEA167484
   logicalPath: config/simple/peripheral/clk
   name: plib_clk.c
   physicalPath: peripheral/clk
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 1768D5746DEA11C3B19BFC1A37228028
+  userChecksum: 0CEA6E15EB6B4CA988F71FBCEA167484
 - generatedChecksum: D23DF612DB8267EDD9F5F3A463A02DB2
   logicalPath: config/simple/peripheral/efc
   name: plib_efc.c
@@ -62,13 +62,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 1E3853E14B2BAD61FA776B05370FF767
-- generatedChecksum: 61031849D4BFE71A68762D6D9253E7F5
+- generatedChecksum: FD22AEFF0D195F0054A01E517B62483B
   logicalPath: config/simple/peripheral/tc
   name: plib_tc0.c
   physicalPath: peripheral/tc
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 61031849D4BFE71A68762D6D9253E7F5
+  userChecksum: FD22AEFF0D195F0054A01E517B62483B
 - generatedChecksum: CBEC3B1A0CD099BE51536D94DED55A0F
   logicalPath: config/simple/peripheral/uart
   name: plib_uart0.c

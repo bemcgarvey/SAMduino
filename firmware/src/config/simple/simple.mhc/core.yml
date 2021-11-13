@@ -359,7 +359,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '32000'}
+        attributes: {value: '100000'}
   - type: String
     attributes: {id: PCK7_CLOCK_FREQUENCY}
     children:
@@ -943,6 +943,20 @@ children:
       children:
       - type: User
         attributes: {value: MCK}
+  - type: Combo
+    attributes: {id: PMC_PCK6_CSS}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: MAIN_CLK}
+  - type: Integer
+    attributes: {id: PMC_PCK6_PRES}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '120'}
   - type: KeyValueSet
     attributes: {id: PMC_PCR_GCLK0CSS}
     children:
@@ -965,7 +979,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: 'false'}
+        attributes: {id: core, value: 'true'}
   - type: Boolean
     attributes: {id: PMC_SCER_PCK7}
     children:
@@ -1149,7 +1163,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '32768'}
+        attributes: {id: core, value: '100000'}
   - type: Boolean
     attributes: {id: TC0_CH1_INTERRUPT_ENABLE}
     children:
