@@ -186,12 +186,51 @@ children:
       - type: User
         attributes: {value: '100.0'}
   - type: Integer
-    attributes: {id: TC3_CLOCK_FREQ}
+    attributes: {id: TC2_CLOCK_FREQ}
     children:
     - type: Values
       children:
       - type: Dynamic
         attributes: {id: tc0, value: '150000000'}
+  - type: Boolean
+    attributes: {id: TC2_PCK7}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: tc0, value: 'false'}
+  - type: Comment
+    attributes: {id: TC2_Resolution}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: text}
+        children:
+        - {type: Value, value: '****Clock resolution is 6.66666666667 nS****'}
+  - type: Comment
+    attributes: {id: TC2_TIMER_PERIOD_CMT}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: text}
+        children:
+        - {type: Value, value: '****Period Count is 60000****'}
+  - type: Long
+    attributes: {id: TC2_TIMER_PERIOD_COUNT}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: tc0, value: '60000'}
+  - type: Integer
+    attributes: {id: TC3_CLOCK_FREQ}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: tc0, value: '100000'}
   - type: Boolean
     attributes: {id: TC3_PCK7}
     children:
@@ -199,6 +238,15 @@ children:
       children:
       - type: Dynamic
         attributes: {id: tc0, value: 'false'}
+  - type: Comment
+    attributes: {id: TC3_Resolution}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: text}
+        children:
+        - {type: Value, value: '****Clock resolution is 10000.0 nS****'}
   - type: Combo
     attributes: {id: TC_PCK_CLKSRC}
     children:
@@ -216,6 +264,6 @@ children:
       - type: String
         attributes: {id: text}
         children:
-        - {type: Value, value: '****Time Base is 100.1 uS****'}
+        - {type: Value, value: '****Time Base is 150150.0 uS****'}
 - type: ElementPosition
-  attributes: {x: '101', y: '330', id: tc0}
+  attributes: {x: '102', y: '329', id: tc0}

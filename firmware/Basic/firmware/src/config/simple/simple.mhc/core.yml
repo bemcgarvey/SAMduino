@@ -1226,7 +1226,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '150000000'}
+        attributes: {id: core, value: '100000'}
   - type: Boolean
     attributes: {id: TC0_CHANNEL0_CLOCK_ENABLE}
     children:
