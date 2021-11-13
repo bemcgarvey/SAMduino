@@ -103,8 +103,6 @@ extern void TWIHS0_Handler             ( void ) __attribute__((weak, alias("Dumm
 extern void TWIHS1_Handler             ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void SPI0_Handler               ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void SSC_Handler                ( void ) __attribute__((weak, alias("Dummy_Handler")));
-extern void TC0_CH0_Handler            ( void ) __attribute__((weak, alias("Dummy_Handler")));
-extern void TC0_CH1_Handler            ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void TC0_CH2_Handler            ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void TC1_CH0_Handler            ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void TC1_CH1_Handler            ( void ) __attribute__((weak, alias("Dummy_Handler")));
@@ -192,8 +190,8 @@ const H3DeviceVectors exception_table=
     .pfnTWIHS1_Handler             = TWIHS1_Handler,
     .pfnSPI0_Handler               = SPI0_Handler,
     .pfnSSC_Handler                = SSC_Handler,
-    .pfnTC0_CH0_Handler            = TC0_CH0_Handler,
-    .pfnTC0_CH1_Handler            = TC0_CH1_Handler,
+    .pfnTC0_CH0_Handler            = TC0_CH0_InterruptHandler,
+    .pfnTC0_CH1_Handler            = TC0_CH1_InterruptHandler,
     .pfnTC0_CH2_Handler            = TC0_CH2_Handler,
     .pfnTC1_CH0_Handler            = TC1_CH0_Handler,
     .pfnTC1_CH1_Handler            = TC1_CH1_Handler,

@@ -63,7 +63,9 @@ void PIO_Initialize ( void )
     MATRIX_REGS->CCFG_SYSIO |= 0x1000;
 
     /************************ PIO A Initialization ************************/
-    ((pio_registers_t*)PIO_PORT_A)->PIO_PER = 0xFFFFFFFF;
+    /* PORTA PIO Disable and Peripheral Enable*/
+    ((pio_registers_t*)PIO_PORT_A)->PIO_PDR = 0x600;
+    ((pio_registers_t*)PIO_PORT_A)->PIO_PER = ~0x600;
     ((pio_registers_t*)PIO_PORT_A)->PIO_MDDR = 0xFFFFFFFF;
     /* PORTA Pull Up Enable/Disable as per MHC selection */
     ((pio_registers_t*)PIO_PORT_A)->PIO_PUDR = ~0x100000;

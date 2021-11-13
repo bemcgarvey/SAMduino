@@ -19,6 +19,14 @@
             <logicalFolder name="f2" displayName="pio" projectFiles="true">
               <itemPath>../src/config/simple/peripheral/pio/plib_pio.h</itemPath>
             </logicalFolder>
+            <logicalFolder name="f6" displayName="tc" projectFiles="true">
+              <itemPath>../src/config/simple/peripheral/tc/plib_tc0.h</itemPath>
+              <itemPath>../src/config/simple/peripheral/tc/plib_tc_common.h</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f5" displayName="uart" projectFiles="true">
+              <itemPath>../src/config/simple/peripheral/uart/plib_uart_common.h</itemPath>
+              <itemPath>../src/config/simple/peripheral/uart/plib_uart0.h</itemPath>
+            </logicalFolder>
           </logicalFolder>
           <itemPath>../src/config/simple/device.h</itemPath>
           <itemPath>../src/config/simple/device_cache.h</itemPath>
@@ -182,6 +190,12 @@
             <logicalFolder name="f2" displayName="pio" projectFiles="true">
               <itemPath>../src/config/simple/peripheral/pio/plib_pio.c</itemPath>
             </logicalFolder>
+            <logicalFolder name="f6" displayName="tc" projectFiles="true">
+              <itemPath>../src/config/simple/peripheral/tc/plib_tc0.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f5" displayName="uart" projectFiles="true">
+              <itemPath>../src/config/simple/peripheral/uart/plib_uart0.c</itemPath>
+            </logicalFolder>
           </logicalFolder>
           <logicalFolder name="f1" displayName="stdio" projectFiles="true">
             <itemPath>../src/config/simple/stdio/xc32_monitor.c</itemPath>
@@ -206,6 +220,9 @@
         <itemPath>../src/config/simple/simple.mhc/GraphSettings.yml</itemPath>
         <itemPath>../src/config/simple/simple.mhc/project.yml</itemPath>
         <itemPath>../src/config/simple/simple.mhc/settings.yml</itemPath>
+        <itemPath>../src/config/simple/simple.mhc/stdio.yml</itemPath>
+        <itemPath>../src/config/simple/simple.mhc/tc0.yml</itemPath>
+        <itemPath>../src/config/simple/simple.mhc/uart0.yml</itemPath>
       </logicalFolder>
       <itemPath>Makefile</itemPath>
       <itemPath>../src/config/simple/harmony-manifest-success.yml</itemPath>
@@ -228,8 +245,8 @@
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="CMSIS" vendor="ARM" version="5.4.0"/>
         <pack name="SAMV71_DFP" vendor="Microchip" version="4.6.90"/>
+        <pack name="CMSIS" vendor="ARM" version="5.4.0"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>
@@ -295,7 +312,7 @@
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="true"/>
-        <property key="make-warnings-into-errors" value="true"/>
+        <property key="make-warnings-into-errors" value="false"/>
         <property key="optimization-level" value="-O1"/>
         <property key="place-data-into-section" value="true"/>
         <property key="post-instruction-scheduling" value="default"/>

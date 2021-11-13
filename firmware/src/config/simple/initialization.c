@@ -94,6 +94,26 @@
 // *****************************************************************************
 // *****************************************************************************
 
+/*******************************************************************************
+  Function:
+    void STDIO_BufferModeSet ( void )
+
+  Summary:
+    Sets the buffering mode for stdin and stdout
+
+  Remarks:
+ ********************************************************************************/
+static void STDIO_BufferModeSet(void)
+{
+
+    /* Make stdin unbuffered */
+    setbuf(stdin, NULL);
+
+    /* Make stdout unbuffered */
+    setbuf(stdout, NULL);
+}
+
+
 
 
 /*******************************************************************************
@@ -109,6 +129,9 @@
 void SYS_Initialize ( void* data )
 {
 
+    STDIO_BufferModeSet();
+
+
 
     EFC_Initialize();
   
@@ -117,10 +140,18 @@ void SYS_Initialize ( void* data )
 
 
 
+	UART0_Initialize();
+
 	RSWDT_REGS->RSWDT_MR = RSWDT_MR_WDDIS_Msk;	// Disable RSWDT 
 
 	WDT_REGS->WDT_MR = WDT_MR_WDDIS_Msk; 		// Disable WDT 
 
+  
+
+ 
+    TC0_CH0_TimerInitialize(); 
+    TC0_CH1_TimerInitialize(); 
+    
 
 
 

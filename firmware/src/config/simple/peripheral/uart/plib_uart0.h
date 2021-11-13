@@ -1,20 +1,20 @@
 /*******************************************************************************
- System Interrupts File
+  UART0 PLIB
 
   Company:
     Microchip Technology Inc.
 
   File Name:
-    interrupt.h
+    plib_uart0.h
 
   Summary:
-    Interrupt vectors mapping
+    UART0 PLIB Header File
 
   Description:
-    This file contains declarations of device vectors used by Harmony 3
- *******************************************************************************/
+    None
 
-// DOM-IGNORE-BEGIN
+*******************************************************************************/
+
 /*******************************************************************************
 * Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
 *
@@ -36,33 +36,58 @@
 * FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
- *******************************************************************************/
+*******************************************************************************/
+
+#ifndef PLIB_UART0_H
+#define PLIB_UART0_H
+
+#include "plib_uart_common.h"
+
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
+
+    extern "C" {
+
+#endif
 // DOM-IGNORE-END
 
-#ifndef INTERRUPTS_H
-#define INTERRUPTS_H
-
 // *****************************************************************************
 // *****************************************************************************
-// Section: Included Files
-// *****************************************************************************
-// *****************************************************************************
-#include <stdint.h>
-
-
-
-// *****************************************************************************
-// *****************************************************************************
-// Section: Handler Routines
+// Section: Interface
 // *****************************************************************************
 // *****************************************************************************
 
-void Reset_Handler (void);
-void NonMaskableInt_Handler (void);
-void HardFault_Handler (void);
-void TC0_CH0_InterruptHandler (void);
-void TC0_CH1_InterruptHandler (void);
+#define UART0_FrequencyGet()    (uint32_t)(150000000UL)
+
+/****************************** UART0 API *********************************/
+
+void UART0_Initialize( void );
+
+UART_ERROR UART0_ErrorGet( void );
+
+bool UART0_SerialSetup( UART_SERIAL_SETUP *setup, uint32_t srcClkFreq );
+
+bool UART0_Write( void *buffer, const size_t size );
+
+bool UART0_Read( void *buffer, const size_t size );
+
+int UART0_ReadByte( void );
+
+void UART0_WriteByte( int data );
+
+bool UART0_TransmitterIsReady( void );
+
+bool UART0_TransmitComplete( void );
+
+bool UART0_ReceiverIsReady( void );
 
 
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
 
-#endif // INTERRUPTS_H
+    }
+
+#endif
+
+// DOM-IGNORE-END
+#endif // PLIB_UART0_H
