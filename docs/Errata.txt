@@ -1,0 +1,5 @@
+SAMduino errata
+
+V1.0 pcb
+	Button labels are reversed.  Left button is PD8, right is PA20
+	CAN connector - CANL and CANH are mislabeled.  They are reversed.
