@@ -55,6 +55,7 @@
 #include "peripheral/nvic/plib_nvic.h"
 #include "peripheral/twihs/master/plib_twihs0_master.h"
 #include "peripheral/efc/plib_efc.h"
+#include "peripheral/tc/plib_tc0.h"
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
@@ -65,7 +66,7 @@ extern "C" {
 // DOM-IGNORE-END
 
 /* CPU clock frequency */
-#define CPU_CLOCK_FREQUENCY 300000000
+#define CPU_CLOCK_FREQUENCY 6000000
 
 // *****************************************************************************
 // *****************************************************************************

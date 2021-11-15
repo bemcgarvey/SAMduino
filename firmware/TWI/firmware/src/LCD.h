@@ -8,7 +8,7 @@
 #ifndef LCD_H
 #define	LCD_H
 
-#define LCD_I2C_ADDRESS 0x4E
+#define LCD_I2C_ADDRESS 0x27
 #define LCD_DATA_WIDTH  4   //Must be 4
 
 #define LCD_ROWS    2
@@ -16,6 +16,8 @@
 
 #define LCD_SCROLL_UP   -1
 #define LCD_SCROLL_DOWN 1
+
+//#define LCD_POLLING
 
 void LCDInit(void);
 void LCDClear(void);

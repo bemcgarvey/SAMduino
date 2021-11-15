@@ -33,16 +33,23 @@
 // Section: Main Entry Point
 // *****************************************************************************
 // *****************************************************************************
-
 int main ( void )
 {
+    int count = 0;
     /* Initialize all modules */
     SYS_Initialize ( NULL );
-
+    LCDInit();
+    lprintf(0, "Hello World");
     while ( true )
     {
         /* Maintain state machines of all polled MPLAB Harmony modules. */
         SYS_Tasks ( );
+        for (int i = 0; i < 100; ++i) {
+            __delay_us(10000);
+        }
+        LED_Toggle();
+        lprintf(1, "Count = %d", count);
+        ++count;
     }
 
     /* Execution should not come here during normal operation */

@@ -148,6 +148,12 @@ void SYS_Initialize ( void* data )
 
 	TWIHS0_Initialize();
 
+  
+
+ 
+    TC0_CH0_TimerInitialize(); 
+     
+    
 
 
 

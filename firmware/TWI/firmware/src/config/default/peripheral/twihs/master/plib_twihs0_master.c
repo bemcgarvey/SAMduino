@@ -73,7 +73,7 @@ void TWIHS0_Initialize( void )
     TWIHS0_REGS->TWIHS_CR = TWIHS_CR_MSDIS_Msk | TWIHS_CR_SVDIS_Msk;
 
     // Set Baud rate
-    TWIHS0_REGS->TWIHS_CWGR = (TWIHS_CWGR_HOLD_Msk & TWIHS0_REGS->TWIHS_CWGR) | TWIHS_CWGR_CLDIV(186) | TWIHS_CWGR_CHDIV(186) | TWIHS_CWGR_CKDIV(2);
+    TWIHS0_REGS->TWIHS_CWGR = (TWIHS_CWGR_HOLD_Msk & TWIHS0_REGS->TWIHS_CWGR) | TWIHS_CWGR_CLDIV(27) | TWIHS_CWGR_CHDIV(27) | TWIHS_CWGR_CKDIV(0);
 
     // Starts the transfer by clearing the transmit hold register
     TWIHS0_REGS->TWIHS_CR = TWIHS_CR_THRCLR_Msk;
@@ -297,7 +297,7 @@ bool TWIHS0_TransferSetup( TWIHS_TRANSFER_SETUP* setup, uint32_t srcClkFreq )
 
     if(srcClkFreq == 0)
     {
-        srcClkFreq = 150000000;
+        srcClkFreq = 6000000;
     }
 
     /* Formula for calculating baud value involves two unknowns. Fix one unknown and calculate the other.

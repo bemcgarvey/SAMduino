@@ -3,11 +3,15 @@
 #include <stdio.h>
 #include <stdarg.h>
 
+#include "config/default/peripheral/tc/plib_tc0.h"
+#include "config/default/peripheral/twihs/master/plib_twihs0_master.h"
+
 //Functions below must be defined for the interface
 void LCDWriteByte(char c, char rs);
 char LCDReadByte(char rs);
 void LCDInitPort(void);
 void LCDWrite8(char c, char rs); //Only needed if 4 bit mode is supported
+void __delay_us(int delay);
 
 //Private LCD Functions
 void LCDCommand(unsigned char command);
@@ -25,8 +29,9 @@ void shortDelay(void);
 
 void LCDInit(void) {
     char functionSet = 0b00111000;
+    __delay_us(65000);
     LCDInitPort();
-    __delay_ms(10);
+    __delay_us(10000);
 #if LCD_DATA_WIDTH == 4
     LCDWrite8(functionSet, 0);
     __delay_us(40);
@@ -100,8 +105,8 @@ void LCDSetPos(int row, int col) {
     if (row < 0 || col < 0 || row >= LCD_ROWS || col >= LCD_CHARS) {
         return;
     }
-    pos = calculateBase((char)row) + col;
-    LCDCommand(128 + (unsigned char)pos);
+    pos = calculateBase((char) row) + col;
+    LCDCommand(128 + (unsigned char) pos);
 }
 
 void LCDGetPos(int *row, int *col) {
@@ -158,14 +163,14 @@ void LCDScroll(signed char dir) {
     ac = LCDGetAC();
     if (dir == LCD_SCROLL_UP) {
         for (i = 1; i < LCD_ROWS; ++i) {
-            LCDReadLine(str, (char)i);
-            LCDWriteLine(str, (char)(i - 1));
+            LCDReadLine(str, (char) i);
+            LCDWriteLine(str, (char) (i - 1));
         }
         LCDClearLine(LCD_ROWS - 1);
     } else {
         for (i = LCD_ROWS - 2; i >= 0; --i) {
-            LCDReadLine(str, (char)i);
-            LCDWriteLine(str, (char)(i + 1));
+            LCDReadLine(str, (char) i);
+            LCDWriteLine(str, (char) (i + 1));
         }
         LCDClearLine(0);
     }
@@ -193,8 +198,8 @@ int lprintf(int line, const char *format, ...) {
     va_start(args, format);
     result = vsnprintf(str, LCD_CHARS + 1, format, args);
     va_end(args);
-    LCDClearLine((char)line);
-    LCDWriteLine(str, (char)line);
+    LCDClearLine((char) line);
+    LCDWriteLine(str, (char) line);
     return result;
 }
 
@@ -270,20 +275,23 @@ void shortDelay(void) {
 #define E_OFF   0b11111011
 #define BACKLIGHT_ON    0b00001000
 
+volatile int transferStatus = 0;
+
+void TWIHSCallback(uintptr_t context) {
+    if (TWIHS0_ErrorGet() == TWIHS_ERROR_NONE) {
+        transferStatus = 1;
+    } else {
+        transferStatus = -1;
+    }
+}
+
 void LCDInitPort(void) {
-//    I2C_TRIS();
-//    SSPxADD = BAUD; //100kHz
-//    SSPxCON1bits.SSPM = 0b1000;
-//    SSPxCON1bits.SSPEN = 1;
-//    Nop();
-//    SSPxCON2bits.SEN = 1;
-//    while (SSPxCON2bits.SEN == 1);
-//    SSPxBUF = LCD_I2C_ADDRESS;
-//    while (SSPxSTATbits.BF || SSPxSTATbits.R_W);
-//    SSPxBUF = BACKLIGHT_ON;
-//    while (SSPxSTATbits.BF || SSPxSTATbits.R_W);
-//    SSPxCON2bits.PEN = 1;
-//    while (SSPxCON2bits.PEN == 1);
+    //Assume TWIHS0 is initialized.  Can we check?
+    TWIHS0_CallbackRegister( TWIHSCallback, (uintptr_t)NULL);
+    uint8_t data = BACKLIGHT_ON;
+    transferStatus = 0;
+    TWIHS0_Write(LCD_I2C_ADDRESS, &data, 1);
+    while (!transferStatus);
 }
 
 void LCDWrite8(char c, char rs) {
@@ -292,17 +300,13 @@ void LCDWrite8(char c, char rs) {
     if (rs) {
         comFlags |= RS_ON;
     }
-//    SSPxCON2bits.SEN = 1;
-//    while (SSPxCON2bits.SEN == 1);
-//    SSPxBUF = LCD_I2C_ADDRESS;
-//    while (SSPxSTATbits.BF || SSPxSTATbits.R_W);
-//    dataByte = c & 0b11110000;
-//    SSPxBUF = dataByte | E_ON | comFlags;
-//    while (SSPxSTATbits.BF || SSPxSTATbits.R_W);
-//    SSPxBUF = dataByte | comFlags;
-//    while (SSPxSTATbits.BF || SSPxSTATbits.R_W);
-//    SSPxCON2bits.PEN = 1;
-//    while (SSPxCON2bits.PEN == 1);
+    uint8_t data[2];
+    dataByte = c & 0b11110000;
+    data[0] = dataByte | E_ON | comFlags;
+    data[1] = dataByte | comFlags;
+    transferStatus = 0;
+    TWIHS0_Write(LCD_I2C_ADDRESS, data, 2);
+    while (!transferStatus);
 }
 
 void LCDWriteByte(char c, char rs) {
@@ -311,58 +315,65 @@ void LCDWriteByte(char c, char rs) {
     if (rs) {
         comFlags |= RS_ON;
     }
-//    SSPxCON2bits.SEN = 1;
-//    while (SSPxCON2bits.SEN == 1);
-//    SSPxBUF = LCD_I2C_ADDRESS;
-//    while (SSPxSTATbits.BF || SSPxSTATbits.R_W);
-//    dataByte = c & 0b11110000;
-//    SSPxBUF = dataByte | E_ON | comFlags;
-//    while (SSPxSTATbits.BF || SSPxSTATbits.R_W);
-//    SSPxBUF = dataByte | comFlags;
-//    while (SSPxSTATbits.BF || SSPxSTATbits.R_W);
-//    dataByte = (c << 4) & 0b11110000;
-//    SSPxBUF = dataByte | E_ON | comFlags;
-//    while (SSPxSTATbits.BF || SSPxSTATbits.R_W);
-//    SSPxBUF = dataByte | comFlags;
-//    while (SSPxSTATbits.BF || SSPxSTATbits.R_W);
-//    SSPxBUF = BACKLIGHT_ON;
-//    while (SSPxSTATbits.BF || SSPxSTATbits.R_W);
-//    SSPxCON2bits.PEN = 1;
-//    while (SSPxCON2bits.PEN == 1);
+    uint8_t data[5];
+    dataByte = c & 0b11110000;
+    data[0] = dataByte | E_ON | comFlags;
+    data[1] = dataByte | comFlags;
+    dataByte = (c << 4) & 0b11110000;
+    data[2] = dataByte | E_ON | comFlags;
+    data[3] = dataByte | comFlags;
+    data[4] = BACKLIGHT_ON;
+    transferStatus = 0;
+    TWIHS0_Write(LCD_I2C_ADDRESS, data, 5);
+    while (!transferStatus);
 }
 
 char LCDReadNibble(char rs) {
-    char b;
+    uint8_t b = 0;
     char comFlags = 0b11111000 | RW_ON;
     if (rs) {
         comFlags |= RS_ON;
     }
-//    SSPxCON2bits.SEN = 1; //Start
-//    while (SSPxCON2bits.SEN == 1);
-//    SSPxBUF = LCD_I2C_ADDRESS;
-//    while (SSPxSTATbits.BF || SSPxSTATbits.R_W);
-//    SSPxBUF = comFlags;
-//    while (SSPxSTATbits.BF || SSPxSTATbits.R_W);
-//    SSPxBUF = comFlags | E_ON;
-//    while (SSPxSTATbits.BF || SSPxSTATbits.R_W);
-//    SSPxCON2bits.RSEN = 1; //restart
-//    while (SSPxCON2bits.RSEN == 1);
-//    SSPxBUF = LCD_I2C_ADDRESS | 1;
-//    while (SSPxSTATbits.BF || SSPxSTATbits.R_W);
-//    SSPxCON2bits.RCEN = 1;
-//    while (SSPxSTATbits.BF == 0); //Wait for byte
-//    b = SSPxBUF & 0b11110000; //Upper nibble
-//    SSPxCON2bits.ACKDT = 1;
-//    SSPxCON2bits.ACKEN = 1; //Send NACK
-//    while (SSPxCON2bits.ACKEN == 1);
-//    SSPxCON2bits.RSEN = 1; //restart
-//    while (SSPxCON2bits.RSEN == 1);
-//    SSPxBUF = LCD_I2C_ADDRESS;
-//    while (SSPxSTATbits.BF || SSPxSTATbits.R_W);
-//    SSPxBUF = comFlags;
-//    while (SSPxSTATbits.BF || SSPxSTATbits.R_W);
-//    SSPxCON2bits.PEN = 1; //stop
-//    while (SSPxCON2bits.PEN == 1);
+    uint8_t data[2];
+    data[0] = comFlags;
+    data[1] = comFlags | E_ON;
+    transferStatus = 0;
+    TWIHS0_Write(LCD_I2C_ADDRESS, data, 2);
+    while (!transferStatus);
+    transferStatus = 0;
+    TWIHS0_Read(LCD_I2C_ADDRESS, &b, 1);
+    while (!transferStatus);
+    transferStatus = 0;
+    TWIHS0_Write(LCD_I2C_ADDRESS, data, 1);
+    while (!transferStatus);
+    //TODO this is still not working consistently - LCDReadLine() returns some gibberish
+    
+    //    SSPxCON2bits.SEN = 1; //Start
+    //    while (SSPxCON2bits.SEN == 1);
+    //    SSPxBUF = LCD_I2C_ADDRESS;
+    //    while (SSPxSTATbits.BF || SSPxSTATbits.R_W);
+    //    SSPxBUF = comFlags;
+    //    while (SSPxSTATbits.BF || SSPxSTATbits.R_W);
+    //    SSPxBUF = comFlags | E_ON;
+    //    while (SSPxSTATbits.BF || SSPxSTATbits.R_W);
+    //    SSPxCON2bits.RSEN = 1; //restart
+    //    while (SSPxCON2bits.RSEN == 1);
+    //    SSPxBUF = LCD_I2C_ADDRESS | 1;
+    //    while (SSPxSTATbits.BF || SSPxSTATbits.R_W);
+    //    SSPxCON2bits.RCEN = 1;
+    //    while (SSPxSTATbits.BF == 0); //Wait for byte
+    //    b = SSPxBUF & 0b11110000; //Upper nibble
+    //    SSPxCON2bits.ACKDT = 1;
+    //    SSPxCON2bits.ACKEN = 1; //Send NACK
+    //    while (SSPxCON2bits.ACKEN == 1);
+    //    SSPxCON2bits.RSEN = 1; //restart
+    //    while (SSPxCON2bits.RSEN == 1);
+    //    SSPxBUF = LCD_I2C_ADDRESS;
+    //    while (SSPxSTATbits.BF || SSPxSTATbits.R_W);
+    //    SSPxBUF = comFlags;
+    //    while (SSPxSTATbits.BF || SSPxSTATbits.R_W);
+    //    SSPxCON2bits.PEN = 1; //stop
+    //    while (SSPxCON2bits.PEN == 1);
     return b;
 }
 
@@ -374,3 +385,8 @@ char LCDReadByte(char rs) {
     return ub | (lb >> 4);
 }
 
+void __delay_us(int delay) {
+    TC0_CH0_TimerPeriodSet(delay);
+    TC0_CH0_TimerStart();
+    while (!TC0_CH0_TimerPeriodHasExpired());
+}

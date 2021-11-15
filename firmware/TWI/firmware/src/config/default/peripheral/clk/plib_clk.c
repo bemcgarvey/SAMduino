@@ -53,18 +53,20 @@ Initialize Master clock (MCK)
 
 static void CLK_MasterClockInitialize(void)
 {
-    /* Program PMC_MCKR.PRES and wait for PMC_SR.MCKRDY to be set   */
-    PMC_REGS->PMC_MCKR = (PMC_REGS->PMC_MCKR & ~PMC_MCKR_PRES_Msk) | PMC_MCKR_PRES_CLK_1;
-    while ((PMC_REGS->PMC_SR & PMC_SR_MCKRDY_Msk) != PMC_SR_MCKRDY_Msk);
-
-    /* Program PMC_MCKR.MDIV and Wait for PMC_SR.MCKRDY to be set   */
-    PMC_REGS->PMC_MCKR = (PMC_REGS->PMC_MCKR & ~PMC_MCKR_MDIV_Msk) | PMC_MCKR_MDIV_PCK_DIV2;
-    while ((PMC_REGS->PMC_SR & PMC_SR_MCKRDY_Msk) != PMC_SR_MCKRDY_Msk);
 
     /* Program PMC_MCKR.CSS and Wait for PMC_SR.MCKRDY to be set    */
-    PMC_REGS->PMC_MCKR = (PMC_REGS->PMC_MCKR & ~PMC_MCKR_CSS_Msk) | PMC_MCKR_CSS_PLLA_CLK;
+    PMC_REGS->PMC_MCKR = (PMC_REGS->PMC_MCKR & ~PMC_MCKR_CSS_Msk) | PMC_MCKR_CSS_MAIN_CLK;
     while ((PMC_REGS->PMC_SR & PMC_SR_MCKRDY_Msk) != PMC_SR_MCKRDY_Msk);
 
+
+    /* Program PMC_MCKR.PRES and wait for PMC_SR.MCKRDY to be set   */
+    PMC_REGS->PMC_MCKR = (PMC_REGS->PMC_MCKR & ~PMC_MCKR_PRES_Msk) | PMC_MCKR_PRES_CLK_2;
+    while ((PMC_REGS->PMC_SR & PMC_SR_MCKRDY_Msk) != PMC_SR_MCKRDY_Msk);
+
+
+    /* Program PMC_MCKR.MDIV and Wait for PMC_SR.MCKRDY to be set   */
+    PMC_REGS->PMC_MCKR = (PMC_REGS->PMC_MCKR & ~PMC_MCKR_MDIV_Msk) | PMC_MCKR_MDIV_EQ_PCK;
+    while ((PMC_REGS->PMC_SR & PMC_SR_MCKRDY_Msk) != PMC_SR_MCKRDY_Msk);
 }
 
 
@@ -72,6 +74,26 @@ static void CLK_MasterClockInitialize(void)
 
 
 
+/*********************************************************************************
+Initialize Programmable Clock (PCKx)
+*********************************************************************************/
+
+static void CLK_ProgrammableClockInitialize(void)
+{
+    /* Disable selected programmable clock  */
+    PMC_REGS->PMC_SCDR = PMC_SCDR_PCK6_Msk;
+
+    /* Configure selected programmable clock    */
+    PMC_REGS->PMC_PCK[6]= PMC_PCK_CSS_MAIN_CLK | PMC_PCK_PRES(11);
+
+    /* Enable selected programmable clock   */
+    PMC_REGS->PMC_SCER =    PMC_SCER_PCK6_Msk;
+
+    /* Wait for clock to be ready   */
+    while( (PMC_REGS->PMC_SR & (PMC_SR_PCKRDY6_Msk) ) != (PMC_SR_PCKRDY6_Msk));
+
+
+}
 
 
 /*********************************************************************************
@@ -91,7 +113,9 @@ void CLOCK_Initialize( void )
 
 
 
+    /* Initialize Programmable Clock */
+    CLK_ProgrammableClockInitialize();
 
     /* Enable Peripheral Clock */
-    PMC_REGS->PMC_PCER0=0x90c80;
+    PMC_REGS->PMC_PCER0=0x890c80;
 }

@@ -76,7 +76,7 @@ void UART0_Initialize( void )
     UART0_REGS->UART_MR = ((UART_MR_BRSRCCK_PERIPH_CLK) | (UART_MR_PAR_NO) | (0 << UART_MR_FILTER_Pos));
 
     /* Configure UART0 Baud Rate */
-    UART0_REGS->UART_BRGR = UART_BRGR_CD(81);
+    UART0_REGS->UART_BRGR = UART_BRGR_CD(3);
 }
 
 UART_ERROR UART0_ErrorGet( void )

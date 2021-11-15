@@ -1,20 +1,23 @@
 /*******************************************************************************
-  UART0 PLIB
+  TC Peripheral Library Interface Source File
 
-  Company:
+  Company
     Microchip Technology Inc.
 
-  File Name:
-    plib_uart0.h
+  File Name
+    plib_tc0.c
 
-  Summary:
-    UART0 PLIB Header File
+  Summary
+    TC peripheral library source file.
 
-  Description:
-    None
+  Description
+    This file implements the interface to the TC peripheral library.  This
+    library provides access to and control of the associated peripheral
+    instance.
 
 *******************************************************************************/
 
+// DOM-IGNORE-BEGIN
 /*******************************************************************************
 * Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
 *
@@ -37,57 +40,97 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
-
-#ifndef PLIB_UART0_H
-#define PLIB_UART0_H
-
-#include "plib_uart_common.h"
-
-// DOM-IGNORE-BEGIN
-#ifdef __cplusplus  // Provide C++ Compatibility
-
-    extern "C" {
-
-#endif
 // DOM-IGNORE-END
 
+
 // *****************************************************************************
 // *****************************************************************************
-// Section: Interface
+// Section: Included Files
 // *****************************************************************************
 // *****************************************************************************
 
-#define UART0_FrequencyGet()    (uint32_t)(6000000UL)
+/*  This section lists the other files that are included in this file.
+*/
+#include "device.h"
+#include "plib_tc0.h"
+#include "interrupts.h"
 
-/****************************** UART0 API *********************************/
+ 
+ 
 
-void UART0_Initialize( void );
-
-UART_ERROR UART0_ErrorGet( void );
-
-bool UART0_SerialSetup( UART_SERIAL_SETUP *setup, uint32_t srcClkFreq );
-
-bool UART0_Write( void *buffer, const size_t size );
-
-bool UART0_Read( void *buffer, const size_t size );
-
-int UART0_ReadByte( void );
-
-void UART0_WriteByte( int data );
-
-bool UART0_TransmitterIsReady( void );
-
-bool UART0_TransmitComplete( void );
-
-bool UART0_ReceiverIsReady( void );
+ 
 
 
-// DOM-IGNORE-BEGIN
-#ifdef __cplusplus  // Provide C++ Compatibility
 
-    }
+/* Initialize channel in timer mode */
+void TC0_CH0_TimerInitialize (void)
+{
+    /* clock selection and waveform selection */
+    TC0_REGS->TC_CHANNEL[0].TC_CMR = TC_CMR_TCCLKS_TIMER_CLOCK1 | TC_CMR_WAVEFORM_WAVSEL_UP_RC | \
+                                                        TC_CMR_WAVE_Msk |(TC_CMR_WAVEFORM_CPCSTOP_Msk);
 
-#endif
+    /* write period */
+    TC0_REGS->TC_CHANNEL[0].TC_RC = 1660U;
 
-// DOM-IGNORE-END
-#endif // PLIB_UART0_H
+
+}
+
+/* Start the timer */
+void TC0_CH0_TimerStart (void)
+{
+    TC0_REGS->TC_CHANNEL[0].TC_CCR = (TC_CCR_CLKEN_Msk | TC_CCR_SWTRG_Msk);
+}
+
+/* Stop the timer */
+void TC0_CH0_TimerStop (void)
+{
+    TC0_REGS->TC_CHANNEL[0].TC_CCR = (TC_CCR_CLKDIS_Msk);
+}
+
+uint32_t TC0_CH0_TimerFrequencyGet( void )
+{
+    return (uint32_t)(1000000UL);
+}
+
+/* Configure timer period */
+void TC0_CH0_TimerPeriodSet (uint16_t period)
+{
+    TC0_REGS->TC_CHANNEL[0].TC_RC = period;
+}
+
+
+/* Read timer period */
+uint16_t TC0_CH0_TimerPeriodGet (void)
+{
+    return TC0_REGS->TC_CHANNEL[0].TC_RC;
+}
+
+/* Read timer counter value */
+uint16_t TC0_CH0_TimerCounterGet (void)
+{
+    return TC0_REGS->TC_CHANNEL[0].TC_CV;
+}
+
+/* Check if timer period status is set */
+bool TC0_CH0_TimerPeriodHasExpired(void)
+{
+    return (((TC0_REGS->TC_CHANNEL[0].TC_SR) & TC_SR_CPCS_Msk) >> TC_SR_CPCS_Pos);
+}
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+ 
+
+ 
+
+ 
+/**
+ End of File
+*/

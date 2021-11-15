@@ -19,6 +19,13 @@ children:
       - type: Dynamic
         attributes: {id: twihs0, value: '100000'}
   - type: Integer
+    attributes: {id: TWIHS_CLK_SRC_FREQ}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: twihs0, value: '150000000'}
+  - type: Integer
     attributes: {id: TWIHS_CWGR_CHDIV}
     children:
     - type: Values
@@ -40,4 +47,4 @@ children:
       - type: Dynamic
         attributes: {id: twihs0, value: '186'}
 - type: ElementPosition
-  attributes: {x: '33', y: '170', id: twihs0}
+  attributes: {x: '34', y: '170', id: twihs0}
