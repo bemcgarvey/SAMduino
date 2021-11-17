@@ -1,74 +1,25 @@
 files:
-- generatedChecksum: F58DB2348A0FCE945652B285010E5F8A
-  logicalPath: FreeRTOS/Source
-  name: FreeRTOS_tasks.c
-  physicalPath: ../../third_party/rtos/FreeRTOS/Source
-  security: NON_SECURE
-  type: SOURCE
-  userChecksum: F58DB2348A0FCE945652B285010E5F8A
-- generatedChecksum: null
-  logicalPath: ''
-  name: app.c
-  physicalPath: ../..
-  security: NON_SECURE
-  type: SOURCE
-  userChecksum: null
-- generatedChecksum: 8ACE0DEBD82F6829438A4674565451FB
-  logicalPath: FreeRTOS/Source
-  name: croutine.c
-  physicalPath: ../../third_party/rtos/FreeRTOS/Source
-  security: NON_SECURE
-  type: SOURCE
-  userChecksum: 8ACE0DEBD82F6829438A4674565451FB
-- generatedChecksum: EA052CFEAD3E59E304995DACA53CE9B6
-  logicalPath: config/default/driver/sst26
-  name: drv_sst26.c
-  physicalPath: driver/sst26/src
-  security: NON_SECURE
-  type: SOURCE
-  userChecksum: EA052CFEAD3E59E304995DACA53CE9B6
-- generatedChecksum: B3B5445B14BD9B6A35F1C5B995C9BBF7
-  logicalPath: FreeRTOS/Source
-  name: event_groups.c
-  physicalPath: ../../third_party/rtos/FreeRTOS/Source
-  security: NON_SECURE
-  type: SOURCE
-  userChecksum: B3B5445B14BD9B6A35F1C5B995C9BBF7
-- generatedChecksum: 6069C4FD56993BDA3B1FC223DD5BAA4A
+- generatedChecksum: 9D5EE038B893127B787BC03DFA6B467F
   logicalPath: config/default
   name: exceptions.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 6069C4FD56993BDA3B1FC223DD5BAA4A
-- generatedChecksum: B7DBFD6F500AAD4713403E985EB18EAE
-  logicalPath: config/default
-  name: freertos_hooks.c
-  physicalPath: ''
-  security: NON_SECURE
-  type: SOURCE
-  userChecksum: B7DBFD6F500AAD4713403E985EB18EAE
-- generatedChecksum: 972E955D94A63BA89BF6ABD6AADB1023
-  logicalPath: FreeRTOS/Source/portable/MemMang
-  name: heap_1.c
-  physicalPath: ../../third_party/rtos/FreeRTOS/Source/portable/MemMang
-  security: NON_SECURE
-  type: SOURCE
-  userChecksum: 972E955D94A63BA89BF6ABD6AADB1023
-- generatedChecksum: 278FA0E7D01200145CC69DEF0C81FF4F
+  userChecksum: 9D5EE038B893127B787BC03DFA6B467F
+- generatedChecksum: 09AE6D22DD1E906AA9517F457F3889F3
   logicalPath: config/default
   name: initialization.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 278FA0E7D01200145CC69DEF0C81FF4F
-- generatedChecksum: 6A84C4F7BB21CD41BA61B62604A6D99E
+  userChecksum: 09AE6D22DD1E906AA9517F457F3889F3
+- generatedChecksum: 300DD470761E49473D6C4A37BF633E67
   logicalPath: config/default
   name: interrupts.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 6A84C4F7BB21CD41BA61B62604A6D99E
+  userChecksum: 300DD470761E49473D6C4A37BF633E67
 - generatedChecksum: 6513F2461B8F476B68CA73906086047F
   logicalPath: config/default
   name: libc_syscalls.c
@@ -76,34 +27,20 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 6513F2461B8F476B68CA73906086047F
-- generatedChecksum: 3FEE521CEF14928AE38E7FA9BF6D75E6
-  logicalPath: FreeRTOS/Source
-  name: list.c
-  physicalPath: ../../third_party/rtos/FreeRTOS/Source
-  security: NON_SECURE
-  type: SOURCE
-  userChecksum: 3FEE521CEF14928AE38E7FA9BF6D75E6
-- generatedChecksum: null
+- generatedChecksum: F81A00E640818EDFB9E79C9BD241AEF4
   logicalPath: ''
   name: main.c
   physicalPath: ../..
   security: NON_SECURE
   type: SOURCE
-  userChecksum: null
-- generatedChecksum: 8FDD6248506F28B32C4F5FD9AA0D9C6F
-  logicalPath: config/default/osal
-  name: osal_freertos.c
-  physicalPath: osal
-  security: NON_SECURE
-  type: SOURCE
-  userChecksum: 8FDD6248506F28B32C4F5FD9AA0D9C6F
-- generatedChecksum: ACA23683DB25F8CC581B40961E2FFBD2
+  userChecksum: F81A00E640818EDFB9E79C9BD241AEF4
+- generatedChecksum: ECDF2E43CA643C3EA4AFF55013B0A8DD
   logicalPath: config/default/peripheral/clk
   name: plib_clk.c
   physicalPath: peripheral/clk
   security: NON_SECURE
   type: SOURCE
-  userChecksum: ACA23683DB25F8CC581B40961E2FFBD2
+  userChecksum: ECDF2E43CA643C3EA4AFF55013B0A8DD
 - generatedChecksum: D23DF612DB8267EDD9F5F3A463A02DB2
   logicalPath: config/default/peripheral/efc
   name: plib_efc.c
@@ -111,20 +48,20 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: D23DF612DB8267EDD9F5F3A463A02DB2
-- generatedChecksum: 1C1412C778F9B0D6EF7AA63D37FCCD3E
+- generatedChecksum: DFC72404F4CBE9428B328F0AAED83297
   logicalPath: config/default/peripheral/nvic
   name: plib_nvic.c
   physicalPath: peripheral/nvic
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 1C1412C778F9B0D6EF7AA63D37FCCD3E
-- generatedChecksum: 13D675AC65178FD42BD94662B0DFC4F0
+  userChecksum: DFC72404F4CBE9428B328F0AAED83297
+- generatedChecksum: 2E3F7EEDE851E9BAC8306B4F506AC220
   logicalPath: config/default/peripheral/pio
   name: plib_pio.c
   physicalPath: peripheral/pio
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 13D675AC65178FD42BD94662B0DFC4F0
+  userChecksum: 2E3F7EEDE851E9BAC8306B4F506AC220
 - generatedChecksum: 164CDE8DEA8E52ED78CD9E179EDDE260
   logicalPath: config/default/peripheral/qspi
   name: plib_qspi.c
@@ -139,20 +76,6 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: CBEC3B1A0CD099BE51536D94DED55A0F
-- generatedChecksum: A44EAFDF7F180C2C05A0AE0AEB3FB80C
-  logicalPath: FreeRTOS/Source/portable/GCC/SAM/CM7
-  name: port.c
-  physicalPath: ../../third_party/rtos/FreeRTOS/Source/portable/GCC/SAM/CM7
-  security: NON_SECURE
-  type: SOURCE
-  userChecksum: A44EAFDF7F180C2C05A0AE0AEB3FB80C
-- generatedChecksum: 09041728D74A4E3A32C7D4EAA96C4EE7
-  logicalPath: FreeRTOS/Source
-  name: queue.c
-  physicalPath: ../../third_party/rtos/FreeRTOS/Source
-  security: NON_SECURE
-  type: SOURCE
-  userChecksum: 09041728D74A4E3A32C7D4EAA96C4EE7
 - generatedChecksum: 3A35F794BD3C19E7B3142ED6806E4EFE
   logicalPath: config/default
   name: startup_xc32.c
@@ -160,41 +83,6 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 3A35F794BD3C19E7B3142ED6806E4EFE
-- generatedChecksum: D6CF30BDCE1A813D9ACF3905EBD6A871
-  logicalPath: FreeRTOS/Source
-  name: stream_buffer.c
-  physicalPath: ../../third_party/rtos/FreeRTOS/Source
-  security: NON_SECURE
-  type: SOURCE
-  userChecksum: D6CF30BDCE1A813D9ACF3905EBD6A871
-- generatedChecksum: 9063CE23C03357B7F90CA6887D4BCAF9
-  logicalPath: config/default/system/cache
-  name: sys_cache.c
-  physicalPath: system/cache
-  security: NON_SECURE
-  type: SOURCE
-  userChecksum: 9063CE23C03357B7F90CA6887D4BCAF9
-- generatedChecksum: 02C3C1B519E59992810626BB6098CF56
-  logicalPath: config/default/system/int
-  name: sys_int.c
-  physicalPath: system/int/src
-  security: NON_SECURE
-  type: SOURCE
-  userChecksum: 02C3C1B519E59992810626BB6098CF56
-- generatedChecksum: 8DEB57A843D4AB4748D2E8244B9803A1
-  logicalPath: config/default
-  name: tasks.c
-  physicalPath: ''
-  security: NON_SECURE
-  type: SOURCE
-  userChecksum: 8DEB57A843D4AB4748D2E8244B9803A1
-- generatedChecksum: F1B86F6E1527FD59A8713B67564F2898
-  logicalPath: FreeRTOS/Source
-  name: timers.c
-  physicalPath: ../../third_party/rtos/FreeRTOS/Source
-  security: NON_SECURE
-  type: SOURCE
-  userChecksum: F1B86F6E1527FD59A8713B67564F2898
 - generatedChecksum: A49786F231DE2706850DA13580EF4BB5
   logicalPath: config/default/stdio
   name: xc32_monitor.c
@@ -202,20 +90,6 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: A49786F231DE2706850DA13580EF4BB5
-- generatedChecksum: AF3A8D8AA610E7DFD3E38DDAC5E42074
-  logicalPath: FreeRTOS/Source/include
-  name: FreeRTOS.h
-  physicalPath: ../../third_party/rtos/FreeRTOS/Source/include
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: AF3A8D8AA610E7DFD3E38DDAC5E42074
-- generatedChecksum: 85814EC29A5445EBC540EAE6D59ECBDA
-  logicalPath: config/default
-  name: FreeRTOSConfig.h
-  physicalPath: ''
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: 85814EC29A5445EBC540EAE6D59ECBDA
 - generatedChecksum: 641EA28F78A04E01087965FE462B3419
   logicalPath: packs/ATSAMV71N21B_DFP/component
   name: acc.h
@@ -265,13 +139,6 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 625DFAF8957213A83B43E401F0F9B76D
-- generatedChecksum: null
-  logicalPath: ''
-  name: app.h
-  physicalPath: ../..
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: null
 - generatedChecksum: 14F1AD56D242EFD0AF76849C6ADFECC4
   logicalPath: packs/CMSIS/CMSIS/Core/Include
   name: cachel1_armv7.h
@@ -342,13 +209,6 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 52F91AC0727F2311EDA0E3BAA7719A9F
-- generatedChecksum: 804B5183E5BBA323B8475C016DE1CDD9
-  logicalPath: config/default
-  name: configuration.h
-  physicalPath: ''
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: 804B5183E5BBA323B8475C016DE1CDD9
 - generatedChecksum: 948CEA542F04017255B040816F368DF8
   logicalPath: packs/CMSIS/CMSIS/Core/Include
   name: core_cm7.h
@@ -356,13 +216,6 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 948CEA542F04017255B040816F368DF8
-- generatedChecksum: 48B661D8C967C6BC397001F10FB43D1D
-  logicalPath: FreeRTOS/Source/include
-  name: croutine.h
-  physicalPath: ../../third_party/rtos/FreeRTOS/Source/include
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: 48B661D8C967C6BC397001F10FB43D1D
 - generatedChecksum: 77A49F3B49CF83DE4BC85C743884DBE7
   logicalPath: packs/ATSAMV71N21B_DFP/component
   name: dacc.h
@@ -377,20 +230,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: B424335B8194FB845DFEE348D5ACCDA0
-- generatedChecksum: 3294A29051B09E634475E1FC9AE04834
+- generatedChecksum: FBB06A65D17A47052362488555D46BE8
   logicalPath: config/default
   name: definitions.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: 3294A29051B09E634475E1FC9AE04834
-- generatedChecksum: 1EA4EDD5EA90F43EC407DE32441159A9
-  logicalPath: FreeRTOS/Source/include
-  name: deprecated_definitions.h
-  physicalPath: ../../third_party/rtos/FreeRTOS/Source/include
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: 1EA4EDD5EA90F43EC407DE32441159A9
+  userChecksum: FBB06A65D17A47052362488555D46BE8
 - generatedChecksum: 3AF237725C26767B231B9DF6D83C3920
   logicalPath: config/default
   name: device.h
@@ -412,41 +258,6 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: D4DF9B77C2FAD66A278B6EFC86F5D1D4
-- generatedChecksum: 1D2094DFA60F847FFD4E8153B6E78027
-  logicalPath: config/default/driver
-  name: driver.h
-  physicalPath: driver
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: 1D2094DFA60F847FFD4E8153B6E78027
-- generatedChecksum: CC7DFCC51CD25171A3E400E18969354F
-  logicalPath: config/default/driver
-  name: driver_common.h
-  physicalPath: driver
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: CC7DFCC51CD25171A3E400E18969354F
-- generatedChecksum: 8EAE086FFBCC60C4343BAA26620B1204
-  logicalPath: config/default/driver/sst26
-  name: drv_sst26.h
-  physicalPath: driver/sst26
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: 8EAE086FFBCC60C4343BAA26620B1204
-- generatedChecksum: 39820E4FEA4DC1598585895FC87D27CD
-  logicalPath: config/default/driver/sst26
-  name: drv_sst26_definitions.h
-  physicalPath: driver/sst26
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: 39820E4FEA4DC1598585895FC87D27CD
-- generatedChecksum: D0F58EA0E69F1EC3040F9EB3C64B9737
-  logicalPath: config/default/driver/sst26
-  name: drv_sst26_local.h
-  physicalPath: driver/sst26/src
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: D0F58EA0E69F1EC3040F9EB3C64B9737
 - generatedChecksum: B47AFDC4BCD83F20528136ED659BF8A7
   logicalPath: packs/ATSAMV71N21B_DFP/component
   name: efc.h
@@ -461,13 +272,6 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: F58764DB84FAE55CC7A088BD8D11B6B0
-- generatedChecksum: B1D1D455E111FA70C46AD40562D78CE2
-  logicalPath: FreeRTOS/Source/include
-  name: event_groups.h
-  physicalPath: ../../third_party/rtos/FreeRTOS/Source/include
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: B1D1D455E111FA70C46AD40562D78CE2
 - generatedChecksum: D096C79BD5B10448F69434F981148958
   logicalPath: packs/ATSAMV71N21B_DFP/component
   name: fuses.h
@@ -559,13 +363,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 48C1CAD197BD52C6E48A6C4BA57521CE
-- generatedChecksum: 29BA9FEFBBD239DA757C0841F420946E
+- generatedChecksum: A85BC680A07148638C4FD2AD0DF14C04
   logicalPath: config/default
   name: interrupts.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: 29BA9FEFBBD239DA757C0841F420946E
+  userChecksum: A85BC680A07148638C4FD2AD0DF14C04
 - generatedChecksum: 0EBBEFA82D9C3EDCC36616B0EB43352A
   logicalPath: packs/ATSAMV71N21B_DFP/component
   name: isi.h
@@ -580,13 +384,6 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 3CB7388F5295AF7EBE9703E56E811824
-- generatedChecksum: FE17D325A06479D956285C5438994B83
-  logicalPath: FreeRTOS/Source/include
-  name: list.h
-  physicalPath: ../../third_party/rtos/FreeRTOS/Source/include
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: FE17D325A06479D956285C5438994B83
 - generatedChecksum: 4E113B7CD481442FD4E18D7AF4BD2033
   logicalPath: packs/ATSAMV71N21B_DFP/component
   name: matrix.h
@@ -622,13 +419,6 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 7D3D62342BF3F7EBB10EA52845608A80
-- generatedChecksum: DDE2C9D46642D120A0202AC851E1A777
-  logicalPath: FreeRTOS/Source/include
-  name: message_buffer.h
-  physicalPath: ../../third_party/rtos/FreeRTOS/Source/include
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: DDE2C9D46642D120A0202AC851E1A777
 - generatedChecksum: F5FCD557377E1329573379FB11471AD2
   logicalPath: packs/ATSAMV71N21B_DFP/component
   name: mlb.h
@@ -650,41 +440,6 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 47E760D36E42A7B436306A9CB4E72A0E
-- generatedChecksum: 2D674B8B1FCF07504AF90FA5CE2F9A23
-  logicalPath: FreeRTOS/Source/include
-  name: mpu_prototypes.h
-  physicalPath: ../../third_party/rtos/FreeRTOS/Source/include
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: 2D674B8B1FCF07504AF90FA5CE2F9A23
-- generatedChecksum: 953D372D8F7991D4F86AD4ABD42AE4CE
-  logicalPath: FreeRTOS/Source/include
-  name: mpu_wrappers.h
-  physicalPath: ../../third_party/rtos/FreeRTOS/Source/include
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: 953D372D8F7991D4F86AD4ABD42AE4CE
-- generatedChecksum: F0AD88762263B7CB89B02AB4F5876059
-  logicalPath: config/default/osal
-  name: osal.h
-  physicalPath: osal
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: F0AD88762263B7CB89B02AB4F5876059
-- generatedChecksum: 167A43EFF8A31441EBF85AC77958A30B
-  logicalPath: config/default/osal
-  name: osal_definitions.h
-  physicalPath: osal
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: 167A43EFF8A31441EBF85AC77958A30B
-- generatedChecksum: 9D6F205ECFDB2028C5CF766B52B5B7B2
-  logicalPath: config/default/osal
-  name: osal_freertos.h
-  physicalPath: osal
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: 9D6F205ECFDB2028C5CF766B52B5B7B2
 - generatedChecksum: 5E7A3789371F782859CEBEA0FF3B3E1D
   logicalPath: packs/ATSAMV71N21B_DFP/component
   name: pio.h
@@ -748,13 +503,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 55ECCC7FA71BD15B46EF80DC0515ED7A
-- generatedChecksum: 2799B88EE32B85EB62B576BA6B180E7A
+- generatedChecksum: 1CE95B39F9CBE23F0AC302940F361F19
   logicalPath: config/default/peripheral/pio
   name: plib_pio.h
   physicalPath: peripheral/pio
   security: NON_SECURE
   type: HEADER
-  userChecksum: 2799B88EE32B85EB62B576BA6B180E7A
+  userChecksum: 1CE95B39F9CBE23F0AC302940F361F19
 - generatedChecksum: B7F8E9BB36B9F587A16CFABC3AAA95D4
   logicalPath: config/default/peripheral/qspi
   name: plib_qspi.h
@@ -797,27 +552,6 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 0FED2123B7911329370226CE4963F82D
-- generatedChecksum: 5A686FF678CBFBB4A1FEB86B66DCEC98
-  logicalPath: FreeRTOS/Source/include
-  name: portable.h
-  physicalPath: ../../third_party/rtos/FreeRTOS/Source/include
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: 5A686FF678CBFBB4A1FEB86B66DCEC98
-- generatedChecksum: B16F3C9A1AF9C6C726871E79F424A3F9
-  logicalPath: FreeRTOS/Source/portable/GCC/SAM/CM7
-  name: portmacro.h
-  physicalPath: ../../third_party/rtos/FreeRTOS/Source/portable/GCC/SAM/CM7
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: B16F3C9A1AF9C6C726871E79F424A3F9
-- generatedChecksum: 696F66B2428CC530389C53B5FE617CE1
-  logicalPath: FreeRTOS/Source/include
-  name: projdefs.h
-  physicalPath: ../../third_party/rtos/FreeRTOS/Source/include
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: 696F66B2428CC530389C53B5FE617CE1
 - generatedChecksum: 930DD0099F3AB739C5CE12C0FB228D7A
   logicalPath: packs/ATSAMV71N21B_DFP/component
   name: pwm.h
@@ -853,13 +587,6 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: C53AC72681597888D5EF49FEB5647CD9
-- generatedChecksum: 6CB1FF8C27E6755C63D75369D1D7A37A
-  logicalPath: FreeRTOS/Source/include
-  name: queue.h
-  physicalPath: ../../third_party/rtos/FreeRTOS/Source/include
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: 6CB1FF8C27E6755C63D75369D1D7A37A
 - generatedChecksum: B140BC6B1FBAC0652E8807FCA76FD6FB
   logicalPath: packs/ATSAMV71N21B_DFP/component
   name: rstc.h
@@ -944,13 +671,6 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: EFD4919C4F00C449282C5AC64C48A12C
-- generatedChecksum: 9F1AE7D29D09ED8CC21F3DA08049FB79
-  logicalPath: FreeRTOS/Source/include
-  name: semphr.h
-  physicalPath: ../../third_party/rtos/FreeRTOS/Source/include
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: 9F1AE7D29D09ED8CC21F3DA08049FB79
 - generatedChecksum: B89CBA1ADC8AB657E0F79BE75F33B419
   logicalPath: packs/ATSAMV71N21B_DFP/component
   name: smc.h
@@ -1000,20 +720,6 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 0DBEDC214B3697F30520FAB289AC3BF7
-- generatedChecksum: D0D11C3D2D1BD585018AE271E1AC3B8F
-  logicalPath: FreeRTOS/Source/include
-  name: stack_macros.h
-  physicalPath: ../../third_party/rtos/FreeRTOS/Source/include
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: D0D11C3D2D1BD585018AE271E1AC3B8F
-- generatedChecksum: 7C71A9D2BEF16AC21C17ED5C2452C263
-  logicalPath: FreeRTOS/Source/include
-  name: stream_buffer.h
-  physicalPath: ../../third_party/rtos/FreeRTOS/Source/include
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: 7C71A9D2BEF16AC21C17ED5C2452C263
 - generatedChecksum: A8ED1F2482E399D17FE0B33C8EB1E864
   logicalPath: packs/ATSAMV71N21B_DFP/component
   name: supc.h
@@ -1028,62 +734,6 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 79F0E1692B21D1A28458F578ABD0284E
-- generatedChecksum: AFAAF7D896D57569CA4CF73BB3339481
-  logicalPath: config/default/system/cache
-  name: sys_cache.h
-  physicalPath: system/cache
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: AFAAF7D896D57569CA4CF73BB3339481
-- generatedChecksum: 6BB6C54C5CD963A5A940CF7BB28F4E10
-  logicalPath: config/default/system/debug
-  name: sys_debug.h
-  physicalPath: system/debug
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: 6BB6C54C5CD963A5A940CF7BB28F4E10
-- generatedChecksum: 1329D2DEB6E5AC9515AD4D165C60DC74
-  logicalPath: config/default/system/int
-  name: sys_int.h
-  physicalPath: system/int
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: 1329D2DEB6E5AC9515AD4D165C60DC74
-- generatedChecksum: 00278F169FFB0CBBAB3A68B5D647F093
-  logicalPath: config/default/system/int
-  name: sys_int_mapping.h
-  physicalPath: system/int
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: 00278F169FFB0CBBAB3A68B5D647F093
-- generatedChecksum: BE95B4F134C5C929787B9DA6FDBF3501
-  logicalPath: config/default/system
-  name: system.h
-  physicalPath: system
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: BE95B4F134C5C929787B9DA6FDBF3501
-- generatedChecksum: C3F5136D520DAC4416512EBFCCA023C3
-  logicalPath: config/default/system
-  name: system_common.h
-  physicalPath: system
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: C3F5136D520DAC4416512EBFCCA023C3
-- generatedChecksum: 1C75A8A6B60598A2FD0D533F57839B72
-  logicalPath: config/default/system
-  name: system_module.h
-  physicalPath: system
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: 1C75A8A6B60598A2FD0D533F57839B72
-- generatedChecksum: 84B3224817BDD8B37961BB3B3441E134
-  logicalPath: FreeRTOS/Source/include
-  name: task.h
-  physicalPath: ../../third_party/rtos/FreeRTOS/Source/include
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: 84B3224817BDD8B37961BB3B3441E134
 - generatedChecksum: E20E40000C2C5AEF32D35EF813A1905E
   logicalPath: packs/ATSAMV71N21B_DFP/component
   name: tc.h
@@ -1119,13 +769,6 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 3160A0FBF453DE685FD22FD7EACD1226
-- generatedChecksum: C8BB70E2423A57902E9FDC0C9EC81F8D
-  logicalPath: FreeRTOS/Source/include
-  name: timers.h
-  physicalPath: ../../third_party/rtos/FreeRTOS/Source/include
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: C8BB70E2423A57902E9FDC0C9EC81F8D
 - generatedChecksum: E7B1CC92ABE4830B5244251AB8FA4FB0
   logicalPath: config/default
   name: toolchain_specifics.h
@@ -1259,13 +902,6 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: AB10AA1EF03FCD2400DD1D1BB25B875B
-- generatedChecksum: null
-  logicalPath: config/default
-  name: user.h
-  physicalPath: ''
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: null
 - generatedChecksum: AC9615149E87C74317CD8C3C553D295A
   logicalPath: packs/ATSAMV71N21B_DFP/component
   name: utmi.h
@@ -1323,18 +959,6 @@ settings:
   delimiter: ;
   key: extra-include-directories
   security: NON_SECURE
-  value: ../src/third_party/rtos/FreeRTOS/Source/include;
-- append: true
-  category: C32
-  delimiter: ;
-  key: extra-include-directories
-  security: NON_SECURE
-  value: ../src/third_party/rtos/FreeRTOS/Source/portable/GCC/SAM/CM7;
-- append: true
-  category: C32
-  delimiter: ;
-  key: extra-include-directories
-  security: NON_SECURE
   value: ../src;../src/config/default;../src/packs/ATSAMV71N21B_DFP;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/CMSIS/
 - append: false
   category: C32-LD
@@ -1354,12 +978,6 @@ settings:
   key: preprocessor-macros
   security: NON_SECURE
   value: ''
-- append: true
-  category: C32CPP
-  delimiter: ;
-  key: extra-include-directories
-  security: NON_SECURE
-  value: ../src/third_party/rtos/FreeRTOS/Source/include;../src/third_party/rtos/FreeRTOS/Source/portable/GCC/SAM/CM7;
 - append: true
   category: C32CPP
   delimiter: ;

@@ -4,20 +4,6 @@ attributes: {id: uart0}
 children:
 - type: Symbols
   children:
-  - type: Integer
-    attributes: {id: BRG_VALUE}
-    children:
-    - type: Values
-      children:
-      - type: Dynamic
-        attributes: {id: uart0, value: '81'}
-  - type: Integer
-    attributes: {id: UART_CLOCK_FREQ}
-    children:
-    - type: Values
-      children:
-      - type: Dynamic
-        attributes: {id: uart0, value: '150000000'}
   - type: Boolean
     attributes: {id: UART_INTERRUPT_MODE_ENABLE}
     children:
@@ -70,4 +56,4 @@ children:
         children:
         - {type: Value, value: UART}
 - type: ElementPosition
-  attributes: {x: '7', y: '415', id: uart0}
+  attributes: {x: '19', y: '347', id: uart0}

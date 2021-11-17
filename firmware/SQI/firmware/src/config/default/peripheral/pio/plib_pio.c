@@ -72,12 +72,12 @@ void PIO_Initialize ( void )
     /* PORTA Output Write Enable */
     ((pio_registers_t*)PIO_PORT_A)->PIO_OWER = PIO_OWER_Msk;
     /* PORTA Output Direction Enable */
-    ((pio_registers_t*)PIO_PORT_A)->PIO_OER = 0x800;
-    ((pio_registers_t*)PIO_PORT_A)->PIO_ODR = ~0x800;
+    ((pio_registers_t*)PIO_PORT_A)->PIO_OER = 0x0;
+    ((pio_registers_t*)PIO_PORT_A)->PIO_ODR = ~0x0;
     /* PORTA Initial state High */
-    ((pio_registers_t*)PIO_PORT_A)->PIO_ODSR = 0x800;
+    ((pio_registers_t*)PIO_PORT_A)->PIO_ODSR = 0x0;
     /* PORTA drive control */
-    ((pio_registers_t*)PIO_PORT_A)->PIO_DRIVER = 0x0;
+    ((pio_registers_t*)PIO_PORT_A)->PIO_DRIVER = 0x27800;
 
     /************************ PIO B Initialization ************************/
     ((pio_registers_t*)PIO_PORT_B)->PIO_PER = 0xFFFFFFFF;
@@ -108,12 +108,15 @@ void PIO_Initialize ( void )
     /* PORTD Output Write Enable */
     ((pio_registers_t*)PIO_PORT_D)->PIO_OWER = PIO_OWER_Msk;
     /* PORTD Output Direction Enable */
-    ((pio_registers_t*)PIO_PORT_D)->PIO_OER = 0x30;
-    ((pio_registers_t*)PIO_PORT_D)->PIO_ODR = ~0x30;
+    ((pio_registers_t*)PIO_PORT_D)->PIO_OER = 0x10;
+    ((pio_registers_t*)PIO_PORT_D)->PIO_ODR = ~0x10;
     /* PORTD Initial state High */
-    ((pio_registers_t*)PIO_PORT_D)->PIO_ODSR = 0x30;
+    ((pio_registers_t*)PIO_PORT_D)->PIO_ODSR = 0x10;
+    /* PORTD Glitch/Debounce Filter Enable */
+    ((pio_registers_t*)PIO_PORT_D)->PIO_IFER = 0x100;
+    ((pio_registers_t*)PIO_PORT_D)->PIO_IFSCER = 0x100;
     /* PORTD drive control */
-    ((pio_registers_t*)PIO_PORT_D)->PIO_DRIVER = 0x0;
+    ((pio_registers_t*)PIO_PORT_D)->PIO_DRIVER = 0x80000000;
 
 }
 

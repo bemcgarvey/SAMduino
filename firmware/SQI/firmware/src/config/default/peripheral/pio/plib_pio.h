@@ -62,23 +62,23 @@
 // *****************************************************************************
 
 
-/*** Macros for GREEN_LED pin ***/
-#define GREEN_LED_Set()               (PIOD_REGS->PIO_SODR = (1<<5))
-#define GREEN_LED_Clear()             (PIOD_REGS->PIO_CODR = (1<<5))
-#define GREEN_LED_Toggle()            (PIOD_REGS->PIO_ODSR ^= (1<<5))
-#define GREEN_LED_OutputEnable()      (PIOD_REGS->PIO_OER = (1<<5))
-#define GREEN_LED_InputEnable()       (PIOD_REGS->PIO_ODR = (1<<5))
-#define GREEN_LED_Get()               ((PIOD_REGS->PIO_PDSR >> 5) & 0x1)
-#define GREEN_LED_PIN                  PIO_PIN_PD5
+/*** Macros for Button1 pin ***/
+#define Button1_Set()               (PIOD_REGS->PIO_SODR = (1<<8))
+#define Button1_Clear()             (PIOD_REGS->PIO_CODR = (1<<8))
+#define Button1_Toggle()            (PIOD_REGS->PIO_ODSR ^= (1<<8))
+#define Button1_OutputEnable()      (PIOD_REGS->PIO_OER = (1<<8))
+#define Button1_InputEnable()       (PIOD_REGS->PIO_ODR = (1<<8))
+#define Button1_Get()               ((PIOD_REGS->PIO_PDSR >> 8) & 0x1)
+#define Button1_PIN                  PIO_PIN_PD8
 
-/*** Macros for RED_LED pin ***/
-#define RED_LED_Set()               (PIOD_REGS->PIO_SODR = (1<<4))
-#define RED_LED_Clear()             (PIOD_REGS->PIO_CODR = (1<<4))
-#define RED_LED_Toggle()            (PIOD_REGS->PIO_ODSR ^= (1<<4))
-#define RED_LED_OutputEnable()      (PIOD_REGS->PIO_OER = (1<<4))
-#define RED_LED_InputEnable()       (PIOD_REGS->PIO_ODR = (1<<4))
-#define RED_LED_Get()               ((PIOD_REGS->PIO_PDSR >> 4) & 0x1)
-#define RED_LED_PIN                  PIO_PIN_PD4
+/*** Macros for LED pin ***/
+#define LED_Set()               (PIOD_REGS->PIO_SODR = (1<<4))
+#define LED_Clear()             (PIOD_REGS->PIO_CODR = (1<<4))
+#define LED_Toggle()            (PIOD_REGS->PIO_ODSR ^= (1<<4))
+#define LED_OutputEnable()      (PIOD_REGS->PIO_OER = (1<<4))
+#define LED_InputEnable()       (PIOD_REGS->PIO_ODR = (1<<4))
+#define LED_Get()               ((PIOD_REGS->PIO_PDSR >> 4) & 0x1)
+#define LED_PIN                  PIO_PIN_PD4
 
 
 // *****************************************************************************

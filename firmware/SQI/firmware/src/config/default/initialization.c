@@ -43,7 +43,6 @@
 // Section: Included Files
 // *****************************************************************************
 // *****************************************************************************
-#include "configuration.h"
 #include "definitions.h"
 #include "device.h"
 
@@ -66,22 +65,6 @@
 // Section: Driver Initialization Data
 // *****************************************************************************
 // *****************************************************************************
-// <editor-fold defaultstate="collapsed" desc="DRV_SST26 Initialization Data">
-
-const DRV_SST26_PLIB_INTERFACE drvSST26PlibAPI = {
-    .CommandWrite   = QSPI_CommandWrite,
-    .RegisterRead   = QSPI_RegisterRead,
-    .RegisterWrite  = QSPI_RegisterWrite,
-    .MemoryRead     = QSPI_MemoryRead,
-    .MemoryWrite    = QSPI_MemoryWrite
-};
-
-const DRV_SST26_INIT drvSST26InitData =
-{
-    .sst26Plib      = &drvSST26PlibAPI,
-};
-// </editor-fold>
-
 
 
 // *****************************************************************************
@@ -89,8 +72,6 @@ const DRV_SST26_INIT drvSST26InitData =
 // Section: System Data
 // *****************************************************************************
 // *****************************************************************************
-/* Structure to hold the object handles for the modules in the system. */
-SYSTEM_OBJECTS sysObj;
 
 // *****************************************************************************
 // *****************************************************************************
@@ -168,12 +149,7 @@ void SYS_Initialize ( void* data )
 	WDT_REGS->WDT_MR = WDT_MR_WDDIS_Msk; 		// Disable WDT 
 
 
-    sysObj.drvSST26 = DRV_SST26_Initialize((SYS_MODULE_INDEX)DRV_SST26_INDEX, (SYS_MODULE_INIT *)&drvSST26InitData);
 
-
-
-
-    APP_Initialize();
 
 
     NVIC_Initialize();

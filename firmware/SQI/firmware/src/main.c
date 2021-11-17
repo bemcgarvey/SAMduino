@@ -34,24 +34,32 @@
 // *****************************************************************************
 // *****************************************************************************
 
-int main ( void )
-{
+void waitPress(void) {
+    static bool pressed = false;
+    while (Button1_Get() && !pressed);
+    pressed = true;
+    while (!Button1_Get() && pressed);
+    pressed = false;
+}
+
+int main(void) {
     /* Initialize all modules */
-    SYS_Initialize ( NULL );
-    printf("Starting\r\n");
-    while ( true )
-    {
-        /* Maintain state machines of all polled MPLAB Harmony modules. */
-        SYS_Tasks ( );
+    SYS_Initialize(NULL);
+
+    while (true) {
+        printf("Starting\r\n");
+        waitPress();
+        printf("Done\r\n");
+        waitPress();
     }
 
     /* Execution should not come here during normal operation */
 
-    return ( EXIT_FAILURE );
+    return ( EXIT_FAILURE);
 }
 
 
 /*******************************************************************************
  End of File
-*/
+ */
 
