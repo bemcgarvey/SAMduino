@@ -26,7 +26,7 @@
 #include <stdbool.h>                    // Defines true
 #include <stdlib.h>                     // Defines EXIT_FAILURE
 #include "definitions.h"                // SYS function prototypes
-#include "tasks.h"
+#include "basic_tasks.h"
 
 // *****************************************************************************
 // *****************************************************************************
@@ -38,7 +38,6 @@ int main ( void )
 {
     /* Initialize all modules */
     SYS_Initialize ( NULL );
-    setupTasks();
     while ( true )
     {
         //Execution should never come to here

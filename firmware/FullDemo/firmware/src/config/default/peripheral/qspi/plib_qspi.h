@@ -1,26 +1,24 @@
 /*******************************************************************************
-  Cortex-M L1 Cache Header
+Interface definition of QSPI PLIB.
 
-  File Name:
-    device_cache.h
+ Company:
+    Microchip Technology Inc.
 
-  Summary:
-    Preprocessor definitions to provide L1 Cache control.
+ File Name:
+    plib_qspi.h
 
-  Description:
-    An MPLAB PLIB or Project can include this header to perform cache cleans,
-    invalidates etc. For the DCache and ICache.
+ Summary:
+    Interface definition of the Quad Serial Peripheral Interface Plib (QSPI).
 
-  Remarks:
-    This header should not define any prototypes or data definitions, or
-    include any files that do.  The file only provides macro definitions for
-    build-time.
-
+ Description:
+    This file defines the interface for the QSPI Plib.
+    It allows user to setup QSPI and transfer data to and from slave devices
+    attached.
 *******************************************************************************/
 
 // DOM-IGNORE-BEGIN
 /*******************************************************************************
-* Copyright (C) 2019 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -43,54 +41,57 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef DEVICE_CACHE_H
-#define DEVICE_CACHE_H
+#ifndef PLIB_QSPI_H // Guards against multiple inclusion
+#define PLIB_QSPI_H
 
 // *****************************************************************************
 // *****************************************************************************
 // Section: Included Files
 // *****************************************************************************
 // *****************************************************************************
-/*  This section Includes other configuration headers necessary to completely
-    define this configuration.
+
+/* This section lists the other files that are included in this file.
 */
 
 #include "device.h"
+#include "plib_qspi_common.h"
 
 // DOM-IGNORE-BEGIN
-#ifdef __cplusplus  // Provide C++ Compatibility
-
-extern "C" {
-
+#ifdef __cplusplus // Provide C++ Compatibility
+    extern "C" {
 #endif
 // DOM-IGNORE-END
 
 // *****************************************************************************
 // *****************************************************************************
-// Section: L1 Cache Configuration
+// Section: Data Types
 // *****************************************************************************
 // *****************************************************************************
 
-#define DATA_CACHE_IS_ENABLED()            			   (SCB->CCR & (uint32_t)SCB_CCR_DC_Msk)
-#define INSTRUCTION_CACHE_IS_ENABLED()     			   (SCB->CCR & (uint32_t)SCB_CCR_IC_Msk)
+// *****************************************************************************
+// *****************************************************************************
+// Section: Interface Routines
+// *****************************************************************************
+// *****************************************************************************
 
-#define ICACHE_ENABLE()
-#define ICACHE_DISABLE()
-#define ICACHE_INVALIDATE()
+void QSPI_Initialize( void );
 
-#define DCACHE_ENABLE()
-#define DCACHE_DISABLE()
-#define DCACHE_INVALIDATE()
-#define DCACHE_CLEAN()
-#define DCACHE_CLEAN_INVALIDATE()
-#define DCACHE_CLEAN_BY_ADDR(addr,sz)
-#define DCACHE_INVALIDATE_BY_ADDR(addr,sz)
-#define DCACHE_CLEAN_INVALIDATE_BY_ADDR(addr,sz)
+void QSPI_EndTransfer( void );
 
-//DOM-IGNORE-BEGIN
-#ifdef __cplusplus
+bool QSPI_CommandWrite( qspi_command_xfer_t *qspi_command_xfer, uint32_t address );
+
+bool QSPI_RegisterRead( qspi_register_xfer_t *qspi_register_xfer, uint32_t *rx_data, uint8_t rx_data_length );
+
+bool QSPI_RegisterWrite( qspi_register_xfer_t *qspi_register_xfer, uint32_t *tx_data, uint8_t tx_data_length );
+
+bool QSPI_MemoryRead( qspi_memory_xfer_t *qspi_memory_xfer, uint32_t *rx_data, uint32_t rx_data_length, uint32_t address );
+
+bool QSPI_MemoryWrite( qspi_memory_xfer_t *qspi_memory_xfer, uint32_t *tx_data, uint32_t tx_data_length, uint32_t address );
+
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus // Provide C++ Compatibility
 }
 #endif
-//DOM-IGNORE-END
+// DOM-IGNORE-END
 
-#endif // #ifndef DEVICE_CACHE_H
+#endif /* PLIB_QSPI_H */

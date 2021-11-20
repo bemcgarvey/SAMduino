@@ -1,10 +1,8 @@
 
-#include "tasks.h"
+#include "basic_tasks.h"
 #include "definitions.h"
-
-#define LEFT_BUTTON_BIT  (1 << 0)
-#define RIGHT_BUTTON_BIT (1 << 1)
-#define UART_RX_BIT      (1 << 2)
+#include "flash.h"
+#include <ctype.h>
 
 //task functions
 void blinkTask(void *pvParameters);
@@ -19,7 +17,7 @@ void mainMenu(void);
 void buttonsAndLEDs(void);
 void buttonIntCallback(PIO_PIN pin, uintptr_t context);
 
-void setupTasks(void) {
+void setupBasicTasks(void) {
     //Register callbacks
     PIO_PinInterruptCallbackRegister(LeftButton_PIN, buttonIntCallback, 0);
     PIO_PinInterruptCallbackRegister(RightButton_PIN, buttonIntCallback, 0);
@@ -27,12 +25,10 @@ void setupTasks(void) {
     PIO_PinInterruptEnable(RightButton_PIN);
     //Create tasks
     xTaskCreate(blinkTask, "blink", configMINIMAL_STACK_SIZE, (void *) NULL, 1, NULL);
-    xTaskCreate(menuTask, "menu", configMINIMAL_STACK_SIZE, (void *) NULL, 2, NULL);
+    xTaskCreate(menuTask, "menu", configMINIMAL_STACK_SIZE + 2048, (void *) NULL, 2, NULL);
     xTaskCreate(uart0RxTask, "uartRx", configMINIMAL_STACK_SIZE, (void *) NULL, 1, NULL);
     //Create other object
     menuEventGroup = xEventGroupCreate();
-    //Start the scheduler
-    vTaskStartScheduler();
 }
 
 void blinkTask(void *pvParameters) {
@@ -62,6 +58,8 @@ void menuTask(void *pvParameters) {
         UART0_Read(&rx, 1);
         switch (rx) {
             case '1': buttonsAndLEDs();
+                break;
+            case '2': flashMenu();
                 break;
             default:
                 break;
@@ -135,4 +133,42 @@ void uart0RxTask(void *pvParameters) {
         }
         xEventGroupSetBits(menuEventGroup, UART_RX_BIT);
     }
+}
+
+void _mon_putc(char c);
+
+int getStr(const char *prompt, char *buffer, int maxLen) {
+    EventBits_t uxBits;
+    int len = 0;
+    bool done = false;
+    if (prompt) {
+        printf(prompt);
+    }
+    do {
+        uxBits = xEventGroupWaitBits(menuEventGroup
+                , UART_RX_BIT
+                , pdTRUE, pdFALSE, portMAX_DELAY);
+        if (uxBits & UART_RX_BIT) {
+            uint8_t rx;
+            UART0_Read(&rx, 1);
+            if (rx == '\r' || rx == '\n') {
+                done = true;
+            } else if ((rx == '\b' || rx == 0x7f) && len > 0) {
+                _mon_putc(0x7f);
+                --buffer;
+                --len;
+            } else if (isprint(rx)) {
+                _mon_putc(rx);
+                *buffer = rx;
+                ++buffer;
+                ++len;
+                if (len == maxLen - 1) {
+                    done = true;
+                }
+            }
+        }
+    } while (!done);
+    *buffer = '\0';
+    printf("\r\n");
+    return len;
 }

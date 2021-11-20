@@ -1,17 +1,22 @@
 /*******************************************************************************
-  System Initialization File
+  System Configuration Header
 
   File Name:
-    initialization.c
+    configuration.h
 
   Summary:
-    This file contains source code necessary to initialize the system.
+    Build-time configuration header for the system defined by this project.
 
   Description:
-    This file contains source code necessary to initialize the system.  It
-    implements the "SYS_Initialize" function, defines the configuration bits,
-    and allocates any necessary global system resources,
- *******************************************************************************/
+    An MPLAB Project may have multiple configurations.  This file defines the
+    build-time options for a single configuration.
+
+  Remarks:
+    This configuration header must not define any prototypes or data
+    definitions (or include any files that do).  It only provides macro
+    definitions for build-time configuration options
+
+*******************************************************************************/
 
 // DOM-IGNORE-BEGIN
 /*******************************************************************************
@@ -35,73 +40,35 @@
 * FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
- *******************************************************************************/
+*******************************************************************************/
 // DOM-IGNORE-END
+
+#ifndef CONFIGURATION_H
+#define CONFIGURATION_H
 
 // *****************************************************************************
 // *****************************************************************************
 // Section: Included Files
 // *****************************************************************************
 // *****************************************************************************
-#include "configuration.h"
-#include "definitions.h"
+/*  This section Includes other configuration headers necessary to completely
+    define this configuration.
+*/
+
+#include "user.h"
 #include "device.h"
 
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
 
+extern "C" {
 
-// ****************************************************************************
-// ****************************************************************************
-// Section: Configuration Bits
-// ****************************************************************************
-// ****************************************************************************
-#pragma config TCM_CONFIGURATION = 0
-#pragma config SECURITY_BIT = CLEAR
-#pragma config BOOT_MODE = SET
-
-
-
+#endif
+// DOM-IGNORE-END
 
 // *****************************************************************************
 // *****************************************************************************
-// Section: Driver Initialization Data
-// *****************************************************************************
-// *****************************************************************************
-// <editor-fold defaultstate="collapsed" desc="DRV_SST26 Initialization Data">
-
-const DRV_SST26_PLIB_INTERFACE drvSST26PlibAPI = {
-    .CommandWrite   = QSPI_CommandWrite,
-    .RegisterRead   = QSPI_RegisterRead,
-    .RegisterWrite  = QSPI_RegisterWrite,
-    .MemoryRead     = QSPI_MemoryRead,
-    .MemoryWrite    = QSPI_MemoryWrite
-};
-
-const DRV_SST26_INIT drvSST26InitData =
-{
-    .sst26Plib      = &drvSST26PlibAPI,
-};
-// </editor-fold>
-
-
-
-// *****************************************************************************
-// *****************************************************************************
-// Section: System Data
-// *****************************************************************************
-// *****************************************************************************
-/* Structure to hold the object handles for the modules in the system. */
-SYSTEM_OBJECTS sysObj;
-
-// *****************************************************************************
-// *****************************************************************************
-// Section: Library/Stack Initialization Data
-// *****************************************************************************
-// *****************************************************************************
-
-
-// *****************************************************************************
-// *****************************************************************************
-// Section: System Initialization
+// Section: System Configuration
 // *****************************************************************************
 // *****************************************************************************
 
@@ -109,72 +76,46 @@ SYSTEM_OBJECTS sysObj;
 
 // *****************************************************************************
 // *****************************************************************************
-// Section: Local initialization functions
+// Section: System Service Configuration
 // *****************************************************************************
 // *****************************************************************************
 
-/*******************************************************************************
-  Function:
-    void STDIO_BufferModeSet ( void )
 
-  Summary:
-    Sets the buffering mode for stdin and stdout
+// *****************************************************************************
+// *****************************************************************************
+// Section: Driver Configuration
+// *****************************************************************************
+// *****************************************************************************
+/* SST26 Driver Instance Configuration */
+#define DRV_SST26_INDEX                 0
+#define DRV_SST26_CLIENTS_NUMBER        1
+#define DRV_SST26_START_ADDRESS         0x0
+#define DRV_SST26_PAGE_SIZE             256
+#define DRV_SST26_ERASE_BUFFER_SIZE     4096
 
-  Remarks:
- ********************************************************************************/
-static void STDIO_BufferModeSet(void)
-{
 
-    /* Make stdin unbuffered */
-    setbuf(stdin, NULL);
 
-    /* Make stdout unbuffered */
-    setbuf(stdout, NULL);
+// *****************************************************************************
+// *****************************************************************************
+// Section: Middleware & Other Library Configuration
+// *****************************************************************************
+// *****************************************************************************
+
+
+// *****************************************************************************
+// *****************************************************************************
+// Section: Application Configuration
+// *****************************************************************************
+// *****************************************************************************
+
+
+//DOM-IGNORE-BEGIN
+#ifdef __cplusplus
 }
+#endif
+//DOM-IGNORE-END
 
-
-
-
-/*******************************************************************************
-  Function:
-    void SYS_Initialize ( void *data )
-
-  Summary:
-    Initializes the board, services, drivers, application and other modules.
-
-  Remarks:
- */
-
-void SYS_Initialize ( void* data )
-{
-
-    STDIO_BufferModeSet();
-
-
-
-    EFC_Initialize();
-  
-    CLOCK_Initialize();
-	PIO_Initialize();
-
-
-
-    QSPI_Initialize();
-
-	UART0_Initialize();
-
-	RSWDT_REGS->RSWDT_MR = RSWDT_MR_WDDIS_Msk;	// Disable RSWDT 
-
-	WDT_REGS->WDT_MR = WDT_MR_WDDIS_Msk; 		// Disable WDT 
-
-
-    sysObj.drvSST26 = DRV_SST26_Initialize((SYS_MODULE_INDEX)DRV_SST26_INDEX, (SYS_MODULE_INIT *)&drvSST26InitData);
-
-    NVIC_Initialize();
-
-}
-
-
+#endif // CONFIGURATION_H
 /*******************************************************************************
  End of File
 */

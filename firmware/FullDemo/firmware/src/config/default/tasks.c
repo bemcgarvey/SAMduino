@@ -1,26 +1,27 @@
 /*******************************************************************************
-  Cortex-M L1 Cache Header
+ System Tasks File
 
   File Name:
-    device_cache.h
+    tasks.c
 
   Summary:
-    Preprocessor definitions to provide L1 Cache control.
+    This file contains source code necessary to maintain system's polled tasks.
 
   Description:
-    An MPLAB PLIB or Project can include this header to perform cache cleans,
-    invalidates etc. For the DCache and ICache.
+    This file contains source code necessary to maintain system's polled tasks.
+    It implements the "SYS_Tasks" function that calls the individual "Tasks"
+    functions for all polled MPLAB Harmony modules in the system.
 
   Remarks:
-    This header should not define any prototypes or data definitions, or
-    include any files that do.  The file only provides macro definitions for
-    build-time.
-
-*******************************************************************************/
+    This file requires access to the systemObjects global data structure that
+    contains the object handles to all MPLAB Harmony module objects executing
+    polled in the system.  These handles are passed into the individual module
+    "Tasks" functions to identify the instance of the module to maintain.
+ *******************************************************************************/
 
 // DOM-IGNORE-BEGIN
 /*******************************************************************************
-* Copyright (C) 2019 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -40,57 +41,41 @@
 * FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
-*******************************************************************************/
+ *******************************************************************************/
 // DOM-IGNORE-END
-
-#ifndef DEVICE_CACHE_H
-#define DEVICE_CACHE_H
 
 // *****************************************************************************
 // *****************************************************************************
 // Section: Included Files
 // *****************************************************************************
 // *****************************************************************************
-/*  This section Includes other configuration headers necessary to completely
-    define this configuration.
+
+#include "configuration.h"
+#include "definitions.h"
+#include "basic_tasks.h"
+
+
+// *****************************************************************************
+// *****************************************************************************
+// Section: System "Tasks" Routine
+// *****************************************************************************
+// *****************************************************************************
+
+/*******************************************************************************
+  Function:
+    void SYS_Tasks ( void )
+
+  Remarks:
+    See prototype in system/common/sys_module.h.
 */
-
-#include "device.h"
-
-// DOM-IGNORE-BEGIN
-#ifdef __cplusplus  // Provide C++ Compatibility
-
-extern "C" {
-
-#endif
-// DOM-IGNORE-END
-
-// *****************************************************************************
-// *****************************************************************************
-// Section: L1 Cache Configuration
-// *****************************************************************************
-// *****************************************************************************
-
-#define DATA_CACHE_IS_ENABLED()            			   (SCB->CCR & (uint32_t)SCB_CCR_DC_Msk)
-#define INSTRUCTION_CACHE_IS_ENABLED()     			   (SCB->CCR & (uint32_t)SCB_CCR_IC_Msk)
-
-#define ICACHE_ENABLE()
-#define ICACHE_DISABLE()
-#define ICACHE_INVALIDATE()
-
-#define DCACHE_ENABLE()
-#define DCACHE_DISABLE()
-#define DCACHE_INVALIDATE()
-#define DCACHE_CLEAN()
-#define DCACHE_CLEAN_INVALIDATE()
-#define DCACHE_CLEAN_BY_ADDR(addr,sz)
-#define DCACHE_INVALIDATE_BY_ADDR(addr,sz)
-#define DCACHE_CLEAN_INVALIDATE_BY_ADDR(addr,sz)
-
-//DOM-IGNORE-BEGIN
-#ifdef __cplusplus
+void SYS_Tasks ( void )
+{
+    setupBasicTasks();
+    //Start RTOS Scheduler.
+    vTaskStartScheduler();  //This function never returns.
 }
-#endif
-//DOM-IGNORE-END
 
-#endif // #ifndef DEVICE_CACHE_H
+/*******************************************************************************
+ End of File
+ */
+
