@@ -73,6 +73,15 @@
 #define RightButton_InterruptEnable()   (PIOA_REGS->PIO_IER = (1<<20))
 #define RightButton_InterruptDisable()  (PIOA_REGS->PIO_IDR = (1<<20))
 
+/*** Macros for CAN_Standby pin ***/
+#define CAN_Standby_Set()               (PIOD_REGS->PIO_SODR = (1<<14))
+#define CAN_Standby_Clear()             (PIOD_REGS->PIO_CODR = (1<<14))
+#define CAN_Standby_Toggle()            (PIOD_REGS->PIO_ODSR ^= (1<<14))
+#define CAN_Standby_OutputEnable()      (PIOD_REGS->PIO_OER = (1<<14))
+#define CAN_Standby_InputEnable()       (PIOD_REGS->PIO_ODR = (1<<14))
+#define CAN_Standby_Get()               ((PIOD_REGS->PIO_PDSR >> 14) & 0x1)
+#define CAN_Standby_PIN                  PIO_PIN_PD14
+
 /*** Macros for LeftButton pin ***/
 #define LeftButton_Set()               (PIOD_REGS->PIO_SODR = (1<<8))
 #define LeftButton_Clear()             (PIOD_REGS->PIO_CODR = (1<<8))

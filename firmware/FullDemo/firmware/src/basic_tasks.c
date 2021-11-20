@@ -2,6 +2,7 @@
 #include "basic_tasks.h"
 #include "definitions.h"
 #include "flash.h"
+#include "can.h"
 #include <ctype.h>
 
 //task functions
@@ -44,11 +45,17 @@ void mainMenu(void) {
     printf("    1) Buttons and LEDs\r\n");
     printf("    2) Flash Memory\r\n");
     printf("    3) CAN-FD\r\n");
+    printf("    4) TWI LCD display\r\n");
+    printf("    5) USB\r\n");
+    printf("    6) Analog - ADC and DAC\r\n");
+    printf("    7) True Random Number Generator\r\n");
+    printf("    8) SPI?\r\n");
+    printf("    9) Real time clock\r\n");
 }
 
 void menuTask(void *pvParameters) {
     (void) pvParameters;
-    vTaskDelay(500);
+    vTaskDelay(100);
     while (1) {
         mainMenu();
         EventBits_t uxBits;
@@ -60,6 +67,8 @@ void menuTask(void *pvParameters) {
             case '1': buttonsAndLEDs();
                 break;
             case '2': flashMenu();
+                break;
+            case '3': canMenu();
                 break;
             default:
                 break;
