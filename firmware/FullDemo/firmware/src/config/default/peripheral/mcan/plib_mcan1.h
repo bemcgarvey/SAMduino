@@ -82,10 +82,11 @@
 #define MCAN1_TX_FIFO_BUFFER_SIZE         72U
 #define MCAN1_TX_EVENT_FIFO_SIZE          8U
 #define MCAN1_STD_MSG_ID_FILTER_SIZE      8U
+#define MCAN1_EXT_MSG_ID_FILTER_SIZE      16U
 
 /* MCAN1_MESSAGE_RAM_CONFIG_SIZE to be used by application or driver
    for allocating buffer from non-cached contiguous memory */
-#define MCAN1_MESSAGE_RAM_CONFIG_SIZE     376U
+#define MCAN1_MESSAGE_RAM_CONFIG_SIZE     392U
 
 // *****************************************************************************
 // *****************************************************************************
@@ -109,6 +110,8 @@ void MCAN1_InterruptClear(MCAN_INTERRUPT_MASK interruptMask);
 void MCAN1_MessageRAMConfigSet(uint8_t *msgRAMConfigBaseAddress);
 bool MCAN1_StandardFilterElementSet(uint8_t filterNumber, mcan_sidfe_registers_t *stdMsgIDFilterElement);
 bool MCAN1_StandardFilterElementGet(uint8_t filterNumber, mcan_sidfe_registers_t *stdMsgIDFilterElement);
+bool MCAN1_ExtendedFilterElementSet(uint8_t filterNumber, mcan_xidfe_registers_t *extMsgIDFilterElement);
+bool MCAN1_ExtendedFilterElementGet(uint8_t filterNumber, mcan_xidfe_registers_t *extMsgIDFilterElement);
 void MCAN1_SleepModeEnter(void);
 void MCAN1_SleepModeExit(void);
 // DOM-IGNORE-BEGIN

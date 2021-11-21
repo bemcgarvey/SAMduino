@@ -65,16 +65,28 @@ static MCAN_OBJ mcan1Obj;
 static const mcan_sidfe_registers_t mcan1StdFilter[] =
 {
     {
-        .MCAN_SIDFE_0 = MCAN_SIDFE_0_SFT(1UL) |
+        .MCAN_SIDFE_0 = MCAN_SIDFE_0_SFT(0UL) |
                   MCAN_SIDFE_0_SFID1(0x123UL) |
-                  MCAN_SIDFE_0_SFID2(0x123UL) |
+                  MCAN_SIDFE_0_SFID2(0x0UL) |
                   MCAN_SIDFE_0_SFEC(7UL)
     },
     {
-        .MCAN_SIDFE_0 = MCAN_SIDFE_0_SFT(1UL) |
+        .MCAN_SIDFE_0 = MCAN_SIDFE_0_SFT(0UL) |
                   MCAN_SIDFE_0_SFID1(0x0UL) |
                   MCAN_SIDFE_0_SFID2(0xffUL) |
                   MCAN_SIDFE_0_SFEC(1UL)
+    },
+};
+
+static const mcan_xidfe_registers_t mcan1ExtFilter[] =
+{
+    {
+        .MCAN_XIDFE_0 = MCAN_XIDFE_0_EFID1(0x1000UL) | MCAN_XIDFE_0_EFEC(1UL),
+        .MCAN_XIDFE_1 = MCAN_XIDFE_1_EFID2(0x10ffUL) | MCAN_XIDFE_1_EFT(0UL),
+    },
+    {
+        .MCAN_XIDFE_0 = MCAN_XIDFE_0_EFID1(0x10123UL) | MCAN_XIDFE_0_EFEC(7UL),
+        .MCAN_XIDFE_1 = MCAN_XIDFE_1_EFID2(0x0UL) | MCAN_XIDFE_1_EFT(0UL),
     },
 };
 
@@ -128,7 +140,10 @@ void MCAN1_Initialize(void)
     MCAN1_REGS->MCAN_TXESC = MCAN_TXESC_TBDS(7UL);
 
     /* Global Filter Configuration Register */
-    MCAN1_REGS->MCAN_GFC = MCAN_GFC_ANFS(2) | MCAN_GFC_ANFE(2) | MCAN_GFC_RRFS_Msk;
+    MCAN1_REGS->MCAN_GFC = MCAN_GFC_ANFS(2) | MCAN_GFC_ANFE(2);
+
+    /* Extended ID AND Mask Register */
+    MCAN1_REGS->MCAN_XIDAM = MCAN_XIDAM_Msk;
 
     /* Set the operation mode */
     MCAN1_REGS->MCAN_CCCR = MCAN_CCCR_INIT_DISABLED | MCAN_CCCR_FDOE_ENABLED | MCAN_CCCR_BRSE_ENABLED;
@@ -667,6 +682,14 @@ void MCAN1_MessageRAMConfigSet(uint8_t *msgRAMConfigBaseAddress)
     MCAN1_REGS->MCAN_SIDFC = MCAN_SIDFC_LSS(2UL) |
             MCAN_SIDFC_FLSSA(((uint32_t)mcan1Obj.msgRAMConfig.stdMsgIDFilterAddress >> 2));
 
+    mcan1Obj.msgRAMConfig.extMsgIDFilterAddress = (mcan_xidfe_registers_t *)(msgRAMConfigBaseAddress + offset);
+    memcpy((void *)mcan1Obj.msgRAMConfig.extMsgIDFilterAddress,
+           (const void *)mcan1ExtFilter,
+           MCAN1_EXT_MSG_ID_FILTER_SIZE);
+    /* Extended ID Filter Configuration Register */
+    MCAN1_REGS->MCAN_XIDFC = MCAN_XIDFC_LSE(2UL) |
+            MCAN_XIDFC_FLESA(((uint32_t)mcan1Obj.msgRAMConfig.extMsgIDFilterAddress >> 2));
+
     /* Set 16-bit MSB of mcan1 base address */
     MATRIX_REGS->CCFG_SYSIO = (MATRIX_REGS->CCFG_SYSIO & ~CCFG_SYSIO_CAN1DMABA_Msk)
                             | CCFG_SYSIO_CAN1DMABA(((uint32_t)msgRAMConfigBaseAddress >> 16));
@@ -744,6 +767,69 @@ bool MCAN1_StandardFilterElementGet(uint8_t filterNumber, mcan_sidfe_registers_t
     return true;
 }
 
+// *****************************************************************************
+/* Function:
+    bool MCAN1_ExtendedFilterElementSet(uint8_t filterNumber, mcan_xidfe_registers_t *extMsgIDFilterElement)
+
+   Summary:
+    Set a Extended filter element configuration.
+
+   Precondition:
+    MCAN1_Initialize and MCAN1_MessageRAMConfigSet must have been called
+    for the associated MCAN instance.
+
+   Parameters:
+    filterNumber          - Extended Filter number to be configured.
+    extMsgIDFilterElement - Pointer to Extended Filter Element configuration to be set on specific filterNumber.
+
+   Returns:
+    Request status.
+    true  - Request was successful.
+    false - Request has failed.
+*/
+bool MCAN1_ExtendedFilterElementSet(uint8_t filterNumber, mcan_xidfe_registers_t *extMsgIDFilterElement)
+{
+    if ((filterNumber > 2U) || (extMsgIDFilterElement == NULL))
+    {
+        return false;
+    }
+    mcan1Obj.msgRAMConfig.extMsgIDFilterAddress[filterNumber - 1U].MCAN_XIDFE_0 = extMsgIDFilterElement->MCAN_XIDFE_0;
+    mcan1Obj.msgRAMConfig.extMsgIDFilterAddress[filterNumber - 1U].MCAN_XIDFE_1 = extMsgIDFilterElement->MCAN_XIDFE_1;
+
+    return true;
+}
+
+// *****************************************************************************
+/* Function:
+    bool MCAN1_ExtendedFilterElementGet(uint8_t filterNumber, mcan_xidfe_registers_t *extMsgIDFilterElement)
+
+   Summary:
+    Get a Extended filter element configuration.
+
+   Precondition:
+    MCAN1_Initialize and MCAN1_MessageRAMConfigSet must have been called
+    for the associated MCAN instance.
+
+   Parameters:
+    filterNumber          - Extended Filter number to get filter configuration.
+    extMsgIDFilterElement - Pointer to Extended Filter Element configuration for storing filter configuration.
+
+   Returns:
+    Request status.
+    true  - Request was successful.
+    false - Request has failed.
+*/
+bool MCAN1_ExtendedFilterElementGet(uint8_t filterNumber, mcan_xidfe_registers_t *extMsgIDFilterElement)
+{
+    if ((filterNumber > 2U) || (extMsgIDFilterElement == NULL))
+    {
+        return false;
+    }
+    extMsgIDFilterElement->MCAN_XIDFE_0 = mcan1Obj.msgRAMConfig.extMsgIDFilterAddress[filterNumber - 1U].MCAN_XIDFE_0;
+    extMsgIDFilterElement->MCAN_XIDFE_1 = mcan1Obj.msgRAMConfig.extMsgIDFilterAddress[filterNumber - 1U].MCAN_XIDFE_1;
+
+    return true;
+}
 
 void MCAN1_SleepModeEnter(void)
 {

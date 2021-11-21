@@ -229,7 +229,6 @@
       <itemPath>../src/basic_tasks.h</itemPath>
       <itemPath>../src/flash.h</itemPath>
       <itemPath>../src/can.h</itemPath>
-      <itemPath>../src/app.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -320,7 +319,6 @@
       <itemPath>../src/basic_tasks.c</itemPath>
       <itemPath>../src/flash.c</itemPath>
       <itemPath>../src/can.c</itemPath>
-      <itemPath>../src/app.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

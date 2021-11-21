@@ -19,7 +19,8 @@ extern "C" {
 #define LEFT_BUTTON_BIT     (1 << 0)
 #define RIGHT_BUTTON_BIT    (1 << 1)
 #define UART_RX_BIT         (1 << 2)
-#define CAN_RX_BIT          (1 << 3)
+#define CAN_RX_BUFFER_BIT   (1 << 3)
+#define CAN_RX_FIFO0_BIT    (1 << 4)
 
     extern EventGroupHandle_t menuEventGroup;
 
