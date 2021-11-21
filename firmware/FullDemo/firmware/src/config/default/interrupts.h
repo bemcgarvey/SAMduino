@@ -63,6 +63,7 @@ void HardFault_Handler (void);
 void xPortSysTickHandler (void);
 void PIOA_InterruptHandler (void);
 void PIOD_InterruptHandler (void);
+void MCAN1_INT0_InterruptHandler (void);
 
 
 

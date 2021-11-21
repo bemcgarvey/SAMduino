@@ -147,7 +147,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: 'false'}
+        attributes: {value: 'true'}
   - type: Menu
     attributes: {id: MCAN1_EXT_FILTER1}
     children:
@@ -539,7 +539,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: ../peripheral/mcan_11273/templates/plib_mcan.h.ftl}
+        - {type: Value, value: ../peripheral/mcan_11273/templates/plib_mcan_interrupt.h.ftl}
   - type: Menu
     attributes: {id: rxf1menu}
     children:
@@ -557,6 +557,6 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: ../peripheral/mcan_11273/templates/plib_mcan.c.ftl}
+        - {type: Value, value: ../peripheral/mcan_11273/templates/plib_mcan_interrupt.c.ftl}
 - type: ElementPosition
   attributes: {x: '252', y: '245', id: mcan1}
