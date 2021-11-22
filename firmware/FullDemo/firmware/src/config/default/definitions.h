@@ -57,6 +57,7 @@
 #include "driver/sst26/drv_sst26.h"
 #include "peripheral/qspi/plib_qspi.h"
 #include "peripheral/uart/plib_uart0.h"
+#include "peripheral/trng/plib_trng.h"
 #include "peripheral/twihs/master/plib_twihs0_master.h"
 #include "peripheral/mcan/plib_mcan1.h"
 #include "FreeRTOS.h"

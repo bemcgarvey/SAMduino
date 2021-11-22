@@ -61,4 +61,4 @@ children:
         children:
         - {type: Value, value: QSPI_SQI}
 - type: ElementPosition
-  attributes: {x: '220', y: '338', id: drv_sst26}
+  attributes: {x: '160', y: '20', id: drv_sst26}

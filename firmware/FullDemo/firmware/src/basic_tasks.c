@@ -15,9 +15,14 @@ void uart0RxTask(void *pvParameters);
 EventGroupHandle_t menuEventGroup;
 
 //other functions
-void mainMenu(void);
-void buttonsAndLEDs(void);
+static void mainMenu(void);
+static void buttonsAndLEDs(void);
+
+//ISR callbacks
 void buttonIntCallback(PIO_PIN pin, uintptr_t context);
+
+//prototype from xc32_monitor.c - needed for echo
+void _mon_putc(char c);
 
 void setupBasicTasks(void) {
     //Register callbacks
@@ -56,9 +61,13 @@ void mainMenu(void) {
 
 void menuTask(void *pvParameters) {
     (void) pvParameters;
+    bool redrawMenu = true;
     vTaskDelay(100);
     while (1) {
-        mainMenu();
+        if (redrawMenu) {
+            mainMenu();
+        }
+        redrawMenu = true;
         EventBits_t uxBits;
         uxBits = xEventGroupWaitBits(menuEventGroup, UART_RX_BIT, pdTRUE, pdFALSE, portMAX_DELAY);
         xEventGroupClearBits(menuEventGroup, uxBits);
@@ -72,6 +81,9 @@ void menuTask(void *pvParameters) {
             case '3': canMenu();
                 break;
             case '4': twiMenu();
+                break;
+            case '7': printf("  **Random number generated = %lu\r\n", TRNG_ReadData());
+                redrawMenu = false;
                 break;
             default:
                 break;
@@ -146,8 +158,6 @@ void uart0RxTask(void *pvParameters) {
         xEventGroupSetBits(menuEventGroup, UART_RX_BIT);
     }
 }
-
-void _mon_putc(char c);
 
 int getStr(const char *prompt, char *buffer, int maxLen) {
     EventBits_t uxBits;

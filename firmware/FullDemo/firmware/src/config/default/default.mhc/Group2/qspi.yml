@@ -66,4 +66,4 @@ children:
         children:
         - {type: Value, value: drv_sst26_SQI_dependency}
 - type: ElementPosition
-  attributes: {x: '36', y: '391', id: qspi}
+  attributes: {x: '20', y: '20', id: qspi}

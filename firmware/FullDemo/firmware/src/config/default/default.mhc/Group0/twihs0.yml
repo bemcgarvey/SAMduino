@@ -47,4 +47,4 @@ children:
       - type: Dynamic
         attributes: {id: twihs0, value: '186'}
 - type: ElementPosition
-  attributes: {x: '9', y: '321', id: twihs0}
+  attributes: {x: '20', y: '20', id: twihs0}

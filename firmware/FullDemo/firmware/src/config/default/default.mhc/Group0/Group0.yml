@@ -1,0 +1,6 @@
+format_version: v1.0
+type: GroupComponent
+attributes: {displayName: Serial Coms, id: Group0}
+children:
+- type: ElementPosition
+  attributes: {x: '291', y: '134', id: Group0}

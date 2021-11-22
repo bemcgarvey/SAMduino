@@ -1,0 +1,6 @@
+format_version: v1.0
+type: GroupComponent
+attributes: {displayName: Quad Flash, id: Group2}
+children:
+- type: ElementPosition
+  attributes: {x: '291', y: '73', id: Group2}

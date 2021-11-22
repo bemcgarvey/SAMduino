@@ -6,13 +6,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: F58DB2348A0FCE945652B285010E5F8A
-- generatedChecksum: null
+- generatedChecksum: 3C13720844166A5D97CF4EAD9DDB9FE2
   logicalPath: ''
   name: app.c
   physicalPath: ../..
   security: NON_SECURE
   type: SOURCE
-  userChecksum: null
+  userChecksum: 3C13720844166A5D97CF4EAD9DDB9FE2
 - generatedChecksum: 8ACE0DEBD82F6829438A4674565451FB
   logicalPath: FreeRTOS/Source
   name: croutine.c
@@ -97,13 +97,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 8FDD6248506F28B32C4F5FD9AA0D9C6F
-- generatedChecksum: B7457AC5E2844FB6FAAC198652725C47
+- generatedChecksum: 80791547E917B6B244391EFAB0DB54E0
   logicalPath: config/default/peripheral/clk
   name: plib_clk.c
   physicalPath: peripheral/clk
   security: NON_SECURE
   type: SOURCE
-  userChecksum: B7457AC5E2844FB6FAAC198652725C47
+  userChecksum: 80791547E917B6B244391EFAB0DB54E0
 - generatedChecksum: D23DF612DB8267EDD9F5F3A463A02DB2
   logicalPath: config/default/peripheral/efc
   name: plib_efc.c
@@ -146,13 +146,20 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: CB91E36DCF53807B82A9B2C9BF571916
+- generatedChecksum: 1DE96220F35A04CB1742747EFEA865BD
+  logicalPath: config/default/peripheral/trng
+  name: plib_trng.c
+  physicalPath: peripheral/trng
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 1DE96220F35A04CB1742747EFEA865BD
 - generatedChecksum: AD9E5D8957ADDF3C5B579114051BE96B
   logicalPath: config/default/peripheral/twihs/master
   name: plib_twihs0_master.c
   physicalPath: peripheral/twihs/master
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 359B10AFFE0E011D55DF2A74DF8D6FC0
+  userChecksum: AD9E5D8957ADDF3C5B579114051BE96B
 - generatedChecksum: CBEC3B1A0CD099BE51536D94DED55A0F
   logicalPath: config/default/peripheral/uart
   name: plib_uart0.c
@@ -279,13 +286,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 625DFAF8957213A83B43E401F0F9B76D
-- generatedChecksum: null
+- generatedChecksum: 452F7AB915EEA4B1529959D0FF80C3F7
   logicalPath: ''
   name: app.h
   physicalPath: ../..
   security: NON_SECURE
   type: HEADER
-  userChecksum: null
+  userChecksum: 452F7AB915EEA4B1529959D0FF80C3F7
 - generatedChecksum: 14F1AD56D242EFD0AF76849C6ADFECC4
   logicalPath: packs/CMSIS/CMSIS/Core/Include
   name: cachel1_armv7.h
@@ -391,13 +398,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: B424335B8194FB845DFEE348D5ACCDA0
-- generatedChecksum: 9107390A840A735D3A2DB2D75DFECD93
+- generatedChecksum: EB896D150014741FCAABC29E09A434B5
   logicalPath: config/default
   name: definitions.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: F635DBF0B49545307D4D71928A8A5DDB
+  userChecksum: D5400A39F09DDFEDA37931B651706A2C
 - generatedChecksum: 1EA4EDD5EA90F43EC407DE32441159A9
   logicalPath: FreeRTOS/Source/include
   name: deprecated_definitions.h
@@ -811,6 +818,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: A2F276372C68B8EE16FB32AE5DF1BE37
+- generatedChecksum: D3806C52C0B0050BA724D2F3F0357FC3
+  logicalPath: config/default/peripheral/trng
+  name: plib_trng.h
+  physicalPath: peripheral/trng
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: D3806C52C0B0050BA724D2F3F0357FC3
 - generatedChecksum: 165F1AE43FA1838644A54F43F1A0198D
   logicalPath: config/default/peripheral/twihs/master
   name: plib_twihs0_master.h
