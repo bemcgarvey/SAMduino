@@ -1,20 +1,23 @@
 /*******************************************************************************
-  NVIC PLIB Implementation
+  TC Peripheral Library Interface Source File
 
-  Company:
+  Company
     Microchip Technology Inc.
 
-  File Name:
-    plib_nvic.c
+  File Name
+    plib_tc3.c
 
-  Summary:
-    NVIC PLIB Source File
+  Summary
+    TC peripheral library source file.
 
-  Description:
-    None
+  Description
+    This file implements the interface to the TC peripheral library.  This
+    library provides access to and control of the associated peripheral
+    instance.
 
 *******************************************************************************/
 
+// DOM-IGNORE-BEGIN
 /*******************************************************************************
 * Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
 *
@@ -37,70 +40,97 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
+// DOM-IGNORE-END
 
+
+// *****************************************************************************
+// *****************************************************************************
+// Section: Included Files
+// *****************************************************************************
+// *****************************************************************************
+
+/*  This section lists the other files that are included in this file.
+*/
 #include "device.h"
-#include "plib_nvic.h"
+#include "plib_tc3.h"
+#include "interrupts.h"
+
+ 
+ 
+
+ 
 
 
-// *****************************************************************************
-// *****************************************************************************
-// Section: NVIC Implementation
-// *****************************************************************************
-// *****************************************************************************
 
-void NVIC_Initialize( void )
+/* Initialize channel in timer mode */
+void TC3_CH0_TimerInitialize (void)
 {
-    /* Priority 0 to 7 and no sub-priority. 0 is the highest priority */
-    NVIC_SetPriorityGrouping( 0x00 );
+    /* clock selection and waveform selection */
+    TC3_REGS->TC_CHANNEL[0].TC_CMR = TC_CMR_TCCLKS_TIMER_CLOCK1 | TC_CMR_WAVEFORM_WAVSEL_UP_RC | \
+                                                        TC_CMR_WAVE_Msk |(TC_CMR_WAVEFORM_CPCSTOP_Msk);
 
-    /* Enable NVIC Controller */
-    __DMB();
-    __enable_irq();
-
-    /* Enable the interrupt sources and configure the priorities as configured
-     * from within the "Interrupt Manager" of MHC. */
-    NVIC_SetPriority(SysTick_IRQn, 7);
-    NVIC_SetPriority(PIOA_IRQn, 7);
-    NVIC_EnableIRQ(PIOA_IRQn);
-    NVIC_SetPriority(PIOD_IRQn, 5);
-    NVIC_EnableIRQ(PIOD_IRQn);
-    NVIC_SetPriority(TWIHS0_IRQn, 3);
-    NVIC_EnableIRQ(TWIHS0_IRQn);
-    NVIC_SetPriority(MCAN1_INT0_IRQn, 4);
-    NVIC_EnableIRQ(MCAN1_INT0_IRQn);
-
+    /* write period */
+    TC3_REGS->TC_CHANNEL[0].TC_RC = 1000U;
 
 
 }
 
-void NVIC_INT_Enable( void )
+/* Start the timer */
+void TC3_CH0_TimerStart (void)
 {
-    __DMB();
-    __enable_irq();
+    TC3_REGS->TC_CHANNEL[0].TC_CCR = (TC_CCR_CLKEN_Msk | TC_CCR_SWTRG_Msk);
 }
 
-bool NVIC_INT_Disable( void )
+/* Stop the timer */
+void TC3_CH0_TimerStop (void)
 {
-    bool processorStatus;
-
-    processorStatus = (bool) (__get_PRIMASK() == 0);
-
-    __disable_irq();
-    __DMB();
-
-    return processorStatus;
+    TC3_REGS->TC_CHANNEL[0].TC_CCR = (TC_CCR_CLKDIS_Msk);
 }
 
-void NVIC_INT_Restore( bool state )
+uint32_t TC3_CH0_TimerFrequencyGet( void )
 {
-    if( state == true )
-    {
-        __DMB();
-        __enable_irq();
-    }
-    else
-    {
-        __disable_irq();
-        __DMB();
-    }
+    return (uint32_t)(1000000UL);
 }
+
+/* Configure timer period */
+void TC3_CH0_TimerPeriodSet (uint16_t period)
+{
+    TC3_REGS->TC_CHANNEL[0].TC_RC = period;
+}
+
+
+/* Read timer period */
+uint16_t TC3_CH0_TimerPeriodGet (void)
+{
+    return TC3_REGS->TC_CHANNEL[0].TC_RC;
+}
+
+/* Read timer counter value */
+uint16_t TC3_CH0_TimerCounterGet (void)
+{
+    return TC3_REGS->TC_CHANNEL[0].TC_CV;
+}
+
+/* Check if timer period status is set */
+bool TC3_CH0_TimerPeriodHasExpired(void)
+{
+    return (((TC3_REGS->TC_CHANNEL[0].TC_SR) & TC_SR_CPCS_Msk) >> TC_SR_CPCS_Pos);
+}
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+ 
+
+ 
+
+ 
+/**
+ End of File
+*/

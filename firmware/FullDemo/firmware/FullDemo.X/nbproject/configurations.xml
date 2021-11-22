@@ -41,6 +41,16 @@
               <itemPath>../src/config/default/peripheral/qspi/plib_qspi_common.h</itemPath>
               <itemPath>../src/config/default/peripheral/qspi/plib_qspi.h</itemPath>
             </logicalFolder>
+            <logicalFolder name="f8" displayName="tc" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/tc/plib_tc3.h</itemPath>
+              <itemPath>../src/config/default/peripheral/tc/plib_tc_common.h</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f9" displayName="twihs" projectFiles="true">
+              <logicalFolder name="f1" displayName="master" projectFiles="true">
+                <itemPath>../src/config/default/peripheral/twihs/master/plib_twihs_master_common.h</itemPath>
+                <itemPath>../src/config/default/peripheral/twihs/master/plib_twihs0_master.h</itemPath>
+              </logicalFolder>
+            </logicalFolder>
             <logicalFolder name="f1" displayName="uart" projectFiles="true">
               <itemPath>../src/config/default/peripheral/uart/plib_uart_common.h</itemPath>
               <itemPath>../src/config/default/peripheral/uart/plib_uart0.h</itemPath>
@@ -229,6 +239,8 @@
       <itemPath>../src/basic_tasks.h</itemPath>
       <itemPath>../src/flash.h</itemPath>
       <itemPath>../src/can.h</itemPath>
+      <itemPath>../src/lcd.h</itemPath>
+      <itemPath>../src/twi.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -270,6 +282,14 @@
             </logicalFolder>
             <logicalFolder name="f6" displayName="qspi" projectFiles="true">
               <itemPath>../src/config/default/peripheral/qspi/plib_qspi.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f8" displayName="tc" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/tc/plib_tc3.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f9" displayName="twihs" projectFiles="true">
+              <logicalFolder name="f1" displayName="master" projectFiles="true">
+                <itemPath>../src/config/default/peripheral/twihs/master/plib_twihs0_master.c</itemPath>
+              </logicalFolder>
             </logicalFolder>
             <logicalFolder name="f1" displayName="uart" projectFiles="true">
               <itemPath>../src/config/default/peripheral/uart/plib_uart0.c</itemPath>
@@ -319,6 +339,8 @@
       <itemPath>../src/basic_tasks.c</itemPath>
       <itemPath>../src/flash.c</itemPath>
       <itemPath>../src/can.c</itemPath>
+      <itemPath>../src/lcd.c</itemPath>
+      <itemPath>../src/twi.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -337,6 +359,8 @@
         <itemPath>../src/config/default/default.mhc/qspi.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/settings.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/stdio.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/tc3.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/twihs0.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/uart0.yml</itemPath>
       </logicalFolder>
       <itemPath>Makefile</itemPath>

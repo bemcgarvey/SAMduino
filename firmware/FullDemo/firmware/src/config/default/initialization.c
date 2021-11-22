@@ -148,24 +148,32 @@ static void STDIO_BufferModeSet(void)
 void SYS_Initialize ( void* data )
 {
 
+
+    EFC_Initialize();
     STDIO_BufferModeSet();
 
 
 
-    EFC_Initialize();
-  
     CLOCK_Initialize();
 	PIO_Initialize();
 
 
 
+	RSWDT_REGS->RSWDT_MR = RSWDT_MR_WDDIS_Msk;	// Disable RSWDT 
+
+	WDT_REGS->WDT_MR = WDT_MR_WDDIS_Msk; 		// Disable WDT 
+
+  
+
+ 
+    TC3_CH0_TimerInitialize(); 
+     
+    
     QSPI_Initialize();
 
 	UART0_Initialize();
 
-	RSWDT_REGS->RSWDT_MR = RSWDT_MR_WDDIS_Msk;	// Disable RSWDT 
-
-	WDT_REGS->WDT_MR = WDT_MR_WDDIS_Msk; 		// Disable WDT 
+	TWIHS0_Initialize();
 
     MCAN1_Initialize();
 

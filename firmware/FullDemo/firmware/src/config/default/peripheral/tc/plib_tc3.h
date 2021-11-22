@@ -1,18 +1,21 @@
 /*******************************************************************************
- System Interrupts File
+  TC Peripheral Library Interface Header File
 
-  Company:
+  Company
     Microchip Technology Inc.
 
-  File Name:
-    interrupt.h
+  File Name
+    plib_tc3.h
 
-  Summary:
-    Interrupt vectors mapping
+  Summary
+    TC peripheral library interface.
 
-  Description:
-    This file contains declarations of device vectors used by Harmony 3
- *******************************************************************************/
+  Description
+    This file defines the interface to the TC peripheral library.  This
+    library provides access to and control of the associated peripheral
+    instance.
+
+******************************************************************************/
 
 // DOM-IGNORE-BEGIN
 /*******************************************************************************
@@ -36,36 +39,89 @@
 * FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
- *******************************************************************************/
+*******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef INTERRUPTS_H
-#define INTERRUPTS_H
+#ifndef PLIB_TC3_H    // Guards against multiple inclusion
+#define PLIB_TC3_H
+
 
 // *****************************************************************************
 // *****************************************************************************
 // Section: Included Files
 // *****************************************************************************
 // *****************************************************************************
-#include <stdint.h>
+
+/*  This section lists the other files that are included in this file.
+*/
 
 
+#include "plib_tc_common.h"
+
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
+
+extern "C" {
+
+#endif
+
+// DOM-IGNORE-END
 
 // *****************************************************************************
 // *****************************************************************************
-// Section: Handler Routines
+// Section: Data Types
 // *****************************************************************************
 // *****************************************************************************
+/*  The following data type definitions are used by the functions in this
+    interface and should be considered part it.
+*/
 
-void Reset_Handler (void);
-void NonMaskableInt_Handler (void);
-void HardFault_Handler (void);
-void xPortSysTickHandler (void);
-void PIOA_InterruptHandler (void);
-void PIOD_InterruptHandler (void);
-void TWIHS0_InterruptHandler (void);
-void MCAN1_INT0_InterruptHandler (void);
+// *****************************************************************************
+// *****************************************************************************
+// Section: Interface Routines
+// *****************************************************************************
+// *****************************************************************************
+/* The following functions make up the methods (set of possible operations) of
+   this interface.
+*/
+
+// *****************************************************************************
+
+  
+
+
+ 
 
 
 
-#endif // INTERRUPTS_H
+void TC3_CH0_TimerInitialize (void);
+
+void TC3_CH0_TimerStart (void);
+
+void TC3_CH0_TimerStop (void);
+
+void TC3_CH0_TimerPeriodSet (uint16_t period);
+
+
+uint32_t TC3_CH0_TimerFrequencyGet (void);
+
+uint16_t TC3_CH0_TimerPeriodGet (void);
+
+uint16_t TC3_CH0_TimerCounterGet (void);
+
+bool TC3_CH0_TimerPeriodHasExpired(void);
+
+
+
+ 
+
+ 
+
+
+#ifdef __cplusplus // Provide C++ Compatibility
+}
+#endif
+
+#endif //PLIB_TC3_H
+
+/* End of File */

@@ -3,6 +3,7 @@
 #include "definitions.h"
 #include "flash.h"
 #include "can.h"
+#include "twi.h"
 #include <ctype.h>
 
 //task functions
@@ -69,6 +70,8 @@ void menuTask(void *pvParameters) {
             case '2': flashMenu();
                 break;
             case '3': canMenu();
+                break;
+            case '4': twiMenu();
                 break;
             default:
                 break;
