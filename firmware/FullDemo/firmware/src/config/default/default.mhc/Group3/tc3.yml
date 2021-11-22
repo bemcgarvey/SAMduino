@@ -150,4 +150,4 @@ children:
         children:
         - {type: Value, value: '****Time Base is 100.1 uS****'}
 - type: ElementPosition
-  attributes: {x: '2', y: '100', id: tc3}
+  attributes: {x: '160', y: '20', id: tc3}

@@ -3,4 +3,4 @@ type: GroupComponent
 attributes: {displayName: Quad Flash, id: Group2}
 children:
 - type: ElementPosition
-  attributes: {x: '291', y: '73', id: Group2}
+  attributes: {x: '279', y: '303', id: Group2}

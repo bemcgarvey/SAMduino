@@ -1,0 +1,6 @@
+format_version: v1.0
+type: GroupComponent
+attributes: {displayName: Misc, id: Group3}
+children:
+- type: ElementPosition
+  attributes: {x: '304', y: '231', id: Group3}
