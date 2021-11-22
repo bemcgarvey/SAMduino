@@ -41,6 +41,10 @@
               <itemPath>../src/config/default/peripheral/qspi/plib_qspi_common.h</itemPath>
               <itemPath>../src/config/default/peripheral/qspi/plib_qspi.h</itemPath>
             </logicalFolder>
+            <logicalFolder name="f11" displayName="rtc" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/rtc/plib_rtc_common.h</itemPath>
+              <itemPath>../src/config/default/peripheral/rtc/plib_rtc.h</itemPath>
+            </logicalFolder>
             <logicalFolder name="f8" displayName="tc" projectFiles="true">
               <itemPath>../src/config/default/peripheral/tc/plib_tc3.h</itemPath>
               <itemPath>../src/config/default/peripheral/tc/plib_tc_common.h</itemPath>
@@ -244,6 +248,7 @@
       <itemPath>../src/can.h</itemPath>
       <itemPath>../src/lcd.h</itemPath>
       <itemPath>../src/twi.h</itemPath>
+      <itemPath>../src/rtc_menu.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -285,6 +290,9 @@
             </logicalFolder>
             <logicalFolder name="f6" displayName="qspi" projectFiles="true">
               <itemPath>../src/config/default/peripheral/qspi/plib_qspi.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f11" displayName="rtc" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/rtc/plib_rtc.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f8" displayName="tc" projectFiles="true">
               <itemPath>../src/config/default/peripheral/tc/plib_tc3.c</itemPath>
@@ -347,6 +355,7 @@
       <itemPath>../src/can.c</itemPath>
       <itemPath>../src/lcd.c</itemPath>
       <itemPath>../src/twi.c</itemPath>
+      <itemPath>../src/rtc_menu.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -360,9 +369,7 @@
           <itemPath>../src/config/default/default.mhc/Group0/uart0.yml</itemPath>
         </logicalFolder>
         <logicalFolder name="f2" displayName="Group1" projectFiles="true">
-          <itemPath>../src/config/default/default.mhc/Group1/cmsis.yml</itemPath>
-          <itemPath>../src/config/default/default.mhc/Group1/dfp.yml</itemPath>
-          <itemPath>../src/config/default/default.mhc/Group1/efc.yml</itemPath>
+          <itemPath>../src/config/default/default.mhc/Group1/FreeRTOS.yml</itemPath>
           <itemPath>../src/config/default/default.mhc/Group1/Group1.yml</itemPath>
           <itemPath>../src/config/default/default.mhc/Group1/HarmonyCore.yml</itemPath>
         </logicalFolder>
@@ -371,13 +378,19 @@
           <itemPath>../src/config/default/default.mhc/Group2/Group2.yml</itemPath>
           <itemPath>../src/config/default/default.mhc/Group2/qspi.yml</itemPath>
         </logicalFolder>
+        <logicalFolder name="f4" displayName="Group3" projectFiles="true">
+          <itemPath>../src/config/default/default.mhc/Group3/Group3.yml</itemPath>
+          <itemPath>../src/config/default/default.mhc/Group3/tc3.yml</itemPath>
+          <itemPath>../src/config/default/default.mhc/Group3/trng.yml</itemPath>
+        </logicalFolder>
+        <itemPath>../src/config/default/default.mhc/cmsis.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/core.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/FreeRTOS.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/dfp.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/efc.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/GraphSettings.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/project.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/rtc.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/settings.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/tc3.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/trng.yml</itemPath>
       </logicalFolder>
       <itemPath>Makefile</itemPath>
       <itemPath>../src/config/default/harmony-manifest-success.yml</itemPath>

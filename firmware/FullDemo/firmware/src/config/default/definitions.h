@@ -53,6 +53,7 @@
 #include "peripheral/pio/plib_pio.h"
 #include "peripheral/nvic/plib_nvic.h"
 #include "peripheral/efc/plib_efc.h"
+#include "peripheral/rtc/plib_rtc.h"
 #include "peripheral/tc/plib_tc3.h"
 #include "driver/sst26/drv_sst26.h"
 #include "peripheral/qspi/plib_qspi.h"
@@ -65,7 +66,6 @@
 #include "system/int/sys_int.h"
 #include "osal/osal.h"
 #include "system/debug/sys_debug.h"
-
 
 
 // DOM-IGNORE-BEGIN

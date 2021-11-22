@@ -4,6 +4,7 @@
 #include "flash.h"
 #include "can.h"
 #include "twi.h"
+#include "rtc_menu.h"
 #include <ctype.h>
 
 //task functions
@@ -84,6 +85,8 @@ void menuTask(void *pvParameters) {
                 break;
             case '7': printf("  **Random number generated = %lu\r\n", TRNG_ReadData());
                 redrawMenu = false;
+                break;
+            case '9': rtcMenu();
                 break;
             default:
                 break;

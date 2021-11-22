@@ -21,6 +21,7 @@ extern "C" {
 #define UART_RX_BIT         (1 << 2)
 #define CAN_RX_BUFFER_BIT   (1 << 3)
 #define CAN_RX_FIFO0_BIT    (1 << 4)
+#define RTC_BIT             (1 << 5)
 
     extern EventGroupHandle_t menuEventGroup;
 
