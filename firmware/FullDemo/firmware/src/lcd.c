@@ -279,6 +279,9 @@ void shortDelay(void) {
 
 volatile int transferStatus = 0;
 
+//TODO for use with FreeRTOS it would be better to use a binary semaphore or the like
+// to notify the task when a transfer is complete.
+
 void TWIHSCallback(uintptr_t context) {
     if (TWIHS0_ErrorGet() == TWIHS_ERROR_NONE) {
         transferStatus = 1;
@@ -349,33 +352,6 @@ char LCDReadNibble(char rs) {
     TWIHS0_Write(LCD_I2C_ADDRESS, data, 1);
     while (!transferStatus);
     //TODO this is still not working consistently - LCDReadLine() returns some gibberish
-    
-    //    SSPxCON2bits.SEN = 1; //Start
-    //    while (SSPxCON2bits.SEN == 1);
-    //    SSPxBUF = LCD_I2C_ADDRESS;
-    //    while (SSPxSTATbits.BF || SSPxSTATbits.R_W);
-    //    SSPxBUF = comFlags;
-    //    while (SSPxSTATbits.BF || SSPxSTATbits.R_W);
-    //    SSPxBUF = comFlags | E_ON;
-    //    while (SSPxSTATbits.BF || SSPxSTATbits.R_W);
-    //    SSPxCON2bits.RSEN = 1; //restart
-    //    while (SSPxCON2bits.RSEN == 1);
-    //    SSPxBUF = LCD_I2C_ADDRESS | 1;
-    //    while (SSPxSTATbits.BF || SSPxSTATbits.R_W);
-    //    SSPxCON2bits.RCEN = 1;
-    //    while (SSPxSTATbits.BF == 0); //Wait for byte
-    //    b = SSPxBUF & 0b11110000; //Upper nibble
-    //    SSPxCON2bits.ACKDT = 1;
-    //    SSPxCON2bits.ACKEN = 1; //Send NACK
-    //    while (SSPxCON2bits.ACKEN == 1);
-    //    SSPxCON2bits.RSEN = 1; //restart
-    //    while (SSPxCON2bits.RSEN == 1);
-    //    SSPxBUF = LCD_I2C_ADDRESS;
-    //    while (SSPxSTATbits.BF || SSPxSTATbits.R_W);
-    //    SSPxBUF = comFlags;
-    //    while (SSPxSTATbits.BF || SSPxSTATbits.R_W);
-    //    SSPxCON2bits.PEN = 1; //stop
-    //    while (SSPxCON2bits.PEN == 1);
     return b;
 }
 
