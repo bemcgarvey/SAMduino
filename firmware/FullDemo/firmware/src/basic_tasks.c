@@ -5,6 +5,7 @@
 #include "can.h"
 #include "twi.h"
 #include "rtc_menu.h"
+#include "analog.h"
 #include <ctype.h>
 
 //task functions
@@ -82,6 +83,8 @@ void menuTask(void *pvParameters) {
             case '3': canMenu();
                 break;
             case '4': twiMenu();
+                break;
+            case '6': analogMenu();
                 break;
             case '7': printf("  **Random number generated = %lu\r\n", TRNG_ReadData());
                 redrawMenu = false;
