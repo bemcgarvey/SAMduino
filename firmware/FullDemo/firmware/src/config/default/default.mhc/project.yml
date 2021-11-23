@@ -6,13 +6,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: F58DB2348A0FCE945652B285010E5F8A
-- generatedChecksum: null
+- generatedChecksum: 3C13720844166A5D97CF4EAD9DDB9FE2
   logicalPath: ''
   name: app.c
   physicalPath: ../..
   security: NON_SECURE
   type: SOURCE
-  userChecksum: null
+  userChecksum: 3C13720844166A5D97CF4EAD9DDB9FE2
 - generatedChecksum: 8ACE0DEBD82F6829438A4674565451FB
   logicalPath: FreeRTOS/Source
   name: croutine.c
@@ -132,6 +132,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 1BCA5DFF8679503FCB69D2AA16217BDE
+- generatedChecksum: 3A460B14551BB3A51AFFE8400707B550
+  logicalPath: config/default/peripheral/mpu
+  name: plib_mpu.c
+  physicalPath: peripheral/mpu
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 3A460B14551BB3A51AFFE8400707B550
 - generatedChecksum: 7647CD5CC0FF2F5DA7ED3DAE6F194673
   logicalPath: config/default/peripheral/nvic
   name: plib_nvic.c
@@ -202,13 +209,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 09041728D74A4E3A32C7D4EAA96C4EE7
-- generatedChecksum: 096DC723D869840D53527B21C2519E1A
+- generatedChecksum: F199C711F99DEF2498D1F664873F2B12
   logicalPath: config/default
   name: startup_xc32.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 096DC723D869840D53527B21C2519E1A
+  userChecksum: F199C711F99DEF2498D1F664873F2B12
 - generatedChecksum: D6CF30BDCE1A813D9ACF3905EBD6A871
   logicalPath: FreeRTOS/Source
   name: stream_buffer.c
@@ -314,13 +321,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 625DFAF8957213A83B43E401F0F9B76D
-- generatedChecksum: null
+- generatedChecksum: 452F7AB915EEA4B1529959D0FF80C3F7
   logicalPath: ''
   name: app.h
   physicalPath: ../..
   security: NON_SECURE
   type: HEADER
-  userChecksum: null
+  userChecksum: 452F7AB915EEA4B1529959D0FF80C3F7
 - generatedChecksum: 14F1AD56D242EFD0AF76849C6ADFECC4
   logicalPath: packs/CMSIS/CMSIS/Core/Include
   name: cachel1_armv7.h
@@ -426,13 +433,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: B424335B8194FB845DFEE348D5ACCDA0
-- generatedChecksum: E527AF85846202F6637702C6BE682434
+- generatedChecksum: 24C67F2C3A14C9D528CEB164A27DBF0C
   logicalPath: config/default
   name: definitions.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: E9DD73FD223698385FFFB3BF82FA74BC
+  userChecksum: AA266A7A40E0C08C7D7626F16780798E
 - generatedChecksum: 1EA4EDD5EA90F43EC407DE32441159A9
   logicalPath: FreeRTOS/Source/include
   name: deprecated_definitions.h
@@ -447,13 +454,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 3AF237725C26767B231B9DF6D83C3920
-- generatedChecksum: 1D6E7FB945BA165E25E19CAD01E41489
+- generatedChecksum: 9FD18F0D30B89945CC141BA0DE2ABE90
   logicalPath: config/default
   name: device_cache.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: 1D6E7FB945BA165E25E19CAD01E41489
+  userChecksum: 9FD18F0D30B89945CC141BA0DE2ABE90
 - generatedChecksum: D4DF9B77C2FAD66A278B6EFC86F5D1D4
   logicalPath: config/default
   name: device_vectors.h
@@ -832,6 +839,20 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 30C7DE721C75CF53A440475976FFA0DD
+- generatedChecksum: 6736D89FF27ACC5342105A1FCB2C5B13
+  logicalPath: config/default/peripheral/mpu
+  name: plib_mpu.h
+  physicalPath: peripheral/mpu
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 6736D89FF27ACC5342105A1FCB2C5B13
+- generatedChecksum: E13B3C3F2096A36698DDC9B5BDE2E776
+  logicalPath: config/default/peripheral/mpu
+  name: plib_mpu_local.h
+  physicalPath: peripheral/mpu
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: E13B3C3F2096A36698DDC9B5BDE2E776
 - generatedChecksum: 55ECCC7FA71BD15B46EF80DC0515ED7A
   logicalPath: config/default/peripheral/nvic
   name: plib_nvic.h
