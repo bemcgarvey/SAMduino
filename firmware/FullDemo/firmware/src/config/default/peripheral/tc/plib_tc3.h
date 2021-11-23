@@ -117,6 +117,27 @@ bool TC3_CH0_TimerPeriodHasExpired(void);
 
  
 
+void TC3_CH1_TimerInitialize (void);
+
+void TC3_CH1_TimerStart (void);
+
+void TC3_CH1_TimerStop (void);
+
+void TC3_CH1_TimerPeriodSet (uint16_t period);
+
+
+uint32_t TC3_CH1_TimerFrequencyGet (void);
+
+uint16_t TC3_CH1_TimerPeriodGet (void);
+
+uint16_t TC3_CH1_TimerCounterGet (void);
+
+void TC3_CH1_TimerCallbackRegister(TC_TIMER_CALLBACK callback, uintptr_t context);
+
+
+
+ 
+
 
 #ifdef __cplusplus // Provide C++ Compatibility
 }

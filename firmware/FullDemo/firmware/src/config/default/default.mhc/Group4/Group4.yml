@@ -1,0 +1,6 @@
+format_version: v1.0
+type: GroupComponent
+attributes: {displayName: Analog, id: Group4}
+children:
+- type: ElementPosition
+  attributes: {x: '349', y: '432', id: Group4}

@@ -740,21 +740,28 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: 'false'}
+        attributes: {id: core, value: 'true'}
   - type: String
     attributes: {id: NVIC_51_0_HANDLER}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: TC3_CH1_Handler}
+        attributes: {id: core, value: TC3_CH1_InterruptHandler}
   - type: Boolean
     attributes: {id: NVIC_51_0_HANDLER_LOCK}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: 'false'}
+        attributes: {id: core, value: 'true'}
+  - type: Combo
+    attributes: {id: NVIC_51_0_PRIORITY}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '1'}
   - type: Boolean
     attributes: {id: NVIC_52_0_ENABLE}
     children:
@@ -1753,7 +1760,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '33818656'}
+        attributes: {id: core, value: '34342944'}
   - type: Combo
     attributes: {id: PMC_PCK5_CSS}
     children:
@@ -1775,6 +1782,13 @@ children:
       children:
       - type: User
         attributes: {value: '12'}
+  - type: Boolean
+    attributes: {id: PMC_PCR_EN0}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'false'}
   - type: KeyValueSet
     attributes: {id: PMC_PCR_GCLK0CSS}
     children:
@@ -2134,34 +2148,41 @@ children:
       children:
       - type: Dynamic
         attributes: {id: tc3, value: 'false'}
+  - type: Integer
+    attributes: {id: TC3_CH1_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '150000000'}
   - type: Boolean
     attributes: {id: TC3_CH1_INTERRUPT_ENABLE}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc3, value: 'false'}
+        attributes: {id: tc3, value: 'true'}
   - type: Boolean
     attributes: {id: TC3_CH1_INTERRUPT_ENABLE_UPDATE}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: 'true'}
+        attributes: {id: core, value: 'false'}
   - type: String
     attributes: {id: TC3_CH1_INTERRUPT_HANDLER}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc3, value: TC3_CH1_Handler}
+        attributes: {id: tc3, value: TC3_CH1_InterruptHandler}
   - type: Boolean
     attributes: {id: TC3_CH1_INTERRUPT_HANDLER_LOCK}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc3, value: 'false'}
+        attributes: {id: tc3, value: 'true'}
   - type: Boolean
     attributes: {id: TC3_CH2_INTERRUPT_ENABLE}
     children:
@@ -2199,6 +2220,13 @@ children:
         attributes: {id: core, value: '150000000'}
   - type: Boolean
     attributes: {id: TC3_CHANNEL0_CLOCK_ENABLE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: tc3, value: 'true'}
+  - type: Boolean
+    attributes: {id: TC3_CHANNEL1_CLOCK_ENABLE}
     children:
     - type: Values
       children:

@@ -127,6 +127,65 @@ children:
       - type: User
         attributes: {value: '1.0'}
   - type: Integer
+    attributes: {id: TC1_CLOCK_FREQ}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: tc3, value: '150000000'}
+  - type: Boolean
+    attributes: {id: TC1_ENABLE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'true'}
+  - type: Comment
+    attributes: {id: TC1_Resolution}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: text}
+        children:
+        - {type: Value, value: '****Clock resolution is 6.66666666667 nS****'}
+  - type: Comment
+    attributes: {id: TC1_TIMER_PERIOD_CMT}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: text}
+        children:
+        - {type: Value, value: '****Period Count is 749****'}
+  - type: Long
+    attributes: {id: TC1_TIMER_PERIOD_COUNT}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: tc3, value: '749'}
+  - type: Float
+    attributes: {id: TC1_TIMER_PERIOD_MS}
+    children:
+    - type: Attributes
+      children:
+      - type: Float
+        attributes: {id: max}
+        children:
+        - {type: Value, value: '436.90668'}
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '5.0'}
+  - type: Combo
+    attributes: {id: TC1_TIMER_UNIT}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: microsecond}
+  - type: Integer
     attributes: {id: TC3_CLOCK_FREQ}
     children:
     - type: Values

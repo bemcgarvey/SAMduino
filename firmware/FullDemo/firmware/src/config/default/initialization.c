@@ -171,8 +171,8 @@ void SYS_Initialize ( void* data )
 
  
     TC3_CH0_TimerInitialize(); 
+    TC3_CH1_TimerInitialize(); 
      
-    
     AFEC0_Initialize();
 
     QSPI_Initialize();

@@ -125,6 +125,87 @@ bool TC3_CH0_TimerPeriodHasExpired(void)
  
  
 
+
+/* Callback object for channel 1 */
+TC_TIMER_CALLBACK_OBJECT TC3_CH1_CallbackObj;
+
+/* Initialize channel in timer mode */
+void TC3_CH1_TimerInitialize (void)
+{
+    /* Use peripheral clock */
+    TC3_REGS->TC_CHANNEL[1].TC_EMR = TC_EMR_NODIVCLK_Msk;
+    /* clock selection and waveform selection */
+    TC3_REGS->TC_CHANNEL[1].TC_CMR =  TC_CMR_WAVEFORM_WAVSEL_UP_RC | TC_CMR_WAVE_Msk ;
+
+    /* write period */
+    TC3_REGS->TC_CHANNEL[1].TC_RC = 749U;
+
+
+    /* enable interrupt */
+    TC3_REGS->TC_CHANNEL[1].TC_IER = TC_IER_CPCS_Msk;
+    TC3_CH1_CallbackObj.callback_fn = NULL;
+}
+
+/* Start the timer */
+void TC3_CH1_TimerStart (void)
+{
+    TC3_REGS->TC_CHANNEL[1].TC_CCR = (TC_CCR_CLKEN_Msk | TC_CCR_SWTRG_Msk);
+}
+
+/* Stop the timer */
+void TC3_CH1_TimerStop (void)
+{
+    TC3_REGS->TC_CHANNEL[1].TC_CCR = (TC_CCR_CLKDIS_Msk);
+}
+
+uint32_t TC3_CH1_TimerFrequencyGet( void )
+{
+    return (uint32_t)(150000000UL);
+}
+
+/* Configure timer period */
+void TC3_CH1_TimerPeriodSet (uint16_t period)
+{
+    TC3_REGS->TC_CHANNEL[1].TC_RC = period;
+}
+
+
+/* Read timer period */
+uint16_t TC3_CH1_TimerPeriodGet (void)
+{
+    return TC3_REGS->TC_CHANNEL[1].TC_RC;
+}
+
+/* Read timer counter value */
+uint16_t TC3_CH1_TimerCounterGet (void)
+{
+    return TC3_REGS->TC_CHANNEL[1].TC_CV;
+}
+
+/* Register callback for period interrupt */
+void TC3_CH1_TimerCallbackRegister(TC_TIMER_CALLBACK callback, uintptr_t context)
+{
+    TC3_CH1_CallbackObj.callback_fn = callback;
+    TC3_CH1_CallbackObj.context = context;
+}
+
+/* Interrupt handler for Channel 1 */
+void TC3_CH1_InterruptHandler(void)
+{
+    TC_TIMER_STATUS timer_status = (TC_TIMER_STATUS)(TC3_REGS->TC_CHANNEL[1].TC_SR & TC_TIMER_STATUS_MSK);
+    /* Call registered callback function */
+    if ((TC_TIMER_NONE != timer_status) && TC3_CH1_CallbackObj.callback_fn != NULL)
+    {
+        TC3_CH1_CallbackObj.callback_fn(timer_status, TC3_CH1_CallbackObj.context);
+    }
+}
+
+ 
+
+ 
+
+ 
+
  
  
 

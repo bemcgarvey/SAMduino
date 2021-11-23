@@ -70,6 +70,8 @@ void NVIC_Initialize( void )
     NVIC_EnableIRQ(TWIHS0_IRQn);
     NVIC_SetPriority(MCAN1_INT0_IRQn, 4);
     NVIC_EnableIRQ(MCAN1_INT0_IRQn);
+    NVIC_SetPriority(TC3_CH1_IRQn, 1);
+    NVIC_EnableIRQ(TC3_CH1_IRQn);
 
 
 

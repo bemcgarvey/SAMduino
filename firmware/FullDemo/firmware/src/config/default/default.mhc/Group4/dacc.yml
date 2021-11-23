@@ -11,6 +11,8 @@ children:
       children:
       - type: Dynamic
         attributes: {id: dacc, value: '0'}
+      - type: User
+        attributes: {value: '0'}
   - type: KeyValueSet
     attributes: {id: CONVERSION_MODE_CH1}
     children:
@@ -66,7 +68,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '15'}
+        attributes: {value: '13'}
   - type: Boolean
     attributes: {id: DACC_TRIGR_TRGEN0}
     children:
@@ -89,6 +91,6 @@ children:
       - type: String
         attributes: {id: text}
         children:
-        - {type: Value, value: '**** DAC Frequency = 8.82352941176 MHz ****'}
+        - {type: Value, value: '**** DAC Frequency = 10.0 MHz ****'}
 - type: ElementPosition
-  attributes: {x: '18', y: '261', id: dacc}
+  attributes: {x: '160', y: '20', id: dacc}

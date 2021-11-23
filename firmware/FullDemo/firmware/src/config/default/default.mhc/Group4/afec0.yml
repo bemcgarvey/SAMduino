@@ -325,4 +325,4 @@ children:
       - type: Dynamic
         attributes: {id: afec0, value: AFEC0_IRQn}
 - type: ElementPosition
-  attributes: {x: '4', y: '174', id: afec0}
+  attributes: {x: '20', y: '20', id: afec0}

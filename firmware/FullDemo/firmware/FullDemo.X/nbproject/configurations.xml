@@ -413,10 +413,13 @@
           <itemPath>../src/config/default/default.mhc/Group3/tc3.yml</itemPath>
           <itemPath>../src/config/default/default.mhc/Group3/trng.yml</itemPath>
         </logicalFolder>
-        <itemPath>../src/config/default/default.mhc/afec0.yml</itemPath>
+        <logicalFolder name="f5" displayName="Group4" projectFiles="true">
+          <itemPath>../src/config/default/default.mhc/Group4/afec0.yml</itemPath>
+          <itemPath>../src/config/default/default.mhc/Group4/dacc.yml</itemPath>
+          <itemPath>../src/config/default/default.mhc/Group4/Group4.yml</itemPath>
+        </logicalFolder>
         <itemPath>../src/config/default/default.mhc/cmsis.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/core.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/dacc.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/dfp.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/efc.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/GraphSettings.yml</itemPath>
