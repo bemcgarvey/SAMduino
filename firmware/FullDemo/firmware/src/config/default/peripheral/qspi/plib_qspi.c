@@ -170,7 +170,7 @@ bool QSPI_CommandWrite( qspi_command_xfer_t *qspi_command_xfer, uint32_t address
     mask |= QSPI_IFR_TFRTYP(QSPI_IFR_TFRTYP_TRSFR_READ_Val);
 
     QSPI_REGS->QSPI_IFR = mask;
-
+    
     /* Poll Status register to know status if instruction has end */
     while(!(QSPI_REGS->QSPI_SR& QSPI_SR_INSTRE_Msk)) {
         ;   // spin lock

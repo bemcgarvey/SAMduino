@@ -4,6 +4,9 @@
 #include "driver/sst26/drv_sst26.h"
 #include <stdlib.h>
 
+//Notes: Data cache must be disabled or QSPI doesn't work consitently.
+//TODO try to solve the problem with the data cache
+
 static DRV_HANDLE handle;
 void initFlash(void);
 void readFlash(void);

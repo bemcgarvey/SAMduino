@@ -74,9 +74,9 @@ extern "C" {
 #define DATA_CACHE_IS_ENABLED()            			   (SCB->CCR & (uint32_t)SCB_CCR_DC_Msk)
 #define INSTRUCTION_CACHE_IS_ENABLED()     			   (SCB->CCR & (uint32_t)SCB_CCR_IC_Msk)
 
-#define ICACHE_ENABLE()
-#define ICACHE_DISABLE()
-#define ICACHE_INVALIDATE()
+#define ICACHE_ENABLE()                                SCB_EnableICache()
+#define ICACHE_DISABLE()                               SCB_DisableICache()
+#define ICACHE_INVALIDATE()                            SCB_InvalidateICache()
 
 #define DCACHE_ENABLE()
 #define DCACHE_DISABLE()
