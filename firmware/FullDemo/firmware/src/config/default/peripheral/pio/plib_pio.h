@@ -82,6 +82,15 @@
 #define CAN_Standby_Get()               ((PIOD_REGS->PIO_PDSR >> 14) & 0x1)
 #define CAN_Standby_PIN                  PIO_PIN_PD14
 
+/*** Macros for USB_VBUS_SENSE pin ***/
+#define USB_VBUS_SENSE_Set()               (PIOD_REGS->PIO_SODR = (1<<13))
+#define USB_VBUS_SENSE_Clear()             (PIOD_REGS->PIO_CODR = (1<<13))
+#define USB_VBUS_SENSE_Toggle()            (PIOD_REGS->PIO_ODSR ^= (1<<13))
+#define USB_VBUS_SENSE_OutputEnable()      (PIOD_REGS->PIO_OER = (1<<13))
+#define USB_VBUS_SENSE_InputEnable()       (PIOD_REGS->PIO_ODR = (1<<13))
+#define USB_VBUS_SENSE_Get()               ((PIOD_REGS->PIO_PDSR >> 13) & 0x1)
+#define USB_VBUS_SENSE_PIN                  PIO_PIN_PD13
+
 /*** Macros for LeftButton pin ***/
 #define LeftButton_Set()               (PIOD_REGS->PIO_SODR = (1<<8))
 #define LeftButton_Clear()             (PIOD_REGS->PIO_CODR = (1<<8))

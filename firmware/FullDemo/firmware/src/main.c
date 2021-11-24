@@ -40,9 +40,7 @@ int main ( void )
     SYS_Initialize ( NULL );
     while ( true )
     {
-        //Execution should never come to here
-        /* Maintain state machines of all polled MPLAB Harmony modules. */
-        SYS_Tasks ( );
+        SYS_Tasks ( );  //This will never return
     }
 
     /* Execution should not come here during normal operation */

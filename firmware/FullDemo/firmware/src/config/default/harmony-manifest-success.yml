@@ -4,7 +4,7 @@
 
 
 project: FullDemo
-creation_date: 2021-11-23T10:43:08.560-07:00[America/Denver]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
+creation_date: 2021-11-23T16:09:01.383-07:00[America/Denver]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
 operating_system: Windows 10
 mhc_mode: IDE            # [IDE|Standalone|Headless]
 mhc_version: v3.8.2
@@ -15,6 +15,7 @@ compiler: XC32 (3.01)
 modules:
     - {name: "csp", version: "v3.10.0"}
     - {name: "core", version: "v3.10.0"}
+    - {name: "usb", version: "v3.8.1"}
     - {name: "dev_packs", version: "v3.10.0"}
     - {name: "CMSIS-FreeRTOS", version: "v10.3.1"}
 

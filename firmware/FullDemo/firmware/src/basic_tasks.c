@@ -6,6 +6,8 @@
 #include "twi.h"
 #include "rtc_menu.h"
 #include "analog.h"
+#include "usb_menu.h"
+#include "mouse_tasks.h"
 #include <ctype.h>
 
 //task functions
@@ -83,6 +85,8 @@ void menuTask(void *pvParameters) {
             case '3': canMenu();
                 break;
             case '4': twiMenu();
+                break;
+            case '5': usbMenu();
                 break;
             case '6': analogMenu();
                 break;

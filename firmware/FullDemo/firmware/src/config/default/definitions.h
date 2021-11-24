@@ -49,6 +49,8 @@
 #include <stddef.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include "usb/usb_chapter_9.h"
+#include "usb/usb_device.h"
 #include "peripheral/clk/plib_clk.h"
 #include "peripheral/pio/plib_pio.h"
 #include "peripheral/nvic/plib_nvic.h"
@@ -59,7 +61,10 @@
 #include "peripheral/tc/plib_tc3.h"
 #include "driver/sst26/drv_sst26.h"
 #include "peripheral/afec/plib_afec0.h"
+#include "driver/usb/usbhsv1/drv_usbhsv1.h"
 #include "peripheral/qspi/plib_qspi.h"
+#include "usb/usb_device_hid.h"
+#include "usb/usb_hid.h"
 #include "peripheral/uart/plib_uart0.h"
 #include "peripheral/trng/plib_trng.h"
 #include "peripheral/twihs/master/plib_twihs0_master.h"
@@ -70,7 +75,6 @@
 #include "system/cache/sys_cache.h"
 #include "osal/osal.h"
 #include "system/debug/sys_debug.h"
-
 
 
 
@@ -195,7 +199,11 @@ Remarks:
 
 typedef struct
 {
+	SYS_MODULE_OBJ  usbDevObject0;
+
     SYS_MODULE_OBJ  drvSST26;
+	SYS_MODULE_OBJ  drvUSBHSV1Object;
+
 
 } SYSTEM_OBJECTS;
 
@@ -204,6 +212,8 @@ typedef struct
 // Section: extern declarations
 // *****************************************************************************
 // *****************************************************************************
+
+extern const USB_DEVICE_INIT usbDevInitData; 
 
 
 

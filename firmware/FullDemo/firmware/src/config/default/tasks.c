@@ -52,7 +52,47 @@
 
 #include "configuration.h"
 #include "definitions.h"
+#include "mouse_tasks.h"
 #include "basic_tasks.h"
+
+
+// *****************************************************************************
+// *****************************************************************************
+// Section: RTOS "Tasks" Routine
+// *****************************************************************************
+// *****************************************************************************
+void _USB_DEVICE_Tasks(  void *pvParameters  )
+{
+    while(1)
+    {
+				 /* USB Device layer tasks routine */
+        USB_DEVICE_Tasks(sysObj.usbDevObject0);
+        vTaskDelay(10 / portTICK_PERIOD_MS);
+    }
+}
+
+void _DRV_USBHSV1_Tasks(  void *pvParameters  )
+{
+    while(1)
+    {
+				 /* USB HS Driver Task Routine */
+        DRV_USBHSV1_Tasks(sysObj.drvUSBHSV1Object);
+        vTaskDelay(10 / portTICK_PERIOD_MS);
+    }
+}
+
+/* Handle for the APP_Tasks. */
+TaskHandle_t xAPP_Tasks;
+
+void _APP_Tasks(  void *pvParameters  )
+{   
+    while(1)
+    {
+        MouseTasks();
+    }
+}
+
+
 
 
 // *****************************************************************************
@@ -71,8 +111,31 @@
 void SYS_Tasks ( void )
 {
     setupBasicTasks();
-    //Start RTOS Scheduler.
-    vTaskStartScheduler();  //This function never returns.
+    //USB Tasks
+    xTaskCreate( _USB_DEVICE_Tasks,
+        "USB_DEVICE_TASKS",
+        1024,
+        (void*)NULL,
+        1,
+        (TaskHandle_t*)NULL
+    );
+    xTaskCreate( _DRV_USBHSV1_Tasks,
+        "DRV_USBHSV1_TASKS",
+        1024,
+        (void*)NULL,
+        1,
+        (TaskHandle_t*)NULL
+    );
+    APP_Initialize(); //initialize the mouse tasks
+    xTaskCreate((TaskFunction_t) _APP_Tasks,
+                "APP_Tasks",
+                1024,
+                NULL,
+                1,
+                &xAPP_Tasks);
+    /* Start RTOS Scheduler. */
+    vTaskStartScheduler(); /* This function never returns. */
+
 }
 
 /*******************************************************************************

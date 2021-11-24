@@ -110,7 +110,6 @@ extern void DACC_Handler               ( void ) __attribute__((weak, alias("Dumm
 extern void PWM0_Handler               ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void ICM_Handler                ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void ACC_Handler                ( void ) __attribute__((weak, alias("Dummy_Handler")));
-extern void USBHS_Handler              ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void MCAN0_INT0_Handler         ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void MCAN0_INT1_Handler         ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void MCAN1_INT1_Handler         ( void ) __attribute__((weak, alias("Dummy_Handler")));
@@ -197,7 +196,7 @@ const H3DeviceVectors exception_table=
     .pfnPWM0_Handler               = PWM0_Handler,
     .pfnICM_Handler                = ICM_Handler,
     .pfnACC_Handler                = ACC_Handler,
-    .pfnUSBHS_Handler              = USBHS_Handler,
+    .pfnUSBHS_Handler              = DRV_USBHSV1_USBHS_Handler,
     .pfnMCAN0_INT0_Handler         = MCAN0_INT0_Handler,
     .pfnMCAN0_INT1_Handler         = MCAN0_INT1_Handler,
     .pfnMCAN1_INT0_Handler         = MCAN1_INT0_InterruptHandler,
@@ -232,6 +231,7 @@ const H3DeviceVectors exception_table=
     .pfnGMAC_Q3_Handler            = GMAC_Q3_Handler,
     .pfnGMAC_Q4_Handler            = GMAC_Q4_Handler,
     .pfnGMAC_Q5_Handler            = GMAC_Q5_Handler,
+
 
 
 };

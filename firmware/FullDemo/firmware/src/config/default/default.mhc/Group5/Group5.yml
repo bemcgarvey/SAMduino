@@ -1,0 +1,6 @@
+format_version: v1.0
+type: GroupComponent
+attributes: {displayName: USB, id: Group5}
+children:
+- type: ElementPosition
+  attributes: {x: '157', y: '360', id: Group5}
