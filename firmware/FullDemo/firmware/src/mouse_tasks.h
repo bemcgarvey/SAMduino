@@ -18,9 +18,9 @@ extern "C" {
 #include <stdlib.h>
 #include "string.h"
 #include "definitions.h"
-    
+
 #define MOUSE_BUTTON_NUMBERS 2
-    
+
     typedef int8_t MOUSE_COORDINATE;
 
     typedef enum {
@@ -45,16 +45,12 @@ extern "C" {
             );
 
     typedef enum {
-        /* Application's state machine's initial state. */
         APP_STATE_INIT = 0,
-        /* Application waits for configuration in this state */
+        APP_STATE_WAIT_FOR_ATTACH,
         APP_STATE_WAIT_FOR_CONFIGURATION,
-        /* Application runs mouse emulation in this state */
         APP_STATE_MOUSE_EMULATE,
-        /* Application error state */
         APP_STATE_ERROR
     } APP_STATES;
-
 
     typedef struct {
         /* The application's current state */
@@ -87,11 +83,16 @@ extern "C" {
         bool sofEventHasOccurred;
         /* SET IDLE timer */
         uint16_t setIdleTimer;
+        bool powerDetected;
+        bool attachAllowed;
     } APP_DATA;
 
-    
+    enum {MOUSE_TASK_NOTIFY_ATTACH = 0x01, MOUSE_TASK_NOTIFY_DETACH = 0x02};
+
     void APP_Initialize(void);
-    void MouseTasks(void);
+    void MouseTasks(void *pvParameters);
+    
+    extern TaskHandle_t mouseTasksHandle;
 
 #ifdef	__cplusplus
 }

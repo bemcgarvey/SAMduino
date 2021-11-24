@@ -4,6 +4,7 @@
 #define APP_USB_CONVERT_TO_MILLISECOND (1)
 
 APP_DATA appData;
+TaskHandle_t mouseTasksHandle = NULL;
 
 /* Mouse Report */
 MOUSE_REPORT mouseReport USB_ALIGN;
@@ -82,25 +83,17 @@ void APP_USBDeviceEventHandler(USB_DEVICE_EVENT event, void * eventData, uintptr
     USB_DEVICE_EVENT_DATA_CONFIGURED * configurationValue;
     switch (event) {
         case USB_DEVICE_EVENT_SOF:
-            /* This event is used for switch debounce. This flag is reset
-             * by the switch process routine. */
             appData.sofEventHasOccurred = true;
             appData.setIdleTimer++;
             break;
         case USB_DEVICE_EVENT_RESET:
         case USB_DEVICE_EVENT_DECONFIGURED:
-
-            /* Device got deconfigured */
-
             appData.isConfigured = false;
             appData.isMouseReportSendBusy = false;
             appData.state = APP_STATE_WAIT_FOR_CONFIGURATION;
             appData.emulateMouse = true;
             break;
-
         case USB_DEVICE_EVENT_CONFIGURED:
-
-            /* Device is configured */
             configurationValue = (USB_DEVICE_EVENT_DATA_CONFIGURED *) eventData;
             if (configurationValue->configurationValue == 1) {
                 appData.isConfigured = true;
@@ -112,11 +105,13 @@ void APP_USBDeviceEventHandler(USB_DEVICE_EVENT event, void * eventData, uintptr
 
         case USB_DEVICE_EVENT_POWER_DETECTED:
             /* VBUS was detected. We can attach the device */
-            USB_DEVICE_Attach(appData.deviceHandle);
+            appData.powerDetected = true;
             break;
         case USB_DEVICE_EVENT_POWER_REMOVED:
             /* VBUS is not available any more. Detach the device. */
+            appData.powerDetected = false;
             USB_DEVICE_Detach(appData.deviceHandle);
+            appData.state = APP_STATE_WAIT_FOR_ATTACH;
             break;
         case USB_DEVICE_EVENT_SUSPENDED:
             break;
@@ -129,79 +124,86 @@ void APP_USBDeviceEventHandler(USB_DEVICE_EVENT event, void * eventData, uintptr
 }
 
 void APP_Initialize(void) {
-    /* Place the App state machine in its initial state. */
     appData.state = APP_STATE_INIT;
     appData.deviceHandle = USB_DEVICE_HANDLE_INVALID;
     appData.isConfigured = false;
     appData.emulateMouse = true;
     appData.hidInstance = 0;
     appData.isMouseReportSendBusy = false;
+    appData.powerDetected = USB_VBUS_SENSE_Get();
+    appData.attachAllowed = false;
 }
 
-void MouseTasks(void) {
-    /* Check the application's current state. */
-    switch (appData.state) {
-            /* Application's initial state. */
-        case APP_STATE_INIT:
-        {
-            /* Open the device layer */
-            appData.deviceHandle = USB_DEVICE_Open(USB_DEVICE_INDEX_0,
-                    DRV_IO_INTENT_READWRITE);
-
-            if (appData.deviceHandle != USB_DEVICE_HANDLE_INVALID) {
-                /* Register a callback with device layer to get event notification (for end point 0) */
-                USB_DEVICE_EventHandlerSet(appData.deviceHandle,
-                        APP_USBDeviceEventHandler, 0);
-
-                appData.state = APP_STATE_WAIT_FOR_CONFIGURATION;
-            } else {
-                /* The Device Layer is not ready to be opened. We should try
-                 * again later. */
+void MouseTasks(void *pvParameters) {
+    while (1) {
+        uint32_t notification;
+        if (xTaskNotifyWait(0, 0xffff, &notification, 1) == pdTRUE) {
+            if (notification == MOUSE_TASK_NOTIFY_ATTACH) {
+                appData.attachAllowed = true;
+            } else if (notification == MOUSE_TASK_NOTIFY_DETACH) {
+                appData.attachAllowed = false;
+                if (appData.deviceHandle != USB_DEVICE_HANDLE_INVALID) {
+                    USB_DEVICE_Detach(appData.deviceHandle);
+                    appData.state = APP_STATE_WAIT_FOR_ATTACH;
+                }
             }
-            break;
         }
-
-        case APP_STATE_WAIT_FOR_CONFIGURATION:
-
-            /* Check if the device is configured. The
-             * isConfigured flag is updated in the
-             * Device Event Handler */
-
-            if (appData.isConfigured) {
-                appData.state = APP_STATE_MOUSE_EMULATE;
+        switch (appData.state) {
+            case APP_STATE_INIT:
+            {
+                /* Open the device layer */
+                appData.deviceHandle = USB_DEVICE_Open(USB_DEVICE_INDEX_0,
+                        DRV_IO_INTENT_READWRITE);
+                if (appData.deviceHandle != USB_DEVICE_HANDLE_INVALID) {
+                    /* Register a callback with device layer to get event notification (for end point 0) */
+                    USB_DEVICE_EventHandlerSet(appData.deviceHandle,
+                            APP_USBDeviceEventHandler, 0);
+                    appData.state = APP_STATE_WAIT_FOR_ATTACH;
+                } else {
+                    /* The Device Layer is not ready to be opened. We should try
+                     * again later. */
+                }
+                break;
             }
-            break;
-
-        case APP_STATE_MOUSE_EMULATE:
-
-            appData.xCoordinate = 0;
-            appData.yCoordinate = 0;
-            appData.mouseButton[0] = 0;
-            appData.mouseButton[1] = 0;
-
-            if (!appData.isMouseReportSendBusy) {
-                appData.isMouseReportSendBusy = true;
-
-                /* Create the mouse report */
-                MOUSE_ReportCreate(appData.xCoordinate, appData.yCoordinate,
-                        appData.mouseButton, &mouseReport);
-                /* Send the mouse report. */
-                USB_DEVICE_HID_ReportSend(appData.hidInstance,
-                        &appData.reportTransferHandle, (uint8_t*) & mouseReport,
-                        sizeof (MOUSE_REPORT));
-                appData.setIdleTimer = 0;
+            case APP_STATE_WAIT_FOR_ATTACH:
+                if (appData.attachAllowed && appData.powerDetected) {
+                    USB_DEVICE_Attach(appData.deviceHandle);
+                    appData.state = APP_STATE_WAIT_FOR_CONFIGURATION;
+                }
+                break;
+            case APP_STATE_WAIT_FOR_CONFIGURATION:
+                /* Check if the device is configured. The
+                 * isConfigured flag is updated in the
+                 * Device Event Handler */
+                if (appData.isConfigured) {
+                    appData.state = APP_STATE_MOUSE_EMULATE;
+                }
+                break;
+            case APP_STATE_MOUSE_EMULATE:
+                appData.xCoordinate = 0;
+                appData.yCoordinate = 0;
+                appData.mouseButton[0] = 0;
+                appData.mouseButton[1] = 0;
+                if (!appData.isMouseReportSendBusy) {
+                    appData.isMouseReportSendBusy = true;
+                    MOUSE_ReportCreate(appData.xCoordinate, appData.yCoordinate,
+                            appData.mouseButton, &mouseReport);
+                    USB_DEVICE_HID_ReportSend(appData.hidInstance,
+                            &appData.reportTransferHandle, (uint8_t*) & mouseReport,
+                            sizeof (MOUSE_REPORT));
+                    appData.setIdleTimer = 0;
+                }
+                break;
+            case APP_STATE_ERROR:
+                break;
+                /* The default state should never be executed. */
+            default:
+            {
+                /* TODO: Handle error in application's state machine. */
+                break;
             }
-            break;
-        case APP_STATE_ERROR:
-            break;
-            /* The default state should never be executed. */
-        default:
-        {
-            /* TODO: Handle error in application's state machine. */
-            break;
         }
     }
-    vTaskDelay(10);
 }
 
 void MOUSE_ReportCreate

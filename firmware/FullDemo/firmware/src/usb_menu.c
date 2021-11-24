@@ -2,6 +2,7 @@
 #include "usb_menu.h"
 #include "definitions.h"
 #include "basic_tasks.h"
+#include "mouse_tasks.h"
 #include <stdbool.h>
 
 void usbMenu(void) {
@@ -25,15 +26,16 @@ void usbMenu(void) {
                 UART0_Read(&rx, 1);
                 switch (rx) {
                     case '1':
-                        
+                        xTaskNotify(mouseTasksHandle, MOUSE_TASK_NOTIFY_ATTACH, eSetValueWithOverwrite);
                         break;
                     case '2':
-                        
+                        xTaskNotify(mouseTasksHandle, MOUSE_TASK_NOTIFY_DETACH, eSetValueWithOverwrite);
                         break;
                     case 'm':
                         repeatMenu = true;
                         break;
                     case 'b':
+                        xTaskNotify(mouseTasksHandle, MOUSE_TASK_NOTIFY_DETACH, eSetValueWithOverwrite);
                         return;
                 }
             }

@@ -81,19 +81,6 @@ void _DRV_USBHSV1_Tasks(  void *pvParameters  )
     }
 }
 
-/* Handle for the APP_Tasks. */
-TaskHandle_t xAPP_Tasks;
-
-void _APP_Tasks(  void *pvParameters  )
-{   
-    while(1)
-    {
-        MouseTasks();
-    }
-}
-
-
-
 
 // *****************************************************************************
 // *****************************************************************************
@@ -127,12 +114,12 @@ void SYS_Tasks ( void )
         (TaskHandle_t*)NULL
     );
     APP_Initialize(); //initialize the mouse tasks
-    xTaskCreate((TaskFunction_t) _APP_Tasks,
-                "APP_Tasks",
+    xTaskCreate((TaskFunction_t) MouseTasks,
+                "mouse",
                 1024,
                 NULL,
                 1,
-                &xAPP_Tasks);
+                &mouseTasksHandle);
     /* Start RTOS Scheduler. */
     vTaskStartScheduler(); /* This function never returns. */
 
