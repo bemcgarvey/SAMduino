@@ -96,7 +96,7 @@
 #define configKERNEL_INTERRUPT_PRIORITY         (7 << (8 - 3))
 /* The maximum interrupt priority from which FreeRTOS.org API functions can be called.
  * Only API functions that end in ...FromISR() can be used within interrupts. */
-#define configMAX_SYSCALL_INTERRUPT_PRIORITY    (3 << (8 - 3))
+#define configMAX_SYSCALL_INTERRUPT_PRIORITY    (2 << (8 - 3))
 
 
 /* Optional functions - most linkers will remove unused functions anyway. */

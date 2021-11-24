@@ -32,6 +32,13 @@ children:
       children:
       - type: Dynamic
         attributes: {id: usb_device, value: '1'}
+  - type: String
+    attributes: {id: CONFIG_USB_DEVICE_MANUFACTURER_STRING}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: Quantum Embedded Systems}
   - type: Integer
     attributes: {id: CONFIG_USB_DEVICE_MAX_POWER}
     children:
@@ -53,6 +60,8 @@ children:
       children:
       - type: Dynamic
         attributes: {id: usb_device, value: '0x0000'}
+      - type: User
+        attributes: {value: '0x0123'}
   - type: Combo
     attributes: {id: CONFIG_USB_DEVICE_PRODUCT_ID_SELECTION_IDX0}
     children:
@@ -67,5 +76,14 @@ children:
       children:
       - type: Dynamic
         attributes: {id: usb_device, value: HID Mouse Demo}
+      - type: User
+        attributes: {value: SAMduino Mouse Demo}
+  - type: String
+    attributes: {id: CONFIG_USB_DEVICE_VENDOR_ID_IDX0}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '0x4d63'}
 - type: ElementPosition
   attributes: {x: '30', y: '100', id: usb_device}

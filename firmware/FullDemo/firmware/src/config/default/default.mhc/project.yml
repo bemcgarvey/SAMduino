@@ -153,13 +153,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 3A460B14551BB3A51AFFE8400707B550
-- generatedChecksum: 0893A939DB3C1F1E755EC6E5A59ED3A7
+- generatedChecksum: B29174B99E592B9C9BAF40C11AD476AF
   logicalPath: config/default/peripheral/nvic
   name: plib_nvic.c
   physicalPath: peripheral/nvic
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 0893A939DB3C1F1E755EC6E5A59ED3A7
+  userChecksum: B29174B99E592B9C9BAF40C11AD476AF
 - generatedChecksum: C88F5C843A99735962014269D2C0A86F
   logicalPath: config/default/peripheral/pio
   name: plib_pio.c
@@ -257,7 +257,7 @@ files:
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: C0B55E4D4726999758344B4532A6EF5F
+  userChecksum: 13E7C6033E09B63A2FE0A5C47F562FD6
 - generatedChecksum: F1B86F6E1527FD59A8713B67564F2898
   logicalPath: FreeRTOS/Source
   name: timers.c
@@ -279,13 +279,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: B8D87B6533E2CE239E9EEB8486DF6996
-- generatedChecksum: 9E9314F95FE1B7D0902E04A488847F85
+- generatedChecksum: 40D5FC90A83D0DB11489802E087043E4
   logicalPath: config/default
   name: usb_device_init_data.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 9E9314F95FE1B7D0902E04A488847F85
+  userChecksum: 40D5FC90A83D0DB11489802E087043E4
 - generatedChecksum: A49786F231DE2706850DA13580EF4BB5
   logicalPath: config/default/stdio
   name: xc32_monitor.c
@@ -300,13 +300,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: AF3A8D8AA610E7DFD3E38DDAC5E42074
-- generatedChecksum: FF04376CC324C9FF922793583E9C60D5
+- generatedChecksum: E27174ED5C5A94F058706A7328D236D1
   logicalPath: config/default
   name: FreeRTOSConfig.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: FF04376CC324C9FF922793583E9C60D5
+  userChecksum: E27174ED5C5A94F058706A7328D236D1
 - generatedChecksum: 641EA28F78A04E01087965FE462B3419
   logicalPath: packs/ATSAMV71N21B_DFP/component
   name: acc.h

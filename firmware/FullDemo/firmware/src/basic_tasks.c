@@ -35,9 +35,9 @@ void setupBasicTasks(void) {
     PIO_PinInterruptEnable(LeftButton_PIN);
     PIO_PinInterruptEnable(RightButton_PIN);
     //Create tasks
-    xTaskCreate(blinkTask, "blink", configMINIMAL_STACK_SIZE, (void *) NULL, 1, NULL);
-    xTaskCreate(menuTask, "menu", configMINIMAL_STACK_SIZE + 2048, (void *) NULL, 2, NULL);
-    xTaskCreate(uart0RxTask, "uartRx", configMINIMAL_STACK_SIZE, (void *) NULL, 1, NULL);
+    xTaskCreate(blinkTask, "blink", configMINIMAL_STACK_SIZE, (void *) NULL, 2, NULL);
+    xTaskCreate(menuTask, "menu", configMINIMAL_STACK_SIZE + 2048, (void *) NULL, 3, NULL);
+    xTaskCreate(uart0RxTask, "uartRx", configMINIMAL_STACK_SIZE, (void *) NULL, 2, NULL);
     //Create other object
     menuEventGroup = xEventGroupCreate();
 }
