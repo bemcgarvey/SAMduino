@@ -5,9 +5,11 @@
 
 APP_DATA appData;
 TaskHandle_t mouseTasksHandle = NULL;
+StreamBufferHandle_t mouseStreamHandle = NULL;
 
 /* Mouse Report */
 MOUSE_REPORT mouseReport USB_ALIGN;
+MOUSE_REPORT previousReport USB_ALIGN;
 
 void APP_USBDeviceHIDEventHandler(USB_DEVICE_HID_INDEX hidInstance,
         USB_DEVICE_HID_EVENT event, void * eventData, uintptr_t userData) {
@@ -83,15 +85,14 @@ void APP_USBDeviceEventHandler(USB_DEVICE_EVENT event, void * eventData, uintptr
     USB_DEVICE_EVENT_DATA_CONFIGURED * configurationValue;
     switch (event) {
         case USB_DEVICE_EVENT_SOF:
-            appData.sofEventHasOccurred = true;
-            appData.setIdleTimer++;
+            appData.idleTicks++;
             break;
         case USB_DEVICE_EVENT_RESET:
         case USB_DEVICE_EVENT_DECONFIGURED:
             appData.isConfigured = false;
             appData.isMouseReportSendBusy = false;
+            RedLed_Set();
             appData.state = APP_STATE_WAIT_FOR_CONFIGURATION;
-            appData.emulateMouse = true;
             break;
         case USB_DEVICE_EVENT_CONFIGURED:
             configurationValue = (USB_DEVICE_EVENT_DATA_CONFIGURED *) eventData;
@@ -102,7 +103,6 @@ void APP_USBDeviceEventHandler(USB_DEVICE_EVENT event, void * eventData, uintptr
                         APP_USBDeviceHIDEventHandler, (uintptr_t) & appData);
             }
             break;
-
         case USB_DEVICE_EVENT_POWER_DETECTED:
             /* VBUS was detected. We can attach the device */
             appData.powerDetected = true;
@@ -111,6 +111,7 @@ void APP_USBDeviceEventHandler(USB_DEVICE_EVENT event, void * eventData, uintptr
             /* VBUS is not available any more. Detach the device. */
             appData.powerDetected = false;
             USB_DEVICE_Detach(appData.deviceHandle);
+            RedLed_Set();
             appData.state = APP_STATE_WAIT_FOR_ATTACH;
             break;
         case USB_DEVICE_EVENT_SUSPENDED:
@@ -127,25 +128,58 @@ void APP_Initialize(void) {
     appData.state = APP_STATE_INIT;
     appData.deviceHandle = USB_DEVICE_HANDLE_INVALID;
     appData.isConfigured = false;
-    appData.emulateMouse = true;
     appData.hidInstance = 0;
     appData.isMouseReportSendBusy = false;
     appData.powerDetected = USB_VBUS_SENSE_Get();
     appData.attachAllowed = false;
+    appData.idleTicks = 0;
+    appData.idleRate = 0;
+    appData.xCoordinate = 0;
+    appData.yCoordinate = 0;
+    appData.mouseButton[0] = 0;
+    appData.mouseButton[1] = 0;
+    mouseStreamHandle = xStreamBufferCreate(5, 1);
 }
 
 void MouseTasks(void *pvParameters) {
     while (1) {
-        uint32_t notification;
-        if (xTaskNotifyWait(0, 0xffff, &notification, 1) == pdTRUE) {
-            if (notification == MOUSE_TASK_NOTIFY_ATTACH) {
-                appData.attachAllowed = true;
-            } else if (notification == MOUSE_TASK_NOTIFY_DETACH) {
-                appData.attachAllowed = false;
-                if (appData.deviceHandle != USB_DEVICE_HANDLE_INVALID) {
-                    USB_DEVICE_Detach(appData.deviceHandle);
-                    appData.state = APP_STATE_WAIT_FOR_ATTACH;
-                }
+        char cmd;
+        if (xStreamBufferReceive(mouseStreamHandle, &cmd, 1, 1) != 0) {
+            switch (cmd) {
+                case 'w':
+                    appData.xCoordinate = 0;
+                    appData.yCoordinate = -1;
+                    break;
+                case 'd':
+                    appData.xCoordinate = 1;
+                    appData.yCoordinate = 0;
+                    break;
+                case 'x':
+                    appData.xCoordinate = 0;
+                    appData.yCoordinate = 1;
+                    break;
+                case 'a':
+                    appData.xCoordinate = -1;
+                    appData.yCoordinate = 0;
+                    break;
+                case 's':
+                    appData.xCoordinate = 0;
+                    appData.yCoordinate = 0;
+                    break;
+                case ' ':
+                    appData.mouseButton[0] ^= 1;
+                    break;
+                case '1':
+                    appData.attachAllowed = true;
+                    break;
+                case '2':
+                    appData.attachAllowed = false;
+                    if (appData.deviceHandle != USB_DEVICE_HANDLE_INVALID) {
+                        USB_DEVICE_Detach(appData.deviceHandle);
+                        RedLed_Set();
+                        appData.state = APP_STATE_WAIT_FOR_ATTACH;
+                    }
+                    break;
             }
         }
         switch (appData.state) {
@@ -176,14 +210,13 @@ void MouseTasks(void *pvParameters) {
                  * isConfigured flag is updated in the
                  * Device Event Handler */
                 if (appData.isConfigured) {
+                    RedLed_Clear();
                     appData.state = APP_STATE_MOUSE_EMULATE;
                 }
                 break;
             case APP_STATE_MOUSE_EMULATE:
-                appData.xCoordinate = 0;
-                appData.yCoordinate = 0;
-                appData.mouseButton[0] = 0;
                 appData.mouseButton[1] = 0;
+                //TODO only send report if data has changed or past idle rate.
                 if (!appData.isMouseReportSendBusy) {
                     appData.isMouseReportSendBusy = true;
                     MOUSE_ReportCreate(appData.xCoordinate, appData.yCoordinate,
@@ -191,7 +224,7 @@ void MouseTasks(void *pvParameters) {
                     USB_DEVICE_HID_ReportSend(appData.hidInstance,
                             &appData.reportTransferHandle, (uint8_t*) & mouseReport,
                             sizeof (MOUSE_REPORT));
-                    appData.setIdleTimer = 0;
+                    appData.idleTicks = 0;
                 }
                 break;
             case APP_STATE_ERROR:
@@ -199,7 +232,6 @@ void MouseTasks(void *pvParameters) {
                 /* The default state should never be executed. */
             default:
             {
-                /* TODO: Handle error in application's state machine. */
                 break;
             }
         }

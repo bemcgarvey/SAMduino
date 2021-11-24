@@ -18,6 +18,7 @@ extern "C" {
 #include <stdlib.h>
 #include "string.h"
 #include "definitions.h"
+#include "stream_buffer.h"
 
 #define MOUSE_BUTTON_NUMBERS 2
 
@@ -59,8 +60,6 @@ extern "C" {
         USB_DEVICE_HANDLE deviceHandle;
         /* Is device configured */
         bool isConfigured;
-        /* If true, then mouse is emulated */
-        bool emulateMouse;
         /* Mouse x coordinate*/
         MOUSE_COORDINATE xCoordinate;
         /* Mouse y coordinate*/
@@ -79,10 +78,8 @@ extern "C" {
         uint8_t idleRate;
         /* Tracks the progress of the report send */
         bool isMouseReportSendBusy;
-        /* Flag determines SOF event has occured */
-        bool sofEventHasOccurred;
-        /* SET IDLE timer */
-        uint16_t setIdleTimer;
+        //idle timer
+        uint16_t idleTicks;
         bool powerDetected;
         bool attachAllowed;
     } APP_DATA;
@@ -93,6 +90,7 @@ extern "C" {
     void MouseTasks(void *pvParameters);
     
     extern TaskHandle_t mouseTasksHandle;
+    extern StreamBufferHandle_t mouseStreamHandle;
 
 #ifdef	__cplusplus
 }

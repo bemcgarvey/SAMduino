@@ -26,10 +26,14 @@ void usbMenu(void) {
                 UART0_Read(&rx, 1);
                 switch (rx) {
                     case '1':
-                        xTaskNotify(mouseTasksHandle, MOUSE_TASK_NOTIFY_ATTACH, eSetValueWithOverwrite);
-                        break;
                     case '2':
-                        xTaskNotify(mouseTasksHandle, MOUSE_TASK_NOTIFY_DETACH, eSetValueWithOverwrite);
+                    case 'w':
+                    case 'd':
+                    case 'x':
+                    case 'a':
+                    case 's':
+                    case ' ':
+                        xStreamBufferSend(mouseStreamHandle, &rx, 1, 0);
                         break;
                     case 'm':
                         repeatMenu = true;

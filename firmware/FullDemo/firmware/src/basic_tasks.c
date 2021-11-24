@@ -161,6 +161,7 @@ void buttonIntCallback(PIO_PIN pin, uintptr_t context) {
 }
 
 void uart0RxTask(void *pvParameters) {
+    //TODO change this to use an interrupt
     while (1) {
         while (!UART0_ReceiverIsReady()) {
             vTaskDelay(10);
