@@ -138,12 +138,14 @@ void APP_Initialize(void) {
     appData.yCoordinate = 0;
     appData.mouseButton[0] = 0;
     appData.mouseButton[1] = 0;
+    previousReport.data[0] = 0xff; //This will not match the first report so a new report will get sent
     mouseStreamHandle = xStreamBufferCreate(5, 1);
 }
 
 void MouseTasks(void *pvParameters) {
     while (1) {
         char cmd;
+        bool doSend = false;
         if (xStreamBufferReceive(mouseStreamHandle, &cmd, 1, 1) != 0) {
             switch (cmd) {
                 case 'w':
@@ -173,6 +175,7 @@ void MouseTasks(void *pvParameters) {
                     appData.attachAllowed = true;
                     break;
                 case '2':
+                case 'b':
                     appData.attachAllowed = false;
                     if (appData.deviceHandle != USB_DEVICE_HANDLE_INVALID) {
                         USB_DEVICE_Detach(appData.deviceHandle);
@@ -215,16 +218,31 @@ void MouseTasks(void *pvParameters) {
                 }
                 break;
             case APP_STATE_MOUSE_EMULATE:
-                appData.mouseButton[1] = 0;
-                //TODO only send report if data has changed or past idle rate.
                 if (!appData.isMouseReportSendBusy) {
-                    appData.isMouseReportSendBusy = true;
+                    doSend = true;
                     MOUSE_ReportCreate(appData.xCoordinate, appData.yCoordinate,
                             appData.mouseButton, &mouseReport);
-                    USB_DEVICE_HID_ReportSend(appData.hidInstance,
-                            &appData.reportTransferHandle, (uint8_t*) & mouseReport,
-                            sizeof (MOUSE_REPORT));
-                    appData.idleTicks = 0;
+                    if (memcmp(&mouseReport, &previousReport, sizeof (mouseReport)) == 0) {
+                        //report is the same
+                        if (appData.xCoordinate == 0 && appData.yCoordinate == 0) {
+                            //no move involved
+                            if (appData.idleRate == 0) {
+                                doSend = false;
+                            } else {
+                                if (appData.idleTicks < appData.idleRate * 4) {
+                                    doSend = false;
+                                }
+                            }
+                        }
+                    }
+                    memcpy(&previousReport, &mouseReport, sizeof (mouseReport));
+                    if (doSend) {
+                        appData.isMouseReportSendBusy = true;
+                        USB_DEVICE_HID_ReportSend(appData.hidInstance,
+                                &appData.reportTransferHandle, (uint8_t*) & mouseReport,
+                                sizeof (MOUSE_REPORT));
+                        appData.idleTicks = 0;
+                    }
                 }
                 break;
             case APP_STATE_ERROR:

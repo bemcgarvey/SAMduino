@@ -12,7 +12,7 @@ void usbMenu(void) {
         printf("     1) Attach USB\r\n");
         printf("     2) Detach USB\r\n");
         printf("     Use a, w, s, d, and x to move mouse\r\n");
-        printf("        space for left button\r\n");
+        printf("        space to toggle left button\r\n");
         printf("     m) This menu\r\n");
         printf("     b) Back to main menu\r\n");
         bool repeatMenu = false;
@@ -39,7 +39,7 @@ void usbMenu(void) {
                         repeatMenu = true;
                         break;
                     case 'b':
-                        xTaskNotify(mouseTasksHandle, MOUSE_TASK_NOTIFY_DETACH, eSetValueWithOverwrite);
+                        xStreamBufferSend(mouseStreamHandle, &rx, 1, 0);
                         return;
                 }
             }
