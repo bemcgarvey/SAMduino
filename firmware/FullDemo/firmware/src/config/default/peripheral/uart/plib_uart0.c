@@ -77,6 +77,9 @@ void UART0_Initialize( void )
 
     /* Configure UART0 Baud Rate */
     UART0_REGS->UART_BRGR = UART_BRGR_CD(81);
+    
+    //Enable rx interrupt
+    UART0_REGS->UART_IER |= UART_IER_RXRDY_Msk;
 }
 
 UART_ERROR UART0_ErrorGet( void )

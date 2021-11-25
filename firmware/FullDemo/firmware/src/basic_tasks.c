@@ -15,6 +15,9 @@ void blinkTask(void *pvParameters);
 void menuTask(void *pvParameters);
 void uart0RxTask(void *pvParameters);
 
+//variables
+volatile char rx;
+
 //handles
 EventGroupHandle_t menuEventGroup;
 
@@ -37,7 +40,6 @@ void setupBasicTasks(void) {
     //Create tasks
     xTaskCreate(blinkTask, "blink", configMINIMAL_STACK_SIZE, (void *) NULL, 2, NULL);
     xTaskCreate(menuTask, "menu", configMINIMAL_STACK_SIZE + 2048, (void *) NULL, 3, NULL);
-    xTaskCreate(uart0RxTask, "uartRx", configMINIMAL_STACK_SIZE, (void *) NULL, 2, NULL);
     //Create other object
     menuEventGroup = xEventGroupCreate();
 }
@@ -75,8 +77,6 @@ void menuTask(void *pvParameters) {
         EventBits_t uxBits;
         uxBits = xEventGroupWaitBits(menuEventGroup, UART_RX_BIT, pdTRUE, pdFALSE, portMAX_DELAY);
         xEventGroupClearBits(menuEventGroup, uxBits);
-        uint8_t rx;
-        UART0_Read(&rx, 1);
         switch (rx) {
             case '1': buttonsAndLEDs();
                 break;
@@ -121,8 +121,6 @@ void buttonsAndLEDs(void) {
             } else if (uxBits & RIGHT_BUTTON_BIT) {
                 printf("    Right Button Pressed***\r\n");
             } else if (uxBits & UART_RX_BIT) {
-                uint8_t rx;
-                UART0_Read(&rx, 1);
                 switch (rx) {
                     case '1': GreenLed_Toggle();
                         break;
@@ -160,13 +158,13 @@ void buttonIntCallback(PIO_PIN pin, uintptr_t context) {
     }
 }
 
-void uart0RxTask(void *pvParameters) {
-    //TODO change this to use an interrupt
-    while (1) {
-        while (!UART0_ReceiverIsReady()) {
-            vTaskDelay(10);
-        }
-        xEventGroupSetBits(menuEventGroup, UART_RX_BIT);
+void UART0_InterruptHandler(void) {
+    rx = UART0_ReadByte();
+    BaseType_t xHigherPriorityTaskWoken, xResult;
+    xHigherPriorityTaskWoken = pdFALSE;
+    xResult = xEventGroupSetBitsFromISR(menuEventGroup, UART_RX_BIT, &xHigherPriorityTaskWoken);
+    if (xResult != pdFAIL) {
+        portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
     }
 }
 
@@ -182,8 +180,6 @@ int getStr(const char *prompt, char *buffer, int maxLen) {
                 , UART_RX_BIT
                 , pdTRUE, pdFALSE, portMAX_DELAY);
         if (uxBits & UART_RX_BIT) {
-            uint8_t rx;
-            UART0_Read(&rx, 1);
             if (rx == '\r' || rx == '\n') {
                 done = true;
             } else if ((rx == '\b' || rx == 0x7f) && len > 0) {

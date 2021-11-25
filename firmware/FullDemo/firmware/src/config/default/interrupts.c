@@ -89,7 +89,7 @@ extern void RTT_Handler                ( void ) __attribute__((weak, alias("Dumm
 extern void WDT_Handler                ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void PMC_Handler                ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void EFC_Handler                ( void ) __attribute__((weak, alias("Dummy_Handler")));
-extern void UART0_InterruptHandler     ( void ) __attribute__((weak, alias("Dummy_Handler")));
+//extern void UART0_InterruptHandler     ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void UART1_Handler              ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void PIOB_Handler               ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void USART0_Handler             ( void ) __attribute__((weak, alias("Dummy_Handler")));

@@ -28,8 +28,6 @@ void rtcMenu(void) {
                     , UART_RX_BIT | RTC_BIT
                     , pdTRUE, pdFALSE, portMAX_DELAY);
             if (uxBits & UART_RX_BIT) {
-                uint8_t rx;
-                UART0_Read(&rx, 1);
                 switch (rx) {
                     case '1': RTC_InterruptDisable(RTC_INT_SEC);
                         setTimeDate();

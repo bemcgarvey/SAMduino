@@ -75,7 +75,9 @@ void NVIC_Initialize( void )
     NVIC_SetPriority(TC3_CH1_IRQn, 1);
     NVIC_EnableIRQ(TC3_CH1_IRQn);
 
-
+    NVIC_SetPriority(UART0_IRQn, 2);
+    NVIC_EnableIRQ(UART0_IRQn);
+    
 
 }
 

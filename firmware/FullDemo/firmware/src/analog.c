@@ -46,8 +46,6 @@ void analogMenu(void) {
                     , UART_RX_BIT
                     , pdTRUE, pdFALSE, portMAX_DELAY);
             if (uxBits & UART_RX_BIT) {
-                uint8_t rx;
-                UART0_Read(&rx, 1);
                 switch (rx) {
                     case '1':
                         TC3_CH1_TimerStop();

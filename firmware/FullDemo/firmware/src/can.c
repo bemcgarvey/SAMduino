@@ -49,8 +49,6 @@ void canMenu(void) {
                     , UART_RX_BIT | CAN_RX_BUFFER_BIT | CAN_RX_FIFO0_BIT
                     , pdTRUE, pdFALSE, portMAX_DELAY);
             if (uxBits & UART_RX_BIT) {
-                uint8_t rx;
-                UART0_Read(&rx, 1);
                 switch (rx) {
                     case '1': send_CAN_FD_Message();
                         break;

@@ -24,6 +24,7 @@ extern "C" {
 #define RTC_BIT             (1 << 5)
 
     extern EventGroupHandle_t menuEventGroup;
+    extern volatile char rx;
 
     void setupBasicTasks(void);
     int getStr(const char *prompt, char *buffer, int maxLen);

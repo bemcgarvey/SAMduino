@@ -22,8 +22,6 @@ void usbMenu(void) {
                     , UART_RX_BIT
                     , pdTRUE, pdFALSE, portMAX_DELAY);
             if (uxBits & UART_RX_BIT) {
-                uint8_t rx;
-                UART0_Read(&rx, 1);
                 switch (rx) {
                     case '1':
                     case '2':
@@ -33,13 +31,13 @@ void usbMenu(void) {
                     case 'a':
                     case 's':
                     case ' ':
-                        xStreamBufferSend(mouseStreamHandle, &rx, 1, 0);
+                        xStreamBufferSend(mouseStreamHandle, (const void *)&rx, 1, 0);
                         break;
                     case 'm':
                         repeatMenu = true;
                         break;
                     case 'b':
-                        xStreamBufferSend(mouseStreamHandle, &rx, 1, 0);
+                        xStreamBufferSend(mouseStreamHandle, (const void *)&rx, 1, 0);
                         return;
                 }
             }

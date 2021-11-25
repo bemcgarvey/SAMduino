@@ -68,7 +68,7 @@ void TWIHS0_InterruptHandler (void);
 void DRV_USBHSV1_USBHS_Handler (void);
 void MCAN1_INT0_InterruptHandler (void);
 void TC3_CH1_InterruptHandler (void);
-
+void UART0_InterruptHandler(void);
 
 
 #endif // INTERRUPTS_H
