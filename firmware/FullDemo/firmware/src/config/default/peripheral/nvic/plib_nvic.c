@@ -60,22 +60,21 @@ void NVIC_Initialize( void )
     /* Enable the interrupt sources and configure the priorities as configured
      * from within the "Interrupt Manager" of MHC. */
     NVIC_SetPriority(SysTick_IRQn, 7);
-    NVIC_SetPriority(RTC_IRQn, 3);
+    NVIC_SetPriority(RTC_IRQn, 6);
     NVIC_EnableIRQ(RTC_IRQn);
-    NVIC_SetPriority(PIOA_IRQn, 2);
+    NVIC_SetPriority(PIOA_IRQn, 6);
     NVIC_EnableIRQ(PIOA_IRQn);
-    NVIC_SetPriority(PIOD_IRQn, 2);
+    NVIC_SetPriority(PIOD_IRQn, 6);
     NVIC_EnableIRQ(PIOD_IRQn);
-    NVIC_SetPriority(TWIHS0_IRQn, 3);
+    NVIC_SetPriority(TWIHS0_IRQn, 6);
     NVIC_EnableIRQ(TWIHS0_IRQn);
-    NVIC_SetPriority(USBHS_IRQn, 3);
+    NVIC_SetPriority(USBHS_IRQn, 4);
     NVIC_EnableIRQ(USBHS_IRQn);
-    NVIC_SetPriority(MCAN1_INT0_IRQn, 2);
+    NVIC_SetPriority(MCAN1_INT0_IRQn, 6);
     NVIC_EnableIRQ(MCAN1_INT0_IRQn);
-    NVIC_SetPriority(TC3_CH1_IRQn, 1);
     NVIC_EnableIRQ(TC3_CH1_IRQn);
 
-    NVIC_SetPriority(UART0_IRQn, 2);
+    NVIC_SetPriority(UART0_IRQn, 5);
     NVIC_EnableIRQ(UART0_IRQn);
     
 

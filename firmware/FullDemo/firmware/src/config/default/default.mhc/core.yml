@@ -488,7 +488,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '2'}
+        attributes: {value: '6'}
   - type: Boolean
     attributes: {id: NVIC_16_0_ENABLE}
     children:
@@ -516,7 +516,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '2'}
+        attributes: {value: '6'}
   - type: Boolean
     attributes: {id: NVIC_19_0_ENABLE}
     children:
@@ -544,7 +544,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '3'}
+        attributes: {value: '6'}
   - type: Boolean
     attributes: {id: NVIC_23_0_ENABLE}
     children:
@@ -656,7 +656,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '3'}
+        attributes: {value: '6'}
   - type: Boolean
     attributes: {id: NVIC_34_0_ENABLE}
     children:
@@ -684,7 +684,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '3'}
+        attributes: {value: '4'}
   - type: Boolean
     attributes: {id: NVIC_37_0_ENABLE}
     children:
@@ -712,7 +712,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '2'}
+        attributes: {value: '6'}
   - type: Boolean
     attributes: {id: NVIC_43_0_ENABLE}
     children:
@@ -803,7 +803,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '1'}
+        attributes: {value: '0'}
   - type: Boolean
     attributes: {id: NVIC_52_0_ENABLE}
     children:
