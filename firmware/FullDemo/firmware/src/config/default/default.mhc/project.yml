@@ -160,13 +160,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 168F883D77741E99D0039F34E67B2221
-- generatedChecksum: C88F5C843A99735962014269D2C0A86F
+- generatedChecksum: 014EA9C58AF38549F82ECE652DDF12F4
   logicalPath: config/default/peripheral/pio
   name: plib_pio.c
   physicalPath: peripheral/pio
   security: NON_SECURE
   type: SOURCE
-  userChecksum: C88F5C843A99735962014269D2C0A86F
+  userChecksum: 014EA9C58AF38549F82ECE652DDF12F4
 - generatedChecksum: 164CDE8DEA8E52ED78CD9E179EDDE260
   logicalPath: config/default/peripheral/qspi
   name: plib_qspi.c

@@ -145,7 +145,7 @@ void PIO_Initialize ( void )
     ((pio_registers_t*)PIO_PORT_D)->PIO_IFER = 0x100;
     ((pio_registers_t*)PIO_PORT_D)->PIO_IFSCER = 0x100;
     /* PORTD drive control */
-    ((pio_registers_t*)PIO_PORT_D)->PIO_DRIVER = 0x0;
+    ((pio_registers_t*)PIO_PORT_D)->PIO_DRIVER = 0xf0;
 
     uint32_t i;
     /* Initialize Interrupt Pin data structures */
