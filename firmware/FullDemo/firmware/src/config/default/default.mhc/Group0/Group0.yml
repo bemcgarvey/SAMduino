@@ -3,4 +3,4 @@ type: GroupComponent
 attributes: {displayName: Serial Coms, id: Group0}
 children:
 - type: ElementPosition
-  attributes: {x: '250', y: '368', id: Group0}
+  attributes: {x: '24', y: '299', id: Group0}

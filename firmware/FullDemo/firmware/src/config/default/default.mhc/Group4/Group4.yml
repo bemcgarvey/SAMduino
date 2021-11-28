@@ -3,4 +3,4 @@ type: GroupComponent
 attributes: {displayName: Analog, id: Group4}
 children:
 - type: ElementPosition
-  attributes: {x: '349', y: '432', id: Group4}
+  attributes: {x: '23', y: '369', id: Group4}

@@ -3,4 +3,4 @@ type: GroupComponent
 attributes: {displayName: Harmony, id: Group1}
 children:
 - type: ElementPosition
-  attributes: {x: '223', y: '442', id: Group1}
+  attributes: {x: '169', y: '75', id: Group1}

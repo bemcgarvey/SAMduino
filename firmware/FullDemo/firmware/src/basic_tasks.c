@@ -8,12 +8,12 @@
 #include "analog.h"
 #include "usb_menu.h"
 #include "mouse_tasks.h"
+#include "pwm_menu.h"
 #include <ctype.h>
 
 //task functions
 void blinkTask(void *pvParameters);
 void menuTask(void *pvParameters);
-void uart0RxTask(void *pvParameters);
 
 //variables
 volatile char rx;
@@ -61,7 +61,7 @@ void mainMenu(void) {
     printf("    5) USB\r\n");
     printf("    6) Analog - ADC and DAC\r\n");
     printf("    7) True Random Number Generator\r\n");
-    printf("    8) SPI?\r\n");
+    printf("    8) PWM\r\n");
     printf("    9) Real time clock\r\n");
 }
 
@@ -92,6 +92,8 @@ void menuTask(void *pvParameters) {
                 break;
             case '7': printf("  **Random number generated = %lu\r\n", TRNG_ReadData());
                 redrawMenu = false;
+                break;
+            case '8': pwmMenu();
                 break;
             case '9': rtcMenu();
                 break;

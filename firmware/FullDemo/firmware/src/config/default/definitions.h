@@ -55,6 +55,7 @@
 #include "peripheral/pio/plib_pio.h"
 #include "peripheral/nvic/plib_nvic.h"
 #include "peripheral/mpu/plib_mpu.h"
+#include "peripheral/pwm/plib_pwm0.h"
 #include "peripheral/dacc/plib_dacc.h"
 #include "peripheral/efc/plib_efc.h"
 #include "peripheral/rtc/plib_rtc.h"

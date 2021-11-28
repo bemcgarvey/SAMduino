@@ -658,6 +658,27 @@ children:
       - type: User
         attributes: {value: '6'}
   - type: Boolean
+    attributes: {id: NVIC_31_0_ENABLE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: 'false'}
+  - type: String
+    attributes: {id: NVIC_31_0_HANDLER}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: PWM0_Handler}
+  - type: Boolean
+    attributes: {id: NVIC_31_0_HANDLER_LOCK}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: 'false'}
+  - type: Boolean
     attributes: {id: NVIC_34_0_ENABLE}
     children:
     - type: Values
@@ -949,6 +970,34 @@ children:
       - type: User
         attributes: {value: Alternate}
   - type: String
+    attributes: {id: PIN_11_FUNCTION_TYPE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: PWM0_PWMH1}
+  - type: String
+    attributes: {id: PIN_11_PERIPHERAL_FUNCTION}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: A}
+  - type: String
+    attributes: {id: PIN_12_FUNCTION_TYPE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: PWM0_PWMH0}
+  - type: String
+    attributes: {id: PIN_12_PERIPHERAL_FUNCTION}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: A}
+  - type: String
     attributes: {id: PIN_13_FUNCTION_NAME}
     children:
     - type: Values
@@ -990,6 +1039,20 @@ children:
       children:
       - type: User
         attributes: {value: 'True'}
+  - type: String
+    attributes: {id: PIN_14_FUNCTION_TYPE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: ''}
+  - type: String
+    attributes: {id: PIN_14_PERIPHERAL_FUNCTION}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: ''}
   - type: String
     attributes: {id: PIN_16_FUNCTION_TYPE}
     children:
@@ -1111,6 +1174,20 @@ children:
         attributes: {value: QSPI_QSCK}
   - type: String
     attributes: {id: PIN_34_PERIPHERAL_FUNCTION}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: A}
+  - type: String
+    attributes: {id: PIN_35_FUNCTION_TYPE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: PWM0_PWML1}
+  - type: String
+    attributes: {id: PIN_35_PERIPHERAL_FUNCTION}
     children:
     - type: Values
       children:
@@ -1647,7 +1724,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '0'}
+        attributes: {id: core, value: '3'}
   - type: Hex
     attributes: {id: PIOD_ABCDSR1_VALUE}
     children:
@@ -1752,7 +1829,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '2415923200'}
+        attributes: {id: core, value: '2449477632'}
   - type: Hex
     attributes: {id: PIOD_PUER_VALUE}
     children:
@@ -1867,7 +1944,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '1611205760'}
+        attributes: {id: core, value: '3758689408'}
   - type: Hex
     attributes: {id: PMC_PCER1}
     children:
@@ -1951,7 +2028,14 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '16'}
+        attributes: {value: '10'}
+  - type: Boolean
+    attributes: {id: PWM0_CLOCK_ENABLE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: pwm0, value: 'true'}
   - type: Integer
     attributes: {id: PWM0_CLOCK_FREQUENCY}
     children:
@@ -1959,6 +2043,34 @@ children:
       children:
       - type: Dynamic
         attributes: {id: core, value: '150000000'}
+  - type: Boolean
+    attributes: {id: PWM0_INTERRUPT_ENABLE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: pwm0, value: 'false'}
+  - type: Boolean
+    attributes: {id: PWM0_INTERRUPT_ENABLE_UPDATE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: 'true'}
+  - type: String
+    attributes: {id: PWM0_INTERRUPT_HANDLER}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: pwm0, value: PWM0_Handler}
+  - type: Boolean
+    attributes: {id: PWM0_INTERRUPT_HANDLER_LOCK}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: pwm0, value: 'false'}
   - type: Integer
     attributes: {id: PWM1_CLOCK_FREQUENCY}
     children:

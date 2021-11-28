@@ -3,4 +3,4 @@ type: GroupComponent
 attributes: {displayName: USB, id: Group5}
 children:
 - type: ElementPosition
-  attributes: {x: '157', y: '360', id: Group5}
+  attributes: {x: '23', y: '173', id: Group5}

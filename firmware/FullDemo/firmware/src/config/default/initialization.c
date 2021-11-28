@@ -222,6 +222,8 @@ void SYS_Initialize ( void* data )
 
 	WDT_REGS->WDT_MR = WDT_MR_WDDIS_Msk; 		// Disable WDT 
 
+    PWM0_Initialize();
+
 	DACC_Initialize();
 
 	RTC_Initialize();

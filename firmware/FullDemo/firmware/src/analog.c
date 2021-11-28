@@ -48,6 +48,7 @@ void analogMenu(void) {
             if (uxBits & UART_RX_BIT) {
                 switch (rx) {
                     case '1':
+                        RedLed_Set();
                         TC3_CH1_TimerStop();
                         xTimerStop(sampleTimer, 10);
                         activeChannel = 0;
@@ -55,6 +56,7 @@ void analogMenu(void) {
                         xTimerStart(sampleTimer, 10);
                         break;
                     case '2':
+                        RedLed_Set();
                         TC3_CH1_TimerStop();
                         xTimerStop(sampleTimer, 10);
                         activeChannel = 1;
@@ -67,6 +69,7 @@ void analogMenu(void) {
                         dacStep = 0;
                         waveType = DAC_SINE_WAVE;
                         TC3_CH1_TimerStart();
+                        RedLed_Clear();
                         break;
                     case '4':
                         printf("    **2 kHz saw tooth\r\n");
@@ -75,13 +78,16 @@ void analogMenu(void) {
                         sawValue = 0;
                         waveType = DAC_SAW_WAVE;
                         TC3_CH1_TimerStart();
+                        RedLed_Clear();
                         break;
                     case 'm':
+                        RedLed_Set();
                         TC3_CH1_TimerStop();
                         xTimerStop(sampleTimer, 10);
                         repeatMenu = true;
                         break;
                     case 'b':
+                        RedLed_Set();
                         TC3_CH1_TimerStop();
                         xTimerStop(sampleTimer, 10);
                         return;

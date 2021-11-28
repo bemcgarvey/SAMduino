@@ -60,6 +60,10 @@
             <logicalFolder name="f3" displayName="pio" projectFiles="true">
               <itemPath>../src/config/default/peripheral/pio/plib_pio.h</itemPath>
             </logicalFolder>
+            <logicalFolder name="f15" displayName="pwm" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/pwm/plib_pwm0.h</itemPath>
+              <itemPath>../src/config/default/peripheral/pwm/plib_pwm_common.h</itemPath>
+            </logicalFolder>
             <logicalFolder name="f6" displayName="qspi" projectFiles="true">
               <itemPath>../src/config/default/peripheral/qspi/plib_qspi_common.h</itemPath>
               <itemPath>../src/config/default/peripheral/qspi/plib_qspi.h</itemPath>
@@ -296,6 +300,7 @@
       <itemPath>../src/analog.h</itemPath>
       <itemPath>../src/usb_menu.h</itemPath>
       <itemPath>../src/mouse_tasks.h</itemPath>
+      <itemPath>../src/pwm_menu.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -351,6 +356,9 @@
             </logicalFolder>
             <logicalFolder name="f3" displayName="pio" projectFiles="true">
               <itemPath>../src/config/default/peripheral/pio/plib_pio.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f15" displayName="pwm" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/pwm/plib_pwm0.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f6" displayName="qspi" projectFiles="true">
               <itemPath>../src/config/default/peripheral/qspi/plib_qspi.c</itemPath>
@@ -433,6 +441,7 @@
       <itemPath>../src/analog.c</itemPath>
       <itemPath>../src/usb_menu.c</itemPath>
       <itemPath>../src/mouse_tasks.c</itemPath>
+      <itemPath>../src/pwm_menu.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -457,6 +466,7 @@
         </logicalFolder>
         <logicalFolder name="f4" displayName="Group3" projectFiles="true">
           <itemPath>../src/config/default/default.mhc/Group3/Group3.yml</itemPath>
+          <itemPath>../src/config/default/default.mhc/Group3/pwm0.yml</itemPath>
           <itemPath>../src/config/default/default.mhc/Group3/rtc.yml</itemPath>
           <itemPath>../src/config/default/default.mhc/Group3/tc3.yml</itemPath>
           <itemPath>../src/config/default/default.mhc/Group3/trng.yml</itemPath>

@@ -135,7 +135,7 @@ Initialize USB FS clock
 static void CLK_USBClockInitialize ( void )
 {
     /* Configure Full-Speed USB Clock source and Clock Divider */
-    PMC_REGS->PMC_USB = PMC_USB_USBDIV(15)  | PMC_USB_USBS_Msk;
+    PMC_REGS->PMC_USB = PMC_USB_USBDIV(9)  | PMC_USB_USBS_Msk;
 
 
     /* Enable Full-Speed USB Clock Output */
@@ -197,6 +197,6 @@ void CLOCK_Initialize( void )
     CLK_ProgrammableClockInitialize();
 
     /* Enable Peripheral Clock */
-    PMC_REGS->PMC_PCER0=0x60090c80;
+    PMC_REGS->PMC_PCER0=0xe0090c80;
     PMC_REGS->PMC_PCER1=0x20c0824;
 }
