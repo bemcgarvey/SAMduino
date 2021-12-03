@@ -48,6 +48,7 @@
 #include <stdint.h>
 #include <stddef.h>
 #include <stdbool.h>
+#include <stdio.h>
 #include "usb/usb_device_msd.h"
 #include "usb/usb_msd.h"
 #include "peripheral/clk/plib_clk.h"
@@ -61,6 +62,13 @@
 #include "driver/sst26/drv_sst26.h"
 #include "driver/usb/usbhsv1/drv_usbhsv1.h"
 #include "peripheral/qspi/plib_qspi.h"
+#include "system/fs/sys_fs.h"
+#include "system/fs/sys_fs_media_manager.h"
+#include "system/fs/sys_fs_fat_interface.h"
+#include "system/fs/fat_fs/file_system/ff.h"
+#include "system/fs/fat_fs/file_system/ffconf.h"
+#include "system/fs/fat_fs/hardware_access/diskio.h"
+#include "peripheral/uart/plib_uart0.h"
 #include "system/int/sys_int.h"
 #include "system/cache/sys_cache.h"
 #include "osal/osal.h"

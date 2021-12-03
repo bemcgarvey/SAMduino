@@ -347,6 +347,27 @@ children:
       children:
       - type: Dynamic
         attributes: {id: core, value: 'false'}
+  - type: Boolean
+    attributes: {id: NVIC_7_0_ENABLE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: 'false'}
+  - type: String
+    attributes: {id: NVIC_7_0_HANDLER}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: UART0_Handler}
+  - type: Boolean
+    attributes: {id: NVIC_7_0_HANDLER_LOCK}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: 'false'}
   - type: String
     attributes: {id: PCK0_CLOCK_FREQUENCY}
     children:
@@ -425,6 +446,20 @@ children:
       - type: User
         attributes: {value: A}
   - type: String
+    attributes: {id: PIN_46_FUNCTION_TYPE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: UART0_UTXD0}
+  - type: String
+    attributes: {id: PIN_46_PERIPHERAL_FUNCTION}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: A}
+  - type: String
     attributes: {id: PIN_48_FUNCTION_TYPE}
     children:
     - type: Values
@@ -433,6 +468,20 @@ children:
         attributes: {value: QSPI_QIO1}
   - type: String
     attributes: {id: PIN_48_PERIPHERAL_FUNCTION}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: A}
+  - type: String
+    attributes: {id: PIN_54_FUNCTION_TYPE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: UART0_URXD0}
+  - type: String
+    attributes: {id: PIN_54_PERIPHERAL_FUNCTION}
     children:
     - type: Values
       children:
@@ -535,7 +584,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '161792'}
+        attributes: {id: core, value: '163328'}
   - type: Boolean
     attributes: {id: PIOB_CLOCK_ENABLE}
     children:
@@ -680,7 +729,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '68608'}
+        attributes: {id: core, value: '68736'}
   - type: Hex
     attributes: {id: PMC_PCER1}
     children:
@@ -891,6 +940,41 @@ children:
       children:
       - type: Dynamic
         attributes: {id: core, value: '150000000'}
+  - type: Boolean
+    attributes: {id: UART0_CLOCK_ENABLE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: uart0, value: 'true'}
+  - type: Boolean
+    attributes: {id: UART0_INTERRUPT_ENABLE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: uart0, value: 'false'}
+  - type: Boolean
+    attributes: {id: UART0_INTERRUPT_ENABLE_UPDATE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: 'true'}
+  - type: String
+    attributes: {id: UART0_INTERRUPT_HANDLER}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: uart0, value: UART0_Handler}
+  - type: Boolean
+    attributes: {id: UART0_INTERRUPT_HANDLER_LOCK}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: uart0, value: 'false'}
   - type: Boolean
     attributes: {id: USBHS_CLOCK_ENABLE}
     children:

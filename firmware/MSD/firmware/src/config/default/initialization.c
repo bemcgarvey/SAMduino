@@ -107,7 +107,8 @@ const DRV_MEMORY_INIT drvMemory0InitData =
     .memDevIndex                = DRV_SST26_INDEX,
     .memoryDevice               = &drvMemory0DeviceAPI,
     .isMemDevInterruptEnabled   = false,
-    .isFsEnabled                = false,
+    .isFsEnabled                = true,
+    .deviceMediaType            = (uint8_t)SYS_FS_MEDIA_TYPE_SPIFLASH,
     .ewBuffer                   = &gDrvMemory0EraseBuffer[0],
     .clientObjPool              = (uintptr_t)&gDrvMemory0ClientObject[0],
     .bufferObj                  = (uintptr_t)&gDrvMemory0BufferObject[0],
@@ -190,6 +191,70 @@ const DRV_USBHSV1_INIT drvUSBInit =
 };
 
 
+// <editor-fold defaultstate="collapsed" desc="File System Initialization Data">
+
+const SYS_FS_MEDIA_MOUNT_DATA sysfsMountTable[SYS_FS_VOLUME_NUMBER] =
+{
+    {
+        .mountName = SYS_FS_MEDIA_IDX0_MOUNT_NAME_VOLUME_IDX0,
+        .devName   = SYS_FS_MEDIA_IDX0_DEVICE_NAME_VOLUME_IDX0,
+        .mediaType = SYS_FS_MEDIA_TYPE_IDX0,
+        .fsType   = SYS_FS_TYPE_IDX0
+    },
+};
+
+
+const SYS_FS_FUNCTIONS FatFsFunctions =
+{
+    .mount             = FATFS_mount,
+    .unmount           = FATFS_unmount,
+    .open              = FATFS_open,
+    .read              = FATFS_read,
+    .close             = FATFS_close,
+    .seek              = FATFS_lseek,
+    .fstat             = FATFS_stat,
+    .getlabel          = FATFS_getlabel,
+    .currWD            = FATFS_getcwd,
+    .getstrn           = FATFS_gets,
+    .openDir           = FATFS_opendir,
+    .readDir           = FATFS_readdir,
+    .closeDir          = FATFS_closedir,
+    .chdir             = FATFS_chdir,
+    .chdrive           = FATFS_chdrive,
+    .write             = FATFS_write,
+    .tell              = FATFS_tell,
+    .eof               = FATFS_eof,
+    .size              = FATFS_size,
+    .mkdir             = FATFS_mkdir,
+    .remove            = FATFS_unlink,
+    .setlabel          = FATFS_setlabel,
+    .truncate          = FATFS_truncate,
+    .chmode            = FATFS_chmod,
+    .chtime            = FATFS_utime,
+    .rename            = FATFS_rename,
+    .sync              = FATFS_sync,
+    .putchr            = FATFS_putc,
+    .putstrn           = FATFS_puts,
+    .formattedprint    = FATFS_printf,
+    .testerror         = FATFS_error,
+    .formatDisk        = (FORMAT_DISK)FATFS_mkfs,
+    .partitionDisk     = FATFS_fdisk,
+    .getCluster        = FATFS_getclusters
+};
+
+
+
+const SYS_FS_REGISTRATION_TABLE sysFSInit [ SYS_FS_MAX_FILE_SYSTEM_TYPE ] =
+{
+    {
+        .nativeFileSystemType = FAT,
+        .nativeFileSystemFunctions = &FatFsFunctions
+    },
+};
+
+
+// </editor-fold>
+
 
 
 // *****************************************************************************
@@ -205,6 +270,26 @@ const DRV_USBHSV1_INIT drvUSBInit =
 // Section: Local initialization functions
 // *****************************************************************************
 // *****************************************************************************
+
+/*******************************************************************************
+  Function:
+    void STDIO_BufferModeSet ( void )
+
+  Summary:
+    Sets the buffering mode for stdin and stdout
+
+  Remarks:
+ ********************************************************************************/
+static void STDIO_BufferModeSet(void)
+{
+
+    /* Make stdin unbuffered */
+    setbuf(stdin, NULL);
+
+    /* Make stdout unbuffered */
+    setbuf(stdout, NULL);
+}
+
 
 
 
@@ -223,6 +308,9 @@ void SYS_Initialize ( void* data )
 
 
     EFC_Initialize();
+    STDIO_BufferModeSet();
+
+
   
     CLOCK_Initialize();
 	PIO_Initialize();
@@ -234,6 +322,8 @@ void SYS_Initialize ( void* data )
 	WDT_REGS->WDT_MR = WDT_MR_WDDIS_Msk; 		// Disable WDT 
 
     QSPI_Initialize();
+
+	UART0_Initialize();
 
 
     sysObj.drvSST26 = DRV_SST26_Initialize((SYS_MODULE_INDEX)DRV_SST26_INDEX, (SYS_MODULE_INIT *)&drvSST26InitData);
@@ -250,6 +340,9 @@ void SYS_Initialize ( void* data )
 
 	/* Initialize USB Driver */ 
     sysObj.drvUSBHSV1Object = DRV_USBHSV1_Initialize(DRV_USBHSV1_INDEX_0, (SYS_MODULE_INIT *) &drvUSBInit);	
+
+    /*** File System Service Initialization Code ***/
+    SYS_FS_Initialize( (const void *) sysFSInit );
 
 
     APP_Initialize();

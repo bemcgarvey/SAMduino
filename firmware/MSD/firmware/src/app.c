@@ -74,7 +74,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
     This structure should be initialized by the APP_Initialize function.
     
     Application strings and buffers are be defined outside this structure.
-*/
+ */
 
 APP_DATA appData;
 
@@ -96,17 +96,15 @@ APP_DATA appData;
 
   Remarks:
     Handles the Device Layers Events.
-*/
+ */
 
-void APP_USBDeviceEventHandler( USB_DEVICE_EVENT event, void * pEventData, uintptr_t context )
-{
+void APP_USBDeviceEventHandler(USB_DEVICE_EVENT event, void * pEventData, uintptr_t context) {
     /* This is an example of how the context parameter
        in the event handler can be used.*/
 
-    APP_DATA * appDataObject = (APP_DATA*)context;
+    APP_DATA * appDataObject = (APP_DATA*) context;
 
-    switch( event )
-    {
+    switch (event) {
         case USB_DEVICE_EVENT_RESET:
         case USB_DEVICE_EVENT_DECONFIGURED:
 
@@ -121,8 +119,8 @@ void APP_USBDeviceEventHandler( USB_DEVICE_EVENT event, void * pEventData, uintp
             break;
 
         case USB_DEVICE_EVENT_SUSPENDED:
-		
-			RedLed_Set();
+
+            RedLed_Set();
             break;
 
         case USB_DEVICE_EVENT_POWER_DETECTED:
@@ -138,7 +136,7 @@ void APP_USBDeviceEventHandler( USB_DEVICE_EVENT event, void * pEventData, uintp
             RedLed_Set();
             break;
 
-        /* These events are not used in this demo */
+            /* These events are not used in this demo */
         case USB_DEVICE_EVENT_RESUMED:
         case USB_DEVICE_EVENT_ERROR:
         case USB_DEVICE_EVENT_SOF:
@@ -154,7 +152,7 @@ void APP_USBDeviceEventHandler( USB_DEVICE_EVENT event, void * pEventData, uintp
 // *****************************************************************************
 
 /* TODO:  Add any necessary local functions.
-*/
+ */
 
 
 // *****************************************************************************
@@ -171,15 +169,18 @@ void APP_USBDeviceEventHandler( USB_DEVICE_EVENT event, void * pEventData, uintp
     See prototype in app.h.
  */
 
-void APP_Initialize ( void )
-{
+SYS_FS_FSTAT fsStat;
+int count = 0;
+char dirName[30];
+
+void APP_Initialize(void) {
     /* Place the App state machine in its initial state. */
     appData.state = APP_STATE_INIT;
-    
+
     /* Set device layer handle as invalid */
     appData.usbDeviceHandle = USB_DEVICE_HANDLE_INVALID;
+    printf("Demo Started\r\n");
 }
-
 
 /******************************************************************************
   Function:
@@ -189,21 +190,18 @@ void APP_Initialize ( void )
     See prototype in app.h.
  */
 
-void APP_Tasks ( void )
-{
+void APP_Tasks(void) {
     /* Check the application's current state. */
-    switch ( appData.state )
-    {
-        /* Application's initial state. */
+    switch (appData.state) {
+            /* Application's initial state. */
         case APP_STATE_INIT:
         {
-             appData.usbDeviceHandle = USB_DEVICE_Open(USB_DEVICE_INDEX_0, DRV_IO_INTENT_READWRITE);
+            appData.usbDeviceHandle = USB_DEVICE_Open(USB_DEVICE_INDEX_0, DRV_IO_INTENT_READWRITE);
 
-            if(appData.usbDeviceHandle != USB_DEVICE_HANDLE_INVALID)
-            {
+            if (appData.usbDeviceHandle != USB_DEVICE_HANDLE_INVALID) {
                 /* Set the Event Handler. We will start receiving events after
                  * the handler is set */
-                USB_DEVICE_EventHandlerSet(appData.usbDeviceHandle, APP_USBDeviceEventHandler, (uintptr_t)&appData);
+                USB_DEVICE_EventHandlerSet(appData.usbDeviceHandle, APP_USBDeviceEventHandler, (uintptr_t) & appData);
 
                 /* Move the application to the next state */
                 appData.state = APP_STATE_RUNNING;
@@ -213,19 +211,61 @@ void APP_Tasks ( void )
         }
 
         case APP_STATE_RUNNING:
-
             /* The MSD Device is maintained completely by the MSD function
              * driver and does not require application intervention. So there
              * is nothing related to MSD Device to do here. */
+            if (UART0_ReceiverIsReady()) {
+                char rx = UART0_ReadByte();
+                SYS_FS_HANDLE dirHandle;
+                switch (rx) {
+                    case 'd':
+                        dirHandle = SYS_FS_DirOpen("/mnt/flashDrive/");
+                        if (dirHandle != SYS_FS_HANDLE_INVALID) {
+                            printf("Directory of /\r\n");
+                            do {
+                                if (SYS_FS_DirRead(dirHandle, &fsStat) == SYS_FS_RES_SUCCESS) {
+                                    if (fsStat.fname[0] != 0) {
+                                        printf("  %s\r\n", fsStat.fname);
+                                    } else {
+                                        break;
+                                    }
+                                } else {
+                                    break;
+                                }
+                            } while (1);
+                            SYS_FS_DirClose(dirHandle);
+                            printf("\r\n");
+                        } else {
+                            printf("Dir open failed\r\n");
+                        }
+                        break;
+                    case 'k':
+                        snprintf(dirName, sizeof(dirName), "Directory%d", count);
+                        ++count;
+                        printf("Creating directory: %s\r\n", dirName);
+                        SYS_FS_DirectoryMake(dirName);
+                        break;
+                    case 'u':
+                        printf("Unmount\r\n");
+                        SYS_FS_Unmount("/mnt/flashDrive");
+                        break;
+                    case 'm':
+                        printf("Mount\r\n");
+                        SYS_FS_Mount("/dev/mtda1", "/mnt/flashDrive", FAT, 0, NULL);
+                        break;
+                    default:
+                        printf("????\r\n");
+                        break;
+                }
+            }
             break;
-
-        /* The default state should never be executed. */
+            /* The default state should never be executed. */
         default:
             break;
-        
+
     }
 }
- 
+
 
 /*******************************************************************************
  End of File

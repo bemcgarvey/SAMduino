@@ -10,7 +10,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: drv_memory, value: 'false'}
+        attributes: {id: drv_memory, value: 'true'}
   - type: Combo
     attributes: {id: DRV_MEMORY_COMMON_MODE}
     children:
@@ -25,6 +25,15 @@ children:
       children:
       - type: Dynamic
         attributes: {id: drv_memory, value: 'false'}
+  - type: File
+    attributes: {id: DRV_MEMORY_FS_SOURCE}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
 - type: Instances
   children:
   - type: InstanceComponent
@@ -32,6 +41,13 @@ children:
     children:
     - type: Symbols
       children:
+      - type: Integer
+        attributes: {id: DRV_MEMORY_BUFFER_QUEUE_SIZE}
+        children:
+        - type: Values
+          children:
+          - type: User
+            attributes: {value: '1'}
       - type: String
         attributes: {id: DRV_MEMORY_DEVICE}
         children:
@@ -53,6 +69,15 @@ children:
             attributes: {id: visible}
             children:
             - {type: Value, value: 'true'}
+      - type: Combo
+        attributes: {id: DRV_MEMORY_DEVICE_TYPE}
+        children:
+        - type: Attributes
+          children:
+          - type: Boolean
+            attributes: {id: visible}
+            children:
+            - {type: Value, value: 'true'}
       - type: Boolean
         attributes: {id: DRV_MEMORY_ERASE_ENABLE}
         children:
@@ -66,7 +91,7 @@ children:
         - type: Values
           children:
           - type: Dynamic
-            attributes: {id: drv_memory_0, value: 'false'}
+            attributes: {id: drv_memory_0, value: 'true'}
       - type: Boolean
         attributes: {id: DRV_MEMORY_INTERRUPT_ENABLE}
         children:
@@ -74,6 +99,13 @@ children:
           children:
           - type: Dynamic
             attributes: {id: drv_memory_0, value: 'false'}
+      - type: Integer
+        attributes: {id: DRV_MEMORY_NUM_CLIENTS}
+        children:
+        - type: Values
+          children:
+          - type: User
+            attributes: {value: '2'}
       - type: File
         attributes: {id: DRV_MEMORY_PLIB_HEADER}
         children:
@@ -126,4 +158,4 @@ children:
             children:
             - {type: Value, value: memory}
 - type: ElementPosition
-  attributes: {x: '321', y: '347', id: drv_memory}
+  attributes: {x: '302', y: '350', id: drv_memory}

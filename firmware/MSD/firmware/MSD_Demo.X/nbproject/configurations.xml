@@ -57,6 +57,10 @@
               <itemPath>../src/config/default/peripheral/qspi/plib_qspi_common.h</itemPath>
               <itemPath>../src/config/default/peripheral/qspi/plib_qspi.h</itemPath>
             </logicalFolder>
+            <logicalFolder name="f7" displayName="uart" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/uart/plib_uart_common.h</itemPath>
+              <itemPath>../src/config/default/peripheral/uart/plib_uart0.h</itemPath>
+            </logicalFolder>
           </logicalFolder>
           <logicalFolder name="f4" displayName="system" projectFiles="true">
             <logicalFolder name="f2" displayName="cache" projectFiles="true">
@@ -64,6 +68,22 @@
             </logicalFolder>
             <logicalFolder name="f3" displayName="debug" projectFiles="true">
               <itemPath>../src/config/default/system/debug/sys_debug.h</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f4" displayName="fs" projectFiles="true">
+              <logicalFolder name="f1" displayName="fat_fs" projectFiles="true">
+                <logicalFolder name="f1" displayName="file_system" projectFiles="true">
+                  <itemPath>../src/config/default/system/fs/fat_fs/file_system/ff.h</itemPath>
+                  <itemPath>../src/config/default/system/fs/fat_fs/file_system/ffconf.h</itemPath>
+                </logicalFolder>
+                <logicalFolder name="f2" displayName="hardware_access" projectFiles="true">
+                  <itemPath>../src/config/default/system/fs/fat_fs/hardware_access/diskio.h</itemPath>
+                </logicalFolder>
+              </logicalFolder>
+              <itemPath>../src/config/default/system/fs/sys_fs.h</itemPath>
+              <itemPath>../src/config/default/system/fs/src/sys_fs_local.h</itemPath>
+              <itemPath>../src/config/default/system/fs/sys_fs_media_manager.h</itemPath>
+              <itemPath>../src/config/default/system/fs/src/sys_fs_media_manager_local.h</itemPath>
+              <itemPath>../src/config/default/system/fs/sys_fs_fat_interface.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f1" displayName="int" projectFiles="true">
               <itemPath>../src/config/default/system/int/sys_int.h</itemPath>
@@ -248,6 +268,7 @@
           <logicalFolder name="f1" displayName="driver" projectFiles="true">
             <logicalFolder name="f2" displayName="memory" projectFiles="true">
               <itemPath>../src/config/default/driver/memory/src/drv_memory.c</itemPath>
+              <itemPath>../src/config/default/driver/memory/src/drv_memory_file_system.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f3" displayName="sst26" projectFiles="true">
               <itemPath>../src/config/default/driver/sst26/src/drv_sst26.c</itemPath>
@@ -280,6 +301,9 @@
             <logicalFolder name="f6" displayName="qspi" projectFiles="true">
               <itemPath>../src/config/default/peripheral/qspi/plib_qspi.c</itemPath>
             </logicalFolder>
+            <logicalFolder name="f7" displayName="uart" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/uart/plib_uart0.c</itemPath>
+            </logicalFolder>
           </logicalFolder>
           <logicalFolder name="f3" displayName="stdio" projectFiles="true">
             <itemPath>../src/config/default/stdio/xc32_monitor.c</itemPath>
@@ -287,6 +311,20 @@
           <logicalFolder name="f5" displayName="system" projectFiles="true">
             <logicalFolder name="f2" displayName="cache" projectFiles="true">
               <itemPath>../src/config/default/system/cache/sys_cache.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f3" displayName="fs" projectFiles="true">
+              <logicalFolder name="f1" displayName="fat_fs" projectFiles="true">
+                <logicalFolder name="f1" displayName="file_system" projectFiles="true">
+                  <itemPath>../src/config/default/system/fs/fat_fs/file_system/ff.c</itemPath>
+                  <itemPath>../src/config/default/system/fs/fat_fs/file_system/ffunicode.c</itemPath>
+                </logicalFolder>
+                <logicalFolder name="f2" displayName="hardware_access" projectFiles="true">
+                  <itemPath>../src/config/default/system/fs/fat_fs/hardware_access/diskio.c</itemPath>
+                </logicalFolder>
+              </logicalFolder>
+              <itemPath>../src/config/default/system/fs/src/sys_fs.c</itemPath>
+              <itemPath>../src/config/default/system/fs/src/sys_fs_media_manager.c</itemPath>
+              <itemPath>../src/config/default/system/fs/src/sys_fs_fat_interface.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f1" displayName="int" projectFiles="true">
               <itemPath>../src/config/default/system/int/src/sys_int.c</itemPath>
@@ -326,6 +364,9 @@
         <itemPath>../src/config/default/default.mhc/project.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/qspi.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/settings.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/stdio.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/sys_fs.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/uart0.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/usb_device.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/usb_device_msd.yml</itemPath>
       </logicalFolder>
@@ -350,8 +391,8 @@
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="SAMV71_DFP" vendor="Microchip" version="4.6.90"/>
         <pack name="CMSIS" vendor="ARM" version="5.4.0"/>
+        <pack name="SAMV71_DFP" vendor="Microchip" version="4.6.90"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>
@@ -413,11 +454,11 @@
         <property key="enable-unroll-loops" value="false"/>
         <property key="exclude-floating-point" value="false"/>
         <property key="extra-include-directories"
-                  value="../src;../src/config/default;../src/packs/ATSAMV71N21B_DFP;../src/packs/CMSIS/;../src/packs/CMSIS/CMSIS/Core/Include"/>
+                  value="../src;../src/config/default;../src/config/default/system/fs/fat_fs/file_system;../src/config/default/system/fs/fat_fs/hardware_access;../src/packs/ATSAMV71N21B_DFP;../src/packs/CMSIS/;../src/packs/CMSIS/CMSIS/Core/Include"/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="true"/>
-        <property key="make-warnings-into-errors" value="true"/>
+        <property key="make-warnings-into-errors" value="false"/>
         <property key="optimization-level" value="-O1"/>
         <property key="place-data-into-section" value="true"/>
         <property key="post-instruction-scheduling" value="default"/>
@@ -511,7 +552,7 @@
         <property key="exceptions" value="true"/>
         <property key="exclude-floating-point" value="false"/>
         <property key="extra-include-directories"
-                  value="../src;../src/config/default;../src/packs/ATSAMV71N21B_DFP;../src/packs/CMSIS/;../src/packs/CMSIS/CMSIS/Core/Include"/>
+                  value="../src;../src/config/default;../src/config/default/system/fs/fat_fs/file_system;../src/config/default/system/fs/fat_fs/hardware_access;../src/packs/ATSAMV71N21B_DFP;../src/packs/CMSIS/;../src/packs/CMSIS/CMSIS/Core/Include"/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="true"/>
@@ -1622,6 +1663,8 @@
         <property key="memories.programmemory.ranges" value="400000-5fffff"/>
         <property key="memories.rww" value="true"/>
         <property key="poweroptions.powerenable" value="false"/>
+        <property key="programmerToGoFilePath"
+                  value="C:/Projects/SAMduino/firmware/MSD/firmware/MSD_Demo.X/debug/default/MSD_Demo_ptg"/>
         <property key="programmerToGoImageName" value="MSD_Demo_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>

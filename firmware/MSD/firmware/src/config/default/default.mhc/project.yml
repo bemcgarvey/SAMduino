@@ -6,6 +6,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: null
+- generatedChecksum: 4F1E691F70878F4E114F5C6BDB4BD606
+  logicalPath: config/default/system/fs/fat_fs/hardware_access
+  name: diskio.c
+  physicalPath: system/fs/fat_fs/hardware_access
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 4F1E691F70878F4E114F5C6BDB4BD606
 - generatedChecksum: 257ACC61A57EA8DE78BA7E1F78DB85A3
   logicalPath: config/default/driver/memory
   name: drv_memory.c
@@ -13,6 +20,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 257ACC61A57EA8DE78BA7E1F78DB85A3
+- generatedChecksum: AD5CAAD66A56C9B5D17EB7E756C22D0C
+  logicalPath: config/default/driver/memory
+  name: drv_memory_file_system.c
+  physicalPath: driver/memory/src
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: AD5CAAD66A56C9B5D17EB7E756C22D0C
 - generatedChecksum: EA052CFEAD3E59E304995DACA53CE9B6
   logicalPath: config/default/driver/sst26
   name: drv_sst26.c
@@ -41,13 +55,27 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 6069C4FD56993BDA3B1FC223DD5BAA4A
-- generatedChecksum: 62A370FDF601022EFB16465895D6A3B7
+- generatedChecksum: B2ADAD943E1B2BEEFF974468E2509BD5
+  logicalPath: config/default/system/fs/fat_fs/file_system
+  name: ff.c
+  physicalPath: system/fs/fat_fs/file_system
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: B2ADAD943E1B2BEEFF974468E2509BD5
+- generatedChecksum: 9E153A6D4F8E0EA1F6901BAED7DD80FD
+  logicalPath: config/default/system/fs/fat_fs/file_system
+  name: ffunicode.c
+  physicalPath: system/fs/fat_fs/file_system
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 9E153A6D4F8E0EA1F6901BAED7DD80FD
+- generatedChecksum: 178EAE65B7ABF6BE112E73DCDEC61AA4
   logicalPath: config/default
   name: initialization.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 62A370FDF601022EFB16465895D6A3B7
+  userChecksum: 178EAE65B7ABF6BE112E73DCDEC61AA4
 - generatedChecksum: 5E71B9BFC22C3D932AF5D012D4973556
   logicalPath: config/default
   name: interrupts.c
@@ -69,13 +97,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: null
-- generatedChecksum: 147941EAABFEDA508B40D6328CD2805E
+- generatedChecksum: 78B6ECAAF91FEA657691B1908917D4D4
   logicalPath: config/default/peripheral/clk
   name: plib_clk.c
   physicalPath: peripheral/clk
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 147941EAABFEDA508B40D6328CD2805E
+  userChecksum: 78B6ECAAF91FEA657691B1908917D4D4
 - generatedChecksum: D23DF612DB8267EDD9F5F3A463A02DB2
   logicalPath: config/default/peripheral/efc
   name: plib_efc.c
@@ -97,13 +125,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 01230DC0E5A1BF736A00C18E6287D753
-- generatedChecksum: 8AB78EB095175187CBBB54E6A411B1DC
+- generatedChecksum: 414F308DD8CDB458A7C42916E66E79F1
   logicalPath: config/default/peripheral/pio
   name: plib_pio.c
   physicalPath: peripheral/pio
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 8AB78EB095175187CBBB54E6A411B1DC
+  userChecksum: 414F308DD8CDB458A7C42916E66E79F1
 - generatedChecksum: 164CDE8DEA8E52ED78CD9E179EDDE260
   logicalPath: config/default/peripheral/qspi
   name: plib_qspi.c
@@ -111,6 +139,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 164CDE8DEA8E52ED78CD9E179EDDE260
+- generatedChecksum: CBEC3B1A0CD099BE51536D94DED55A0F
+  logicalPath: config/default/peripheral/uart
+  name: plib_uart0.c
+  physicalPath: peripheral/uart
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: CBEC3B1A0CD099BE51536D94DED55A0F
 - generatedChecksum: F199C711F99DEF2498D1F664873F2B12
   logicalPath: config/default
   name: startup_xc32.c
@@ -125,6 +160,27 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 9063CE23C03357B7F90CA6887D4BCAF9
+- generatedChecksum: 9C4B71FF77DB16BC8FF11B79F8FB7EB1
+  logicalPath: config/default/system/fs
+  name: sys_fs.c
+  physicalPath: system/fs/src
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 9C4B71FF77DB16BC8FF11B79F8FB7EB1
+- generatedChecksum: 1F79CD9E378D98E657FCEB0552B2B659
+  logicalPath: config/default/system/fs
+  name: sys_fs_fat_interface.c
+  physicalPath: system/fs/src
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 1F79CD9E378D98E657FCEB0552B2B659
+- generatedChecksum: 56CAB83269AF585DADCDC124D19DCA5A
+  logicalPath: config/default/system/fs
+  name: sys_fs_media_manager.c
+  physicalPath: system/fs/src
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 56CAB83269AF585DADCDC124D19DCA5A
 - generatedChecksum: 02C3C1B519E59992810626BB6098CF56
   logicalPath: config/default/system/int
   name: sys_int.c
@@ -132,13 +188,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 02C3C1B519E59992810626BB6098CF56
-- generatedChecksum: D9B47695E23996F50A707CE90889A4CA
+- generatedChecksum: 4308714F2CA84DFEC4EA8CA402068CCF
   logicalPath: config/default
   name: tasks.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: D9B47695E23996F50A707CE90889A4CA
+  userChecksum: 4308714F2CA84DFEC4EA8CA402068CCF
 - generatedChecksum: BCCEF5B801FFD0CF22D0B454D2F25F1F
   logicalPath: config/default/usb/src
   name: usb_device.c
@@ -160,13 +216,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 5B2E4F04BB9E3347BD0D10242479D4F0
-- generatedChecksum: 7806B30ECAE0D18D08CD583D8775530D
+- generatedChecksum: A49786F231DE2706850DA13580EF4BB5
   logicalPath: config/default/stdio
   name: xc32_monitor.c
   physicalPath: stdio
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 7806B30ECAE0D18D08CD583D8775530D
+  userChecksum: A49786F231DE2706850DA13580EF4BB5
 - generatedChecksum: 641EA28F78A04E01087965FE462B3419
   logicalPath: packs/ATSAMV71N21B_DFP/component
   name: acc.h
@@ -293,13 +349,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 52F91AC0727F2311EDA0E3BAA7719A9F
-- generatedChecksum: 6F676FAF168F39A31FDBAF22BEFAEBE8
+- generatedChecksum: 16CAE502903CE9226C82849D2BD87071
   logicalPath: config/default
   name: configuration.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: 6F676FAF168F39A31FDBAF22BEFAEBE8
+  userChecksum: 16CAE502903CE9226C82849D2BD87071
 - generatedChecksum: 948CEA542F04017255B040816F368DF8
   logicalPath: packs/CMSIS/CMSIS/Core/Include
   name: core_cm7.h
@@ -321,13 +377,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: B424335B8194FB845DFEE348D5ACCDA0
-- generatedChecksum: DCBC020B29223F5E1B9CACEC5770AEC4
+- generatedChecksum: D8C6A03EC88903AC60CD0C9265976A7C
   logicalPath: config/default
   name: definitions.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: DCBC020B29223F5E1B9CACEC5770AEC4
+  userChecksum: D8C6A03EC88903AC60CD0C9265976A7C
 - generatedChecksum: 3AF237725C26767B231B9DF6D83C3920
   logicalPath: config/default
   name: device.h
@@ -349,6 +405,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: D4DF9B77C2FAD66A278B6EFC86F5D1D4
+- generatedChecksum: 630DFA1824A5279838B4330DA2FF3E5E
+  logicalPath: config/default/system/fs/fat_fs/hardware_access
+  name: diskio.h
+  physicalPath: system/fs/fat_fs/hardware_access
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 630DFA1824A5279838B4330DA2FF3E5E
 - generatedChecksum: 1D2094DFA60F847FFD4E8153B6E78027
   logicalPath: config/default/driver
   name: driver.h
@@ -454,6 +517,20 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: F58764DB84FAE55CC7A088BD8D11B6B0
+- generatedChecksum: 2D3A9FC37968F5000CB45C6B4AD965D6
+  logicalPath: config/default/system/fs/fat_fs/file_system
+  name: ff.h
+  physicalPath: system/fs/fat_fs/file_system
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 2D3A9FC37968F5000CB45C6B4AD965D6
+- generatedChecksum: 4E1DC558E64EF7706189FC3224899E86
+  logicalPath: config/default/system/fs/fat_fs/file_system
+  name: ffconf.h
+  physicalPath: system/fs/fat_fs/file_system
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 4E1DC558E64EF7706189FC3224899E86
 - generatedChecksum: D096C79BD5B10448F69434F981148958
   logicalPath: packs/ATSAMV71N21B_DFP/component
   name: fuses.h
@@ -741,6 +818,20 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 4C5986A0277E63F8568BDB343A280B17
+- generatedChecksum: 4B3E55A95240B58526FC2D8BFA561D2B
+  logicalPath: config/default/peripheral/uart
+  name: plib_uart0.h
+  physicalPath: peripheral/uart
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 4B3E55A95240B58526FC2D8BFA561D2B
+- generatedChecksum: 2AF2604D6D1923F7C5041044A374E625
+  logicalPath: config/default/peripheral/uart
+  name: plib_uart_common.h
+  physicalPath: peripheral/uart
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 2AF2604D6D1923F7C5041044A374E625
 - generatedChecksum: 285A2ABACB96C59AA5DEB8C8C3B8E876
   logicalPath: packs/ATSAMV71N21B_DFP/component
   name: pmc.h
@@ -958,6 +1049,41 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 6BB6C54C5CD963A5A940CF7BB28F4E10
+- generatedChecksum: 4A8DA7BC60B438CE161462CB299CCC9D
+  logicalPath: config/default/system/fs
+  name: sys_fs.h
+  physicalPath: system/fs
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 4A8DA7BC60B438CE161462CB299CCC9D
+- generatedChecksum: 0D9FE9035E3AA8082C5657240106F2DC
+  logicalPath: config/default/system/fs
+  name: sys_fs_fat_interface.h
+  physicalPath: system/fs
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 0D9FE9035E3AA8082C5657240106F2DC
+- generatedChecksum: 0D162D1868A187FDC092657020E668D8
+  logicalPath: config/default/system/fs
+  name: sys_fs_local.h
+  physicalPath: system/fs/src
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 0D162D1868A187FDC092657020E668D8
+- generatedChecksum: D0DEC824B933722219A05F00A4CD5BB4
+  logicalPath: config/default/system/fs
+  name: sys_fs_media_manager.h
+  physicalPath: system/fs
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: D0DEC824B933722219A05F00A4CD5BB4
+- generatedChecksum: E50782BD59B15F2EAAF53AAD818793EE
+  logicalPath: config/default/system/fs
+  name: sys_fs_media_manager_local.h
+  physicalPath: system/fs/src
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: E50782BD59B15F2EAAF53AAD818793EE
 - generatedChecksum: 1329D2DEB6E5AC9515AD4D165C60DC74
   logicalPath: config/default/system/int
   name: sys_int.h
@@ -1331,6 +1457,12 @@ settings:
   key: extra-include-directories
   security: NON_SECURE
   value: ../src;../src/config/default;../src/packs/ATSAMV71N21B_DFP;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/CMSIS/
+- append: true
+  category: C32
+  delimiter: ;
+  key: extra-include-directories
+  security: NON_SECURE
+  value: ;../src/config/default/system/fs/fat_fs/file_system;../src/config/default/system/fs/fat_fs/hardware_access
 - append: false
   category: C32-LD
   delimiter: ''
@@ -1355,6 +1487,12 @@ settings:
   key: extra-include-directories
   security: NON_SECURE
   value: ../src;../src/config/default;../src/packs/ATSAMV71N21B_DFP;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/CMSIS/
+- append: true
+  category: C32CPP
+  delimiter: ;
+  key: extra-include-directories
+  security: NON_SECURE
+  value: ;../src/config/default/system/fs/fat_fs/file_system;../src/config/default/system/fs/fat_fs/hardware_access
 - append: false
   category: C32Global
   delimiter: ''

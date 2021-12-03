@@ -1,14 +1,14 @@
 /*******************************************************************************
- Debug Console Source file
+  UART0 PLIB
 
   Company:
     Microchip Technology Inc.
 
   File Name:
-    xc32_monitor.c
+    plib_uart0.h
 
   Summary:
-    debug console Source File
+    UART0 PLIB Header File
 
   Description:
     None
@@ -38,32 +38,56 @@
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
 
-#include "definitions.h"
+#ifndef PLIB_UART0_H
+#define PLIB_UART0_H
 
-#ifdef __arm__
-/* Declaration of these functions are missing in stdio.h for ARM parts*/
-int _mon_getc(int canblock);
-void _mon_putc(char c);
-#endif //__arm__
+#include "plib_uart_common.h"
 
-int _mon_getc(int canblock)
-{
-   int c = 0;
-   bool success = false;
-   (void)canblock;
-   do
-   {
-       success = UART0_Read(&c, 1);                
-   }while( !success);
-   return c;
-}
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
 
-void _mon_putc(char c)
-{
-   bool success = false;
-   do
-   {
-       success = UART0_Write(&c, 1);
-   }while (!success);
-}
+    extern "C" {
 
+#endif
+// DOM-IGNORE-END
+
+// *****************************************************************************
+// *****************************************************************************
+// Section: Interface
+// *****************************************************************************
+// *****************************************************************************
+
+#define UART0_FrequencyGet()    (uint32_t)(150000000UL)
+
+/****************************** UART0 API *********************************/
+
+void UART0_Initialize( void );
+
+UART_ERROR UART0_ErrorGet( void );
+
+bool UART0_SerialSetup( UART_SERIAL_SETUP *setup, uint32_t srcClkFreq );
+
+bool UART0_Write( void *buffer, const size_t size );
+
+bool UART0_Read( void *buffer, const size_t size );
+
+int UART0_ReadByte( void );
+
+void UART0_WriteByte( int data );
+
+bool UART0_TransmitterIsReady( void );
+
+bool UART0_TransmitComplete( void );
+
+bool UART0_ReceiverIsReady( void );
+
+
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
+
+    }
+
+#endif
+
+// DOM-IGNORE-END
+#endif // PLIB_UART0_H

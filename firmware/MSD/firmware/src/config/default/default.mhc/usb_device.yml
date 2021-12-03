@@ -75,4 +75,4 @@ children:
       - type: User
         attributes: {value: '0x4d63'}
 - type: ElementPosition
-  attributes: {x: '9', y: '263', id: usb_device}
+  attributes: {x: '9', y: '261', id: usb_device}
