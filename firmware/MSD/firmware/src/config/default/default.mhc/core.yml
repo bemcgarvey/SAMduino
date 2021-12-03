@@ -239,7 +239,7 @@ children:
       - type: Dynamic
         attributes: {id: core, value: '0'}
       - type: User
-        attributes: {value: '5'}
+        attributes: {value: '0'}
   - type: String
     attributes: {id: MPU_Region_Name0}
     children:
