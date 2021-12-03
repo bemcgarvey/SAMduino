@@ -1163,6 +1163,8 @@
         <property key="periphComp5.gte" value="gt"/>
         <property key="periphComp6.gte" value="gt"/>
         <property key="poweroptions.powerenable" value="false"/>
+        <property key="programmerToGoFilePath"
+                  value="C:/Projects/SAMduino/firmware/MSD/firmware/MSD_Demo.X/debug/default/MSD_Demo_ptg"/>
         <property key="programmerToGoImageName" value="MSD_Demo_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>

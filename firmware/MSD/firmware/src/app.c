@@ -171,7 +171,11 @@ void APP_USBDeviceEventHandler(USB_DEVICE_EVENT event, void * pEventData, uintpt
 
 SYS_FS_FSTAT fsStat;
 int count = 0;
-char dirName[30];
+char fileName[30];
+SYS_FS_RESULT res;
+SYS_FS_FORMAT_PARAM opt = {0};
+uint8_t CACHE_ALIGN work[1024];
+SYS_FS_HANDLE fileHandle;
 
 void APP_Initialize(void) {
     /* Place the App state machine in its initial state. */
@@ -179,7 +183,6 @@ void APP_Initialize(void) {
 
     /* Set device layer handle as invalid */
     appData.usbDeviceHandle = USB_DEVICE_HANDLE_INVALID;
-    printf("Demo Started\r\n");
 }
 
 /******************************************************************************
@@ -203,6 +206,13 @@ void APP_Tasks(void) {
                  * the handler is set */
                 USB_DEVICE_EventHandlerSet(appData.usbDeviceHandle, APP_USBDeviceEventHandler, (uintptr_t) & appData);
 
+                printf("\r\nDemo Started\r\n");
+                printf("Type d to print root directory\r\n");
+                printf("     k to make a new directory\r\n");
+                printf("     w to create a text file\r\n");
+                printf("     u to unmount the disk\r\n");
+                printf("     m to mount the disk (it is auto mounted at start)\r\n");
+                printf("     f to format the disk\r\n");
                 /* Move the application to the next state */
                 appData.state = APP_STATE_RUNNING;
             }
@@ -240,10 +250,22 @@ void APP_Tasks(void) {
                         }
                         break;
                     case 'k':
-                        snprintf(dirName, sizeof(dirName), "Directory%d", count);
+                        snprintf(fileName, sizeof (fileName), "New Folder%d", count);
                         ++count;
-                        printf("Creating directory: %s\r\n", dirName);
-                        SYS_FS_DirectoryMake(dirName);
+                        printf("Creating directory: %s\r\n", fileName);
+                        SYS_FS_DirectoryMake(fileName);
+                        break;
+                    case 'w':
+                        snprintf(fileName, sizeof (fileName), "New Text File%d.txt", count);
+                        ++count;
+                        printf("Creating file: %s\r\n", fileName);
+                        fileHandle = SYS_FS_FileOpen(fileName, SYS_FS_FILE_OPEN_WRITE);
+                        if (fileHandle != SYS_FS_HANDLE_INVALID) {
+                            SYS_FS_FilePrintf(fileHandle, "This is a test file");
+                            SYS_FS_FileClose(fileHandle);
+                        } else {
+                            printf("Error");
+                        }
                         break;
                     case 'u':
                         printf("Unmount\r\n");
@@ -253,8 +275,25 @@ void APP_Tasks(void) {
                         printf("Mount\r\n");
                         SYS_FS_Mount("/dev/mtda1", "/mnt/flashDrive", FAT, 0, NULL);
                         break;
+                    case 'f':
+                        //TODO check to see if formatting works after the flash has been erased
+                        // or written by another application
+                        printf("Formatting\r\n");
+                        opt.fmt = SYS_FS_FORMAT_FAT;
+                        opt.au_size = 0;
+                        opt.n_fat = 1;
+                        opt.n_root = 32;
+                        opt.align = 0;
+                        res = SYS_FS_DriveFormat("/mnt/flashDrive", &opt, (void *) work, 1024);
+                        if (res == SYS_FS_RES_FAILURE) {
+                            printf("Format failed\r\n");
+                        } else {
+                            SYS_FS_DriveLabelSet("/mnt/flashDrive", "SAMduino");
+                            printf("Format complete\r\n");
+                        }
+                        break;
                     default:
-                        printf("????\r\n");
+                        printf("Type d, k, w, u, m or f\r\n");
                         break;
                 }
             }
