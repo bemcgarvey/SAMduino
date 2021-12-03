@@ -4,7 +4,7 @@
 #include "driver/sst26/drv_sst26.h"
 #include <stdlib.h>
 
-//Notes: Must setup QSPI memory as Normal, Non-cachable with MPU
+//Notes: Must setup QSPI memory as Strongly Ordered with MPU
 
 static DRV_HANDLE handle;
 void initFlash(void);
