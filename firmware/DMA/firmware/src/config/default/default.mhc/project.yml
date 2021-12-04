@@ -76,13 +76,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: CBEC3B1A0CD099BE51536D94DED55A0F
-- generatedChecksum: F802F07F8B2E943530D2308F81B6A700
+- generatedChecksum: 3DE85982C392CFEE9A6B3C90694789AC
   logicalPath: config/default/peripheral/xdmac
   name: plib_xdmac.c
   physicalPath: peripheral/xdmac
   security: NON_SECURE
   type: SOURCE
-  userChecksum: F802F07F8B2E943530D2308F81B6A700
+  userChecksum: 3DE85982C392CFEE9A6B3C90694789AC
 - generatedChecksum: 3A35F794BD3C19E7B3142ED6806E4EFE
   logicalPath: config/default
   name: startup_xc32.c
@@ -545,13 +545,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 2AF2604D6D1923F7C5041044A374E625
-- generatedChecksum: 200C8B2B6FC607A0801BCC381E24ACFC
+- generatedChecksum: FA158EFB2515CDBECB5D8FB8FA151515
   logicalPath: config/default/peripheral/xdmac
   name: plib_xdmac.h
   physicalPath: peripheral/xdmac
   security: NON_SECURE
   type: HEADER
-  userChecksum: 200C8B2B6FC607A0801BCC381E24ACFC
+  userChecksum: FA158EFB2515CDBECB5D8FB8FA151515
 - generatedChecksum: 2FC58EF28F630EC2CC437536C41CEDB1
   logicalPath: config/default/peripheral/xdmac
   name: plib_xdmac_common.h

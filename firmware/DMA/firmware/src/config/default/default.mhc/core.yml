@@ -833,6 +833,180 @@ children:
       children:
       - type: User
         attributes: {value: '0'}
+  - type: KeyValueSet
+    attributes: {id: XDMAC_CC1_CSIZE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: KeyValueSet
+    attributes: {id: XDMAC_CC1_DAM}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+      - type: User
+        attributes: {value: '0'}
+  - type: KeyValueSet
+    attributes: {id: XDMAC_CC1_DIF}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '1'}
+      - type: User
+        attributes: {value: '1'}
+  - type: KeyValueSet
+    attributes: {id: XDMAC_CC1_DSYNC}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '1'}
+  - type: KeyValueSet
+    attributes: {id: XDMAC_CC1_DWIDTH}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: KeyValueSet
+    attributes: {id: XDMAC_CC1_MBSIZE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Combo
+    attributes: {id: XDMAC_CC1_PERID}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: UART0_Transmit}
+  - type: Integer
+    attributes: {id: XDMAC_CC1_PERID_VAL}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '20'}
+  - type: KeyValueSet
+    attributes: {id: XDMAC_CC1_SAM}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '1'}
+  - type: KeyValueSet
+    attributes: {id: XDMAC_CC1_SIF}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+      - type: User
+        attributes: {value: '0'}
+  - type: KeyValueSet
+    attributes: {id: XDMAC_CC1_SWREQ}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: KeyValueSet
+    attributes: {id: XDMAC_CC1_TYPE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '1'}
+  - type: KeyValueSet
+    attributes: {id: XDMAC_CC2_CSIZE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: KeyValueSet
+    attributes: {id: XDMAC_CC2_DAM}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '1'}
+  - type: KeyValueSet
+    attributes: {id: XDMAC_CC2_DIF}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: KeyValueSet
+    attributes: {id: XDMAC_CC2_DSYNC}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: KeyValueSet
+    attributes: {id: XDMAC_CC2_DWIDTH}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: KeyValueSet
+    attributes: {id: XDMAC_CC2_MBSIZE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Combo
+    attributes: {id: XDMAC_CC2_PERID}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: UART0_Receive}
+  - type: Integer
+    attributes: {id: XDMAC_CC2_PERID_VAL}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '21'}
+  - type: KeyValueSet
+    attributes: {id: XDMAC_CC2_SAM}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: KeyValueSet
+    attributes: {id: XDMAC_CC2_SIF}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '1'}
+  - type: KeyValueSet
+    attributes: {id: XDMAC_CC2_SWREQ}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: KeyValueSet
+    attributes: {id: XDMAC_CC2_TYPE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '1'}
   - type: Boolean
     attributes: {id: XDMAC_CH0_ENABLE}
     children:
@@ -842,6 +1016,34 @@ children:
         attributes: {value: 'true'}
   - type: Boolean
     attributes: {id: XDMAC_CH0_ENABLE_INTERRUPT}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'false'}
+  - type: Boolean
+    attributes: {id: XDMAC_CH1_ENABLE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'true'}
+  - type: Boolean
+    attributes: {id: XDMAC_CH1_ENABLE_INTERRUPT}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'false'}
+  - type: Boolean
+    attributes: {id: XDMAC_CH2_ENABLE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'true'}
+  - type: Boolean
+    attributes: {id: XDMAC_CH2_ENABLE_INTERRUPT}
     children:
     - type: Values
       children:
@@ -867,7 +1069,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '1'}
+        attributes: {id: core, value: '3'}
   - type: Boolean
     attributes: {id: XDMAC_INTERRUPT_ENABLE}
     children:
