@@ -1,0 +1,15 @@
+format_version: v1.0
+type: UniqueComponent
+attributes: {id: HarmonyCore}
+children:
+- type: Symbols
+  children:
+  - type: Boolean
+    attributes: {id: ENABLE_APP_FILE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: HarmonyCore, value: 'false'}
+- type: ElementPosition
+  attributes: {x: '197', y: '113', id: HarmonyCore}
