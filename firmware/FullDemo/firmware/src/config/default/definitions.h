@@ -60,7 +60,6 @@
 #include "peripheral/efc/plib_efc.h"
 #include "peripheral/tc/plib_tc0.h"
 #include "peripheral/rtc/plib_rtc.h"
-#include "peripheral/tc/plib_tc3.h"
 #include "driver/sst26/drv_sst26.h"
 #include "system/time/sys_time.h"
 #include "peripheral/afec/plib_afec0.h"

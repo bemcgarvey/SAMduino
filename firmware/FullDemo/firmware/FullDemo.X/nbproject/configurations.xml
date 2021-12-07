@@ -73,7 +73,6 @@
               <itemPath>../src/config/default/peripheral/rtc/plib_rtc.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f8" displayName="tc" projectFiles="true">
-              <itemPath>../src/config/default/peripheral/tc/plib_tc3.h</itemPath>
               <itemPath>../src/config/default/peripheral/tc/plib_tc_common.h</itemPath>
               <itemPath>../src/config/default/peripheral/tc/plib_tc0.h</itemPath>
             </logicalFolder>
@@ -373,7 +372,6 @@
               <itemPath>../src/config/default/peripheral/rtc/plib_rtc.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f8" displayName="tc" projectFiles="true">
-              <itemPath>../src/config/default/peripheral/tc/plib_tc3.c</itemPath>
               <itemPath>../src/config/default/peripheral/tc/plib_tc0.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f10" displayName="trng" projectFiles="true">
@@ -478,7 +476,6 @@
           <itemPath>../src/config/default/default.mhc/Group3/Group3.yml</itemPath>
           <itemPath>../src/config/default/default.mhc/Group3/pwm0.yml</itemPath>
           <itemPath>../src/config/default/default.mhc/Group3/rtc.yml</itemPath>
-          <itemPath>../src/config/default/default.mhc/Group3/tc3.yml</itemPath>
           <itemPath>../src/config/default/default.mhc/Group3/trng.yml</itemPath>
         </logicalFolder>
         <logicalFolder name="f5" displayName="Group4" projectFiles="true">

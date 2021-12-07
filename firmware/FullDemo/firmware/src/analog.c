@@ -9,7 +9,7 @@ static void readChannel(AFEC_CHANNEL_NUM ch);
 static void sampleTimerCallback(TimerHandle_t xTimer);
 static void setResolution(int bits);
 static void calculateSineValues(void);
-static void tc3ch1Callback(TC_TIMER_STATUS status, uintptr_t context);
+static void timerCallback(TC_TIMER_STATUS status, uintptr_t context);
 
 
 #define DAC_SINE_STEPS  200
@@ -30,7 +30,7 @@ void analogMenu(void) {
         sampleTimer = xTimerCreate("sample", 200, true, 0, sampleTimerCallback);
     }
     calculateSineValues();
-    TC3_CH1_TimerCallbackRegister(tc3ch1Callback, (uintptr_t) NULL);
+    TC0_CH1_TimerCallbackRegister(timerCallback, (uintptr_t) NULL);
     while (!done) {
         printf("  Analog functions\r\n");
         printf("     1) Convert Analog CH0 (12 bit)\r\n");
@@ -49,7 +49,7 @@ void analogMenu(void) {
                 switch (rx) {
                     case '1':
                         RedLed_Set();
-                        TC3_CH1_TimerStop();
+                        TC0_CH1_TimerStop();
                         xTimerStop(sampleTimer, 10);
                         activeChannel = 0;
                         setResolution(12);
@@ -57,7 +57,7 @@ void analogMenu(void) {
                         break;
                     case '2':
                         RedLed_Set();
-                        TC3_CH1_TimerStop();
+                        TC0_CH1_TimerStop();
                         xTimerStop(sampleTimer, 10);
                         activeChannel = 1;
                         setResolution(16);
@@ -68,7 +68,7 @@ void analogMenu(void) {
                         xTimerStop(sampleTimer, 10);
                         dacStep = 0;
                         waveType = DAC_SINE_WAVE;
-                        TC3_CH1_TimerStart();
+                        TC0_CH1_TimerStart();
                         RedLed_Clear();
                         break;
                     case '4':
@@ -77,18 +77,18 @@ void analogMenu(void) {
                         dacStep = 0;
                         sawValue = 0;
                         waveType = DAC_SAW_WAVE;
-                        TC3_CH1_TimerStart();
+                        TC0_CH1_TimerStart();
                         RedLed_Clear();
                         break;
                     case 'm':
                         RedLed_Set();
-                        TC3_CH1_TimerStop();
+                        TC0_CH1_TimerStop();
                         xTimerStop(sampleTimer, 10);
                         repeatMenu = true;
                         break;
                     case 'b':
                         RedLed_Set();
-                        TC3_CH1_TimerStop();
+                        TC0_CH1_TimerStop();
                         xTimerStop(sampleTimer, 10);
                         return;
                 }
@@ -133,7 +133,7 @@ void setResolution(int bits) {
     }
 }
 
-void tc3ch1Callback(TC_TIMER_STATUS status, uintptr_t context) {
+void timerCallback(TC_TIMER_STATUS status, uintptr_t context) {
     if (waveType == DAC_SINE_WAVE) {
         DACC_DataWrite(0, sineValues[dacStep++]);
         if (dacStep == DAC_SINE_STEPS) {

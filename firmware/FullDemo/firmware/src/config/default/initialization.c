@@ -249,16 +249,10 @@ void SYS_Initialize ( void* data )
 
  
     TC0_CH0_TimerInitialize(); 
+    TC0_CH1_TimerInitialize(); 
      
-    
 	RTC_Initialize();
 
-  
-
- 
-    TC3_CH0_TimerInitialize(); 
-    TC3_CH1_TimerInitialize(); 
-     
     AFEC0_Initialize();
 
     QSPI_Initialize();

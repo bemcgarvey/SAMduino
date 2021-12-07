@@ -152,17 +152,16 @@ Initialize Programmable Clock (PCKx)
 static void CLK_ProgrammableClockInitialize(void)
 {
     /* Disable selected programmable clock  */
-    PMC_REGS->PMC_SCDR = PMC_SCDR_PCK5_Msk | PMC_SCDR_PCK6_Msk;
+    PMC_REGS->PMC_SCDR = PMC_SCDR_PCK5_Msk;
 
     /* Configure selected programmable clock    */
     PMC_REGS->PMC_PCK[5]= PMC_PCK_CSS_MCK | PMC_PCK_PRES(0);
-    PMC_REGS->PMC_PCK[6]= PMC_PCK_CSS_MAIN_CLK | PMC_PCK_PRES(11);
 
     /* Enable selected programmable clock   */
-    PMC_REGS->PMC_SCER =    PMC_SCER_PCK5_Msk | PMC_SCER_PCK6_Msk;
+    PMC_REGS->PMC_SCER =    PMC_SCER_PCK5_Msk;
 
     /* Wait for clock to be ready   */
-    while( (PMC_REGS->PMC_SR & (PMC_SR_PCKRDY5_Msk | PMC_SR_PCKRDY6_Msk) ) != (PMC_SR_PCKRDY5_Msk | PMC_SR_PCKRDY6_Msk));
+    while( (PMC_REGS->PMC_SR & (PMC_SR_PCKRDY5_Msk) ) != (PMC_SR_PCKRDY5_Msk));
 
 
 }
@@ -197,6 +196,6 @@ void CLOCK_Initialize( void )
     CLK_ProgrammableClockInitialize();
 
     /* Enable Peripheral Clock */
-    PMC_REGS->PMC_PCER0=0xe0890c80;
-    PMC_REGS->PMC_PCER1=0x20c0824;
+    PMC_REGS->PMC_PCER0=0xe1890c80;
+    PMC_REGS->PMC_PCER1=0x2000824;
 }
