@@ -65,10 +65,12 @@ void RTC_InterruptHandler (void);
 void PIOA_InterruptHandler (void);
 void PIOD_InterruptHandler (void);
 void TWIHS0_InterruptHandler (void);
+void TC0_CH0_InterruptHandler (void);
 void DRV_USBHSV1_USBHS_Handler (void);
 void MCAN1_INT0_InterruptHandler (void);
 void TC3_CH1_InterruptHandler (void);
 void UART0_InterruptHandler(void);
+
 
 
 #endif // INTERRUPTS_H

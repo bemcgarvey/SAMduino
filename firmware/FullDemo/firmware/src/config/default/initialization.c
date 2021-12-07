@@ -163,6 +163,25 @@ const DRV_USBHSV1_INIT drvUSBInit =
 // Section: System Initialization
 // *****************************************************************************
 // *****************************************************************************
+// <editor-fold defaultstate="collapsed" desc="SYS_TIME Initialization Data">
+
+const SYS_TIME_PLIB_INTERFACE sysTimePlibAPI = {
+    .timerCallbackSet = (SYS_TIME_PLIB_CALLBACK_REGISTER)TC0_CH0_TimerCallbackRegister,
+    .timerStart = (SYS_TIME_PLIB_START)TC0_CH0_TimerStart,
+    .timerStop = (SYS_TIME_PLIB_STOP)TC0_CH0_TimerStop ,
+    .timerFrequencyGet = (SYS_TIME_PLIB_FREQUENCY_GET)TC0_CH0_TimerFrequencyGet,
+    .timerPeriodSet = (SYS_TIME_PLIB_PERIOD_SET)TC0_CH0_TimerPeriodSet,
+    .timerCompareSet = (SYS_TIME_PLIB_COMPARE_SET)TC0_CH0_TimerCompareSet,
+    .timerCounterGet = (SYS_TIME_PLIB_COUNTER_GET)TC0_CH0_TimerCounterGet,
+};
+
+const SYS_TIME_INIT sysTimeInitData =
+{
+    .timePlib = &sysTimePlibAPI,
+    .hwTimerIntNum = TC0_CH0_IRQn,
+};
+
+// </editor-fold>
 
 
 
@@ -226,6 +245,12 @@ void SYS_Initialize ( void* data )
 
 	DACC_Initialize();
 
+  
+
+ 
+    TC0_CH0_TimerInitialize(); 
+     
+    
 	RTC_Initialize();
 
   
@@ -248,6 +273,7 @@ void SYS_Initialize ( void* data )
     sysObj.drvSST26 = DRV_SST26_Initialize((SYS_MODULE_INDEX)DRV_SST26_INDEX, (SYS_MODULE_INIT *)&drvSST26InitData);
 
 
+    sysObj.sysTime = SYS_TIME_Initialize(SYS_TIME_INDEX_0, (SYS_MODULE_INIT *)&sysTimeInitData);
 
 
 	 /* Initialize the USB device layer */

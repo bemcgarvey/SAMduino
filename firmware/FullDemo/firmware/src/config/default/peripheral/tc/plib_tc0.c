@@ -67,16 +67,17 @@ TC_TIMER_CALLBACK_OBJECT TC0_CH0_CallbackObj;
 /* Initialize channel in timer mode */
 void TC0_CH0_TimerInitialize (void)
 {
+    /* Use peripheral clock */
+    TC0_REGS->TC_CHANNEL[0].TC_EMR = TC_EMR_NODIVCLK_Msk;
     /* clock selection and waveform selection */
-    TC0_REGS->TC_CHANNEL[0].TC_CMR = TC_CMR_TCCLKS_TIMER_CLOCK5 | TC_CMR_WAVEFORM_WAVSEL_UP_RC | \
-                                                        TC_CMR_WAVE_Msk ;
+    TC0_REGS->TC_CHANNEL[0].TC_CMR =  TC_CMR_WAVEFORM_WAVSEL_UP_RC | TC_CMR_WAVE_Msk ;
 
     /* write period */
-    TC0_REGS->TC_CHANNEL[0].TC_RC = 32768U;
+    TC0_REGS->TC_CHANNEL[0].TC_RC = 0U;
 
 
     /* enable interrupt */
-    TC0_REGS->TC_CHANNEL[0].TC_IER = TC_IER_CPCS_Msk;
+    TC0_REGS->TC_CHANNEL[0].TC_IER = TC_IER_CPAS_Msk;
     TC0_CH0_CallbackObj.callback_fn = NULL;
 }
 
@@ -94,7 +95,7 @@ void TC0_CH0_TimerStop (void)
 
 uint32_t TC0_CH0_TimerFrequencyGet( void )
 {
-    return (uint32_t)(32768UL);
+    return (uint32_t)(150000000UL);
 }
 
 /* Configure timer period */
@@ -103,6 +104,11 @@ void TC0_CH0_TimerPeriodSet (uint16_t period)
     TC0_REGS->TC_CHANNEL[0].TC_RC = period;
 }
 
+/* Configure timer compare */
+void TC0_CH0_TimerCompareSet (uint16_t compare)
+{
+    TC0_REGS->TC_CHANNEL[0].TC_RA = compare;
+}
 
 /* Read timer period */
 uint16_t TC0_CH0_TimerPeriodGet (void)

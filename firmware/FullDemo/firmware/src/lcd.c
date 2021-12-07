@@ -2,9 +2,7 @@
 #include "lcd.h"
 #include <stdio.h>
 #include <stdarg.h>
-
-#include "peripheral/tc/plib_tc3.h"
-#include "peripheral/twihs/master/plib_twihs0_master.h"
+#include "definitions.h"
 
 //Uses TC3 CH0 set for 1us period, one shot mode, no interrupt
 
@@ -364,7 +362,11 @@ char LCDReadByte(char rs) {
 }
 
 void __delay_us(int delay) {
-    TC3_CH0_TimerPeriodSet(delay);
-    TC3_CH0_TimerStart();
-    while (!TC3_CH0_TimerPeriodHasExpired());
+    SYS_TIME_HANDLE timer = SYS_TIME_HANDLE_INVALID;
+    if (SYS_TIME_DelayUS(delay, &timer) != SYS_TIME_SUCCESS) {
+        // Handle error
+    } else if (SYS_TIME_DelayIsComplete(timer) != true) {
+        // Wait till the delay has not expired
+        while (SYS_TIME_DelayIsComplete(timer) == false);
+    }
 }
