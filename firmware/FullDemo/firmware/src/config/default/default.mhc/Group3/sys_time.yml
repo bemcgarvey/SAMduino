@@ -43,4 +43,4 @@ children:
         children:
         - {type: Value, value: TC1_TMR}
 - type: ElementPosition
-  attributes: {x: '314', y: '254', id: sys_time}
+  attributes: {x: '193', y: '166', id: sys_time}

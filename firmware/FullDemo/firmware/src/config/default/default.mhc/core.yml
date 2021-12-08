@@ -670,7 +670,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '0'}
+        attributes: {value: '1'}
   - type: Boolean
     attributes: {id: NVIC_28_0_ENABLE}
     children:
@@ -1250,6 +1250,20 @@ children:
       - type: User
         attributes: {value: A}
   - type: String
+    attributes: {id: PIN_30_FUNCTION_TYPE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: TC0_TIOB1}
+  - type: String
+    attributes: {id: PIN_30_PERIPHERAL_FUNCTION}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: B}
+  - type: String
     attributes: {id: PIN_34_FUNCTION_TYPE}
     children:
     - type: Values
@@ -1440,6 +1454,34 @@ children:
         attributes: {value: MCAN1_CANTX1}
   - type: String
     attributes: {id: PIN_65_PERIPHERAL_FUNCTION}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: B}
+  - type: String
+    attributes: {id: PIN_70_FUNCTION_TYPE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: TC0_TIOB0}
+  - type: String
+    attributes: {id: PIN_70_PERIPHERAL_FUNCTION}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: B}
+  - type: String
+    attributes: {id: PIN_72_FUNCTION_TYPE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: TC0_TIOA0}
+  - type: String
+    attributes: {id: PIN_72_PERIPHERAL_FUNCTION}
     children:
     - type: Values
       children:
@@ -1675,7 +1717,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '0'}
+        attributes: {id: core, value: '65539'}
   - type: Hex
     attributes: {id: PIOA_ABCDSR2_VALUE}
     children:
@@ -1759,7 +1801,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '163352'}
+        attributes: {id: core, value: '228891'}
   - type: Hex
     attributes: {id: PIOA_PUER_VALUE}
     children:
@@ -2028,7 +2070,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '3960016000'}
+        attributes: {id: core, value: '3968404608'}
   - type: Hex
     attributes: {id: PMC_PCER1}
     children:
@@ -2092,6 +2134,8 @@ children:
       children:
       - type: Dynamic
         attributes: {id: core, value: 'false'}
+      - type: User
+        attributes: {value: 'false'}
   - type: Boolean
     attributes: {id: PMC_SCER_PCK7}
     children:
@@ -2408,7 +2452,14 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '150000000'}
+        attributes: {id: core, value: '32768'}
+  - type: Boolean
+    attributes: {id: TC0_CH0_INTERRUPT_ENABLE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: tc0, value: 'false'}
   - type: Boolean
     attributes: {id: TC0_CH0_INTERRUPT_ENABLE_UPDATE}
     children:
@@ -2416,6 +2467,20 @@ children:
       children:
       - type: Dynamic
         attributes: {id: core, value: 'true'}
+  - type: String
+    attributes: {id: TC0_CH0_INTERRUPT_HANDLER}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: tc0, value: TC0_CH0_Handler}
+  - type: Boolean
+    attributes: {id: TC0_CH0_INTERRUPT_HANDLER_LOCK}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: tc0, value: 'false'}
   - type: Integer
     attributes: {id: TC0_CH1_CLOCK_FREQUENCY}
     children:
@@ -2424,12 +2489,40 @@ children:
       - type: Dynamic
         attributes: {id: core, value: '150000000'}
   - type: Boolean
+    attributes: {id: TC0_CH1_INTERRUPT_ENABLE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: tc0, value: 'false'}
+  - type: Boolean
     attributes: {id: TC0_CH1_INTERRUPT_ENABLE_UPDATE}
     children:
     - type: Values
       children:
       - type: Dynamic
         attributes: {id: core, value: 'true'}
+  - type: String
+    attributes: {id: TC0_CH1_INTERRUPT_HANDLER}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: tc0, value: TC0_CH1_Handler}
+  - type: Boolean
+    attributes: {id: TC0_CH1_INTERRUPT_HANDLER_LOCK}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: tc0, value: 'false'}
+  - type: Boolean
+    attributes: {id: TC0_CH2_INTERRUPT_ENABLE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: tc0, value: 'false'}
   - type: Boolean
     attributes: {id: TC0_CH2_INTERRUPT_ENABLE_UPDATE}
     children:
@@ -2437,13 +2530,48 @@ children:
       children:
       - type: Dynamic
         attributes: {id: core, value: 'true'}
+  - type: String
+    attributes: {id: TC0_CH2_INTERRUPT_HANDLER}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: tc0, value: TC0_CH2_Handler}
+  - type: Boolean
+    attributes: {id: TC0_CH2_INTERRUPT_HANDLER_LOCK}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: tc0, value: 'false'}
   - type: Integer
     attributes: {id: TC0_CH3_CLOCK_FREQUENCY}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '150000000'}
+        attributes: {id: core, value: '1000000'}
+  - type: Boolean
+    attributes: {id: TC0_CHANNEL0_CLOCK_ENABLE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: tc0, value: 'true'}
+  - type: Boolean
+    attributes: {id: TC0_CHANNEL1_CLOCK_ENABLE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: tc0, value: 'false'}
+  - type: Boolean
+    attributes: {id: TC0_CHANNEL2_CLOCK_ENABLE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: tc0, value: 'false'}
   - type: Integer
     attributes: {id: TC1_CH0_CLOCK_FREQUENCY}
     children:
@@ -2542,6 +2670,13 @@ children:
       children:
       - type: Dynamic
         attributes: {id: tc1, value: 'false'}
+  - type: Integer
+    attributes: {id: TC1_CH3_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '150000000'}
   - type: Boolean
     attributes: {id: TC1_CHANNEL0_CLOCK_ENABLE}
     children:

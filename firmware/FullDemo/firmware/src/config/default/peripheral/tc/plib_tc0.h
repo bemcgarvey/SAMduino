@@ -87,55 +87,23 @@ extern "C" {
 
 // *****************************************************************************
 
+void TC0_QuadratureInitialize (void);
+
+void TC0_QuadratureStart (void);
+
+void TC0_QuadratureStop (void);
+
+
+__STATIC_INLINE int16_t TC0_QuadraturePositionGet (void)
+{
+    return (TC0_REGS->TC_CHANNEL[0].TC_CV);
+}
+
+TC_QUADRATURE_STATUS TC0_QuadratureStatusGet(void);
   
 
 
  
-
-
-
-void TC0_CH0_TimerInitialize (void);
-
-void TC0_CH0_TimerStart (void);
-
-void TC0_CH0_TimerStop (void);
-
-void TC0_CH0_TimerPeriodSet (uint16_t period);
-
-void TC0_CH0_TimerCompareSet (uint16_t compare);
-
-uint32_t TC0_CH0_TimerFrequencyGet (void);
-
-uint16_t TC0_CH0_TimerPeriodGet (void);
-
-uint16_t TC0_CH0_TimerCounterGet (void);
-
-void TC0_CH0_TimerCallbackRegister(TC_TIMER_CALLBACK callback, uintptr_t context);
-
-
-
- 
-
- 
-
-void TC0_CH1_TimerInitialize (void);
-
-void TC0_CH1_TimerStart (void);
-
-void TC0_CH1_TimerStop (void);
-
-void TC0_CH1_TimerPeriodSet (uint16_t period);
-
-
-uint32_t TC0_CH1_TimerFrequencyGet (void);
-
-uint16_t TC0_CH1_TimerPeriodGet (void);
-
-uint16_t TC0_CH1_TimerCounterGet (void);
-
-void TC0_CH1_TimerCallbackRegister(TC_TIMER_CALLBACK callback, uintptr_t context);
-
-
 
  
 

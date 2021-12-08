@@ -9,6 +9,7 @@
 #include "usb_menu.h"
 #include "mouse_tasks.h"
 #include "pwm_menu.h"
+#include "quadrature.h"
 #include <ctype.h>
 
 //task functions
@@ -63,6 +64,7 @@ void mainMenu(void) {
     printf("    7) True Random Number Generator\r\n");
     printf("    8) PWM\r\n");
     printf("    9) Real time clock\r\n");
+    printf("    A) Quadrature encoder\r\n");
 }
 
 void menuTask(void *pvParameters) {
@@ -96,6 +98,9 @@ void menuTask(void *pvParameters) {
             case '8': pwmMenu();
                 break;
             case '9': rtcMenu();
+                break;
+            case 'A':
+            case 'a': quadratureMenu();
                 break;
             default:
                 break;
