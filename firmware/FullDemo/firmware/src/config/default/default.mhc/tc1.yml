@@ -1,6 +1,6 @@
 format_version: v1.0
 type: UniqueComponent
-attributes: {id: tc0}
+attributes: {id: tc1}
 children:
 - type: Symbols
   children:
@@ -10,98 +10,98 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: TC0_CH0_TimerCallbackRegister}
+        attributes: {id: tc1, value: TC1_CH0_TimerCallbackRegister}
   - type: String
     attributes: {id: COMPARE_SET_API_NAME}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: TC0_CH0_TimerCompareSet}
+        attributes: {id: tc1, value: TC1_CH0_TimerCompareSet}
   - type: String
     attributes: {id: COUNTER_GET_API_NAME}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: TC0_CH0_TimerCounterGet}
+        attributes: {id: tc1, value: TC1_CH0_TimerCounterGet}
   - type: String
     attributes: {id: ENCODER_POS_GET_API}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: TC0_QuadraturePositionGet}
+        attributes: {id: tc1, value: TC1_QuadraturePositionGet}
   - type: String
     attributes: {id: ENCODER_POS_SET_API}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: ''}
+        attributes: {id: tc1, value: ''}
   - type: String
     attributes: {id: ENCODER_SPEED_GET_API}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: ''}
+        attributes: {id: tc1, value: ''}
   - type: String
     attributes: {id: ENCODER_SPEED_SET_API}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: ''}
+        attributes: {id: tc1, value: ''}
   - type: String
     attributes: {id: ENCODER_START_API}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: TC0_QuadratureStart}
+        attributes: {id: tc1, value: TC1_QuadratureStart}
   - type: String
     attributes: {id: ENCODER_STOP_API}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: TC0_QuadratureStop}
+        attributes: {id: tc1, value: TC1_QuadratureStop}
   - type: String
     attributes: {id: FREQUENCY_GET_API_NAME}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: TC0_CH0_TimerFrequencyGet}
+        attributes: {id: tc1, value: TC1_CH0_TimerFrequencyGet}
   - type: String
     attributes: {id: IRQ_ENUM_NAME}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: TC0_CH0_IRQn}
+        attributes: {id: tc1, value: TC1_CH0_IRQn}
   - type: String
     attributes: {id: PERIOD_SET_API_NAME}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: TC0_CH0_TimerPeriodSet}
+        attributes: {id: tc1, value: TC1_CH0_TimerPeriodSet}
   - type: String
     attributes: {id: SYS_TIME_COMPONENT_ID}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: sys_time}
+        attributes: {id: tc1, value: sys_time}
   - type: String
     attributes: {id: SYS_TIME_PLIB_OPERATION_MODE}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: SYS_TIME_PLIB_MODE_COMPARE}
+        attributes: {id: tc1, value: SYS_TIME_PLIB_MODE_COMPARE}
   - type: KeyValueSet
     attributes: {id: SYS_TIME_TC_CHANNEL}
     children:
@@ -114,30 +114,21 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: '0'}
-  - type: Comment
-    attributes: {id: TC0_CLK_ENABLE_COMMENT}
-    children:
-    - type: Attributes
-      children:
-      - type: Boolean
-        attributes: {id: visible}
-        children:
-        - {type: Value, value: 'false'}
+        attributes: {id: tc1, value: '0'}
   - type: Integer
     attributes: {id: TC0_CLOCK_FREQ}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: '150000000'}
+        attributes: {id: tc1, value: '150000000'}
   - type: Boolean
     attributes: {id: TC0_ENABLE}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: 'true'}
+        attributes: {id: tc1, value: 'true'}
   - type: Boolean
     attributes: {id: TC0_IER_CPAS}
     children:
@@ -150,14 +141,14 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: 'true'}
+        attributes: {id: tc1, value: 'true'}
   - type: Boolean
     attributes: {id: TC0_IER_CPCS}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: 'false'}
+        attributes: {id: tc1, value: 'false'}
   - type: Comment
     attributes: {id: TC0_Resolution}
     children:
@@ -173,7 +164,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: 'true'}
+        attributes: {id: tc1, value: 'true'}
   - type: Comment
     attributes: {id: TC0_TIMER_PERIOD_CMT}
     children:
@@ -189,16 +180,12 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: '0'}
+        attributes: {id: tc1, value: '0'}
   - type: Float
     attributes: {id: TC0_TIMER_PERIOD_MS}
     children:
     - type: Attributes
       children:
-      - type: Float
-        attributes: {id: max}
-        children:
-        - {type: Value, value: '0.43690667'}
       - type: Boolean
         attributes: {id: visible}
         children:
@@ -206,21 +193,21 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: '0.0'}
+        attributes: {id: tc1, value: '0.0'}
   - type: Integer
     attributes: {id: TC1_CLOCK_FREQ}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: '150000000'}
+        attributes: {id: tc1, value: '150000000'}
   - type: Boolean
     attributes: {id: TC1_ENABLE}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: 'false'}
+        attributes: {id: tc1, value: 'false'}
       - type: User
         attributes: {value: 'true'}
   - type: Boolean
@@ -229,14 +216,14 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: 'false'}
+        attributes: {id: tc1, value: 'false'}
   - type: Boolean
     attributes: {id: TC1_IER_CPCS}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: 'false'}
+        attributes: {id: tc1, value: 'false'}
       - type: User
         attributes: {value: 'true'}
   - type: Comment
@@ -263,7 +250,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: 'false'}
+        attributes: {id: tc1, value: 'false'}
   - type: Comment
     attributes: {id: TC1_TIMER_PERIOD_CMT}
     children:
@@ -279,7 +266,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: '749'}
+        attributes: {id: tc1, value: '749'}
   - type: Float
     attributes: {id: TC1_TIMER_PERIOD_MS}
     children:
@@ -292,7 +279,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: '0.0'}
+        attributes: {id: tc1, value: '0.0'}
       - type: User
         attributes: {value: '5.0'}
   - type: Combo
@@ -308,28 +295,28 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: 'false'}
+        attributes: {id: tc1, value: 'false'}
   - type: Boolean
     attributes: {id: TC2_IER_CPAS}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: 'false'}
+        attributes: {id: tc1, value: 'false'}
   - type: Boolean
     attributes: {id: TC2_IER_CPCS}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: 'false'}
+        attributes: {id: tc1, value: 'false'}
   - type: Boolean
     attributes: {id: TC2_SYS_TIME_CONNECTED}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: 'false'}
+        attributes: {id: tc1, value: 'false'}
   - type: Comment
     attributes: {id: TC2_TIMER_PERIOD_CMT}
     children:
@@ -345,55 +332,46 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: '0'}
+        attributes: {id: tc1, value: '0'}
   - type: Float
     attributes: {id: TC2_TIMER_PERIOD_MS}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: '0.0'}
+        attributes: {id: tc1, value: '0.0'}
   - type: Integer
     attributes: {id: TC3_CLOCK_FREQ}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: '150000000'}
+        attributes: {id: tc1, value: '150000000'}
   - type: Boolean
     attributes: {id: TC3_PCK7}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: 'false'}
-  - type: Comment
-    attributes: {id: TC_QEI_PERIOD_COMMENT}
-    children:
-    - type: Attributes
-      children:
-      - type: String
-        attributes: {id: text}
-        children:
-        - {type: Value, value: '****Time Base is 100.1 uS****'}
+        attributes: {id: tc1, value: 'false'}
   - type: String
     attributes: {id: TIMER_START_API_NAME}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: TC0_CH0_TimerStart}
+        attributes: {id: tc1, value: TC1_CH0_TimerStart}
   - type: String
     attributes: {id: TIMER_STOP_API_NAME}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc0, value: 'TC0_CH0_TimerStop '}
+        attributes: {id: tc1, value: 'TC1_CH0_TimerStop '}
 - type: Attachments
   children:
   - type: DirectCapability
-    attributes: {id: TC0_TMR}
+    attributes: {id: TC1_TMR}
     children:
     - type: Attributes
       children:
@@ -406,4 +384,4 @@ children:
         children:
         - {type: Value, value: sys_time_TMR_dependency}
 - type: ElementPosition
-  attributes: {x: '170', y: '278', id: tc0}
+  attributes: {x: '157', y: '273', id: tc1}

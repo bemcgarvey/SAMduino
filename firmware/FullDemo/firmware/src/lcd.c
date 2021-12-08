@@ -363,10 +363,7 @@ char LCDReadByte(char rs) {
 
 void __delay_us(int delay) {
     SYS_TIME_HANDLE timer = SYS_TIME_HANDLE_INVALID;
-    if (SYS_TIME_DelayUS(delay, &timer) != SYS_TIME_SUCCESS) {
-        // Handle error
-    } else if (SYS_TIME_DelayIsComplete(timer) != true) {
-        // Wait till the delay has not expired
+    if (SYS_TIME_DelayUS(delay, &timer) == SYS_TIME_SUCCESS) {
         while (SYS_TIME_DelayIsComplete(timer) == false);
     }
 }

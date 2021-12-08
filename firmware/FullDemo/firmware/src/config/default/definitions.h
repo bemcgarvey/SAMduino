@@ -58,7 +58,7 @@
 #include "peripheral/pwm/plib_pwm0.h"
 #include "peripheral/dacc/plib_dacc.h"
 #include "peripheral/efc/plib_efc.h"
-#include "peripheral/tc/plib_tc0.h"
+#include "peripheral/tc/plib_tc1.h"
 #include "peripheral/rtc/plib_rtc.h"
 #include "driver/sst26/drv_sst26.h"
 #include "system/time/sys_time.h"

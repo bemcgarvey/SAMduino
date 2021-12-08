@@ -19,14 +19,14 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: sys_time, value: TC0}
+        attributes: {id: sys_time, value: TC1}
   - type: String
     attributes: {id: SYS_TIME_REMOTE_COMPONENT_ID}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: sys_time, value: tc0}
+        attributes: {id: sys_time, value: tc1}
 - type: Attachments
   children:
   - type: DirectDependency
@@ -37,10 +37,10 @@ children:
       - type: String
         attributes: {id: targetComponentID}
         children:
-        - {type: Value, value: tc0}
+        - {type: Value, value: tc1}
       - type: String
         attributes: {id: targetAttachmentID}
         children:
-        - {type: Value, value: TC0_TMR}
+        - {type: Value, value: TC1_TMR}
 - type: ElementPosition
   attributes: {x: '314', y: '254', id: sys_time}
