@@ -147,7 +147,7 @@ void SYS_Initialize ( void* data )
         run_Application();
     }
 
-
+    LED_Clear();
 
 	RSWDT_REGS->RSWDT_MR = RSWDT_MR_WDDIS_Msk;	// Disable RSWDT 
 

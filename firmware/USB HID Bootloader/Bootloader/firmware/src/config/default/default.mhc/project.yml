@@ -146,13 +146,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: B8D87B6533E2CE239E9EEB8486DF6996
-- generatedChecksum: 0EFC4CB9DFC7D494A88553BF9A72C646
+- generatedChecksum: 437827AE963BBB92B975AA6984D2F77B
   logicalPath: config/default
   name: usb_device_init_data.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 0EFC4CB9DFC7D494A88553BF9A72C646
+  userChecksum: 437827AE963BBB92B975AA6984D2F77B
 - generatedChecksum: 7806B30ECAE0D18D08CD583D8775530D
   logicalPath: config/default/stdio
   name: xc32_monitor.c

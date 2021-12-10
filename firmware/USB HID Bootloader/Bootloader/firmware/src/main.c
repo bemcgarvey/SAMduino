@@ -43,10 +43,8 @@ bool bootloader_Trigger(void)
     if (Bootload_Get() == 0 || ((ramStart[0] == 0x12345678) && (ramStart[1] == 0x98765432))) {
         ramStart[0] = 0;
         DCACHE_CLEAN();
-        LED_Clear();
         return true;
     } else { 
-        LED_Set();
         return false;
     }
 }
