@@ -29,8 +29,7 @@ void rtcMenu(void) {
                     , pdTRUE, pdFALSE, portMAX_DELAY);
             if (uxBits & UART_RX_BIT) {
                 switch (rx) {
-                    case '1': RTC_InterruptDisable(RTC_INT_SEC);
-                        setTimeDate();
+                    case '1': setTimeDate();
                         repeatMenu = true;
                         break;
                     case 'm': repeatMenu = true;
@@ -43,9 +42,9 @@ void rtcMenu(void) {
             if (uxBits & RTC_BIT) {
                 struct tm currentTime;
                 RTC_TimeGet(&currentTime);
-                printf("\r     %2d:%02d:%02d  %d/%d/%d", currentTime.tm_hour
+                printf("\r     %02d:%02d:%02d  %d/%d/%d  ", currentTime.tm_hour
                         , currentTime.tm_min, currentTime.tm_sec
-                        , currentTime.tm_mon, currentTime.tm_mday
+                        , currentTime.tm_mon + 1, currentTime.tm_mday
                         , currentTime.tm_year + 1900);
             }
         }
@@ -55,13 +54,14 @@ void rtcMenu(void) {
 void setTimeDate(void) {
     struct tm time;
     char str[6];
+    RTC_InterruptDisable(RTC_INT_SEC);
     memset(&time, 0, sizeof(time));
     getStr("\r\nHour (24 hour):", str, 5);
     time.tm_hour = atoi(str);
     getStr("Minutes:", str, 6);
     time.tm_min = atoi(str);
     getStr("Month:", str, 6);
-    time.tm_mon = atoi(str);
+    time.tm_mon = atoi(str) - 1;
     getStr("Day:", str, 6);
     time.tm_mday = atoi(str);
     getStr("Year:", str, 6);
