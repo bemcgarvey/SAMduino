@@ -202,13 +202,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: BCCEF5B801FFD0CF22D0B454D2F25F1F
-- generatedChecksum: DDCA9B56A928270E5B31CEE0B500959E
+- generatedChecksum: C5C6C0F99C6FD77BA29F5680CFFA82A9
   logicalPath: config/default
   name: usb_device_init_data.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: DDCA9B56A928270E5B31CEE0B500959E
+  userChecksum: C5C6C0F99C6FD77BA29F5680CFFA82A9
 - generatedChecksum: 5B2E4F04BB9E3347BD0D10242479D4F0
   logicalPath: config/default/usb/src
   name: usb_device_msd.c

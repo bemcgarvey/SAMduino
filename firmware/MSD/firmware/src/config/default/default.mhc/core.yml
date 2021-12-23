@@ -947,6 +947,13 @@ children:
       children:
       - type: Dynamic
         attributes: {id: uart0, value: 'true'}
+  - type: Integer
+    attributes: {id: UART0_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '150000000'}
   - type: Boolean
     attributes: {id: UART0_INTERRUPT_ENABLE}
     children:

@@ -61,7 +61,7 @@ children:
       - type: Dynamic
         attributes: {id: usb_device, value: '0x0053'}
       - type: User
-        attributes: {value: '0x1234'}
+        attributes: {value: '0x2000'}
   - type: Combo
     attributes: {id: CONFIG_USB_DEVICE_PRODUCT_ID_SELECTION_IDX0}
     children:
@@ -77,7 +77,7 @@ children:
       - type: Dynamic
         attributes: {id: usb_device, value: Simple WinUSB Device Demo}
       - type: User
-        attributes: {value: QES Harmony USB HID Bootloader}
+        attributes: {value: Harmony Bootloader}
   - type: String
     attributes: {id: CONFIG_USB_DEVICE_VENDOR_ID_IDX0}
     children:
@@ -86,4 +86,4 @@ children:
       - type: User
         attributes: {value: '0x4d63'}
 - type: ElementPosition
-  attributes: {x: '230', y: '436', id: usb_device}
+  attributes: {x: '230', y: '435', id: usb_device}

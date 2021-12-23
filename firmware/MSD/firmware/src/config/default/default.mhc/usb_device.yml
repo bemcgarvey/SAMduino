@@ -52,7 +52,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '0x0124'}
+        attributes: {value: '0x1201'}
   - type: String
     attributes: {id: CONFIG_USB_DEVICE_PRODUCT_STRING_DESCRIPTOR}
     children:

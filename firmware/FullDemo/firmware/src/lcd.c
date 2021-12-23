@@ -4,7 +4,7 @@
 #include <stdarg.h>
 #include "definitions.h"
 
-//Uses TC3 CH0 set for 1us period, one shot mode, no interrupt
+//Uses SYS_TIME for delays
 
 //Functions below must be defined for the interface
 void LCDWriteByte(char c, char rs);

@@ -54,7 +54,7 @@ files:
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 95CD19CFBC3F68C3AF7D3050393CD952
+  userChecksum: 51F252FC47FADFCC4259EE4C3E929BAB
 - generatedChecksum: 5E71B9BFC22C3D932AF5D012D4973556
   logicalPath: config/default
   name: interrupts.c
@@ -146,13 +146,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: B8D87B6533E2CE239E9EEB8486DF6996
-- generatedChecksum: 437827AE963BBB92B975AA6984D2F77B
+- generatedChecksum: 2CD7370C0074887B5106DE8C3BE3AD2D
   logicalPath: config/default
   name: usb_device_init_data.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 437827AE963BBB92B975AA6984D2F77B
+  userChecksum: 2CD7370C0074887B5106DE8C3BE3AD2D
 - generatedChecksum: 7806B30ECAE0D18D08CD583D8775530D
   logicalPath: config/default/stdio
   name: xc32_monitor.c

@@ -68,7 +68,7 @@ children:
       - type: Dynamic
         attributes: {id: usb_device, value: '0x0000'}
       - type: User
-        attributes: {value: '0x0123'}
+        attributes: {value: '0x1200'}
   - type: Combo
     attributes: {id: CONFIG_USB_DEVICE_PRODUCT_ID_SELECTION_IDX0}
     children:

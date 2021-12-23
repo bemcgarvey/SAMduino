@@ -2452,7 +2452,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '32768'}
+        attributes: {id: core, value: '1000000'}
   - type: Boolean
     attributes: {id: TC0_CH0_INTERRUPT_ENABLE}
     children:
