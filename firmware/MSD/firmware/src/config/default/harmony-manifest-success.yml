@@ -17,5 +17,4 @@ modules:
     - {name: "core", version: "v3.10.0"}
     - {name: "usb", version: "v3.8.1"}
     - {name: "dev_packs", version: "v3.10.0"}
-    - {name: "littlefs", version: "unknown"}
 
